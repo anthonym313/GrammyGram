@@ -3,16 +3,18 @@
 	flex-direction: row;
 	align-items: center;
 	margin: 0 auto;
+	padding: 0;
+	width: 100%;
 }
 
 li {
 	list-style-type: none;
 }
 
-.navbar .left {
+.left li {
 	float: left;
 }
 
-.navbar .right {
+.right li {
 	float: right;
 }
