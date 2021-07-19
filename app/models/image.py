@@ -1,13 +1,13 @@
 from .db import db
 
 
-class Like(db.Model):
-    __tablename__ = 'likes'
+class Image(db.Model):
+    __tablename__ = 'images'
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer)
-    image_id = db.Column(db.Integer)
-    like = db.Column(db.Boolean)
+    image_url = db.Column(db.VARCHAR(300), nullable=False)
+    description = db.Column(db.VARCHAR(500), nullable=False)
 
     def to_dict(self):
         return {
