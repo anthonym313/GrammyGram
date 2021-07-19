@@ -13,16 +13,20 @@ export const postImage = (image) => ({
 })
 
 //CREATE
-export const postImageThunk = (payload) => async(dispatch) => {
+export const postImageThunk = (image_url, description) => async (dispatch) => {
   const res = await fetch('/api/post', {
     method: 'POST',
-    body: JSON.stringify(payload)
+    body: JSON.stringify({
+      image_url,
+      description
+    })
   })
   const newPost = await res.json()
   dispatch(postImage(newPost))
 }
 
-const initialState = {}
+const initialState = { image: null }
+
 const imageReducer = (state = initialState, action) => {
   let newState = {}
   switch (action.type) {
@@ -32,6 +36,8 @@ const imageReducer = (state = initialState, action) => {
         [action.image.id]: action.image
       }
       return newState
+    default:
+      return state;
   }
 
 }

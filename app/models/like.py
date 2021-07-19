@@ -9,7 +9,7 @@ class Like(db.Model):
     image_id = db.Column(db.Integer, db.ForeignKey("images.id"))
     like = db.Column(db.Boolean)
 
-    users = db.relationship('User', backref='likes', lazy='True')
+    users = db.relationship('User', back_populates='likes')
 
     def to_dict(self):
         return {

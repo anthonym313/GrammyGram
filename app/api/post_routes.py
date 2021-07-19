@@ -5,7 +5,8 @@ from flask_login import current_user, login_user, logout_user, login_required
 
 post_routes = Blueprint('post', __name__)
 
-@post_routes.route('', methods=['POST'])
+
+@post_routes.route('/post', methods=['GET', 'POST'])
 def index():
     form = PostForm()
     form['csrf_token'].data = request.cookies['csrf_token']
