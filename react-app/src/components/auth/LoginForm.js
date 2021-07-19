@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import DemoUser from '../DemoUser'
 
 const LoginForm = () => {
 	const [errors, setErrors] = useState([]);
@@ -16,11 +17,6 @@ const LoginForm = () => {
 		if (data) {
 			setErrors(data);
 		}
-	};
-
-	const demoLogin = async (e) => {
-		e.preventDefault();
-		return await dispatch(login('demo@aa.io', 'password'));
 	};
 
 	const updateEmail = (e) => {
@@ -63,7 +59,7 @@ const LoginForm = () => {
 				/>
 				<button type='submit'>Login</button>
 			</div>
-			<button onClick={(e) => demoLogin(e)}>Demo User</button>
+			<DemoUser/>
 		</form>
 	);
 };
