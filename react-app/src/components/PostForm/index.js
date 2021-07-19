@@ -5,48 +5,54 @@ import { postImageThunk } from '../../store/post';
 
 const PostForm = () => {
     const [errors, setErrors] = useState([]);
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [imageUrl, setImageUrl] = useState('');
+    const [description, setDescription] = useState('');
     const user = useSelector(state => state.session.user);
     const dispatch = useDispatch();
 
 
-    const updateEmail = (e) => {
-        setEmail(e.target.value);
+    const updateImageUrl = (e) => {
+        setImageUrl(e.target.value);
     };
 
-    const updatePassword = (e) => {
-        setPassword(e.target.value);
+    const updateDescription = (e) => {
+        setDescription(e.target.value);
     };
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        let image_url = imageUrl;
+        dispatch(postImageThunk({ image_url, description, user_id: user.id }));
+    }
 
 
     return (
-        <form >
+        <form onSubmit={onSubmit}>
             <div>
                 {errors.map((error, ind) => (
                     <div key={ind}>{error}</div>
                 ))}
             </div>
             <div>
-                <label htmlFor='email'>POOOOOOOP</label>
+                <label >Image URL </label>
                 <input
-                    name='email'
+                    name='Image Url'
                     type='text'
-                    placeholder='Email'
-                    value={email}
-                    onChange={updateEmail}
+                    placeholder='Image Url'
+                    value={imageUrl}
+                    onChange={updateImageUrl}
                 />
             </div>
             <div>
-                <label htmlFor='password'>Password</label>
+                <label >Description </label>
                 <input
-                    name='password'
-                    type='password'
-                    placeholder='Password'
-                    value={password}
-                    onChange={updatePassword}
+                    name='Description'
+                    type='text'
+                    placeholder='Description'
+                    value={description}
+                    onChange={updateDescription}
                 />
-                <button type='submit'>Login</button>
+                <button type='submit'>Upload</button>
             </div>
         </form>
     );

@@ -1,9 +1,9 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextField
+from wtforms import StringField, TextAreaField
 from wtforms.validators import DataRequired
 # from app.models import User
 
 
 class PostForm(FlaskForm):
-    img_url = StringField('Image Url', validators=[DataRequired()])
-    description = TextField('Description', validators=[DataRequired()])
+    image_url = StringField('image_url', validators=[DataRequired()])
+    description = StringField('description', validators=[DataRequired()])

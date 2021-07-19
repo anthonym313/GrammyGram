@@ -1,3 +1,5 @@
+// import fetch from 'node-fetch'
+
 const POST_IMAGE = 'post/POST_IMAGE';
 const DELETE_IMAGE = 'post/DELETE_IMAGE';
 const GET_IMAGE = 'post/GET_IMAGE';
@@ -13,14 +15,18 @@ export const postImage = (image) => ({
 })
 
 //CREATE
-export const postImageThunk = (image_url, description) => async (dispatch) => {
+export const postImageThunk = (payload) => async (dispatch) => {
+  console.log('HAHAHAHAHAHAHAHAHAHAHAHAHA => ', payload);
   const res = await fetch('/api/post', {
     method: 'POST',
+     headers: {
+      'Content-Type': 'application/json'
+    },
     body: JSON.stringify({
-      image_url,
-      description
+      payload
     })
   })
+  console.log('OVERHEREEEEEEEEE  AFTER => ', payload);
   const newPost = await res.json()
   dispatch(postImage(newPost))
 }
