@@ -5,6 +5,8 @@ from flask_login import current_user
 
 comment_routes = Blueprint('comment', __name__)
 
+# GET
+
 
 @comment_routes.route('/<int:image_id>/comment')
 def all_comments_image(image_id):
@@ -13,8 +15,10 @@ def all_comments_image(image_id):
     # returns all comments based on current image path
     return comments
 
+# POST
 
-@comment_routes.route('/<int:image_id>/comment', methods=['POST'])
+
+@comment_routes.route('/<int:image_id>/comment/create', methods=['POST'])
 def index():
     # comment forms
     form = CommentForm()
