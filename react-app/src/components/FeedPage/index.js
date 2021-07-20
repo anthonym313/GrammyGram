@@ -2,32 +2,33 @@ import React from 'react'
 import { useState,useEffect } from 'react';
 import './Feed.css'
 import {useSelector} from "react-redux"
+import { getFiveRandomUsers } from '../../store/user';
 
 export default function Feed(){
     // const usersImages= useSelector((state)=> Object.values(state.images))
+    const randUsers = useSelector((state) => state.randomUsers)
     const user = useSelector((state) => state.session.user);
-    // const randomUsers
     const [users, setUsers] = useState([]);
-    
+    const [suggestions, setSuggestions] = useState([])
+
     useEffect(() => {
-        async function fetchData() {
-        const response = await fetch('/api/users/');
-        const responseData = await response.json();
-        setUsers(responseData.users);
-        }
-        fetchData();
+        getFiveRandomUsers()
     }, []); 
 
-    const randomUsers = (users)=>{
-        const allUsers = Object.assign({},users)
-        let arr=[]
-        for(let i=0;i < 5; i++){
-            let num = Math.floor(Math.random()*Object.keys(allUsers).length)
-            arr.push(allUsers[num])
-        }
-        return arr
-    }   
-    let suggestions = randomUsers(users)
+    // useEffect(()=>{
+    //     const randomUsers = (users)=>{
+    //         const allUsers = Object.assign({},users)
+    //         let arr=[]
+    //         for(let i=0;i < 5; i++){
+    //             let num = Math.floor(Math.random()*Object.keys(allUsers).length)
+    //             arr.push(allUsers[num])
+    //         }
+    //         return arr
+    //     }   
+    //     setSuggestions(randomUsers(users));
+
+    // },[users])
+
     return(
         <div className='feedpage-container'>
             <div className='users_images-container'>
@@ -58,6 +59,7 @@ export default function Feed(){
                     </div>
                     <h2>Suggestions For You</h2>
                     {suggestions?.map((randomUser)=>{
+                        console.log(randomUser)
                         return(
                             <div>
                                 <div>
@@ -65,8 +67,8 @@ export default function Feed(){
                                     <h3>{randomUser.username}</h3>
                                 </div>
                                 
-
                             </div>
+
                         )
                     })}
 
