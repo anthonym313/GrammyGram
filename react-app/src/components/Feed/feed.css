@@ -1,4 +1,19 @@
+.feed-page {
+  display: flex;
+  flex-direction: column;
+}
 .post-container {
+  width: 615px;
+  flex: 1;
+  margin-left: 20%;
+  border: 2px solid black;
+  margin-bottom: 60px;
+}
+
+.the-image {
   width: 615px;
 }
 
+.top-bar {
+  height: 60px;
+}

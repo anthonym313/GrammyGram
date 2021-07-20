@@ -10,20 +10,19 @@ function Feed() {
   const allPosts = useSelector((state) => Object.values(state.feedPosts));
 
   const pureIm = allPosts[0].posts;
-  // console.log(`###########################`,allPosts[0].posts)
 
   useEffect(() => {
     dispatch(getImagesThunk());
   }, [dispatch]);
 
   return (
-    <div>
+    <div className='feed-page'>
       {pureIm &&
         pureIm?.map((image) => (
           <div key={image.id} className="post-container">
             <div className="top-bar"> </div>
             <div className="image-container">
-              <img src={image?.image_url} alt="feed-images" className='' />
+              <img src={image?.image_url} alt="feed-images" className='the-image' />
             </div>
             <div className="post-content">
               <div className="post-actions"></div>
