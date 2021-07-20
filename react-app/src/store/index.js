@@ -5,7 +5,7 @@ import imageReducer from "./post";
 
 const rootReducer = combineReducers({
   session,
-  post: imageReducer
+  feedPosts: imageReducer
 });
 
 let enhancer;

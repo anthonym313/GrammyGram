@@ -30,9 +30,7 @@ export const postImageThunk = (payload) => async (dispatch) => {
 };
 
 export const getImagesThunk = () => async (dispatch) => {
-  const res = await fetch("/api/posts/", {
-
-  });
+  const res = await fetch("/api/posts");
 
   if (res.ok) {
     const allImages = await res.json();
@@ -41,7 +39,7 @@ export const getImagesThunk = () => async (dispatch) => {
   }
 };
 
-const initialState = {};
+const initialState = {thing: ''};
 
 const imageReducer = (state = initialState, action) => {
   let newState = {};
@@ -54,12 +52,21 @@ const imageReducer = (state = initialState, action) => {
       return newState;
     case GET_FEED:
       // let newState = {};
+      // let obj = Object.entries(...action.image)
+      // newState = {
+      //   ...obj
+      // }
+      //  for (let image in action.image){
+      //    console.log('helloooo', action.image)
+      //   newState[image?.id] = image;
+      // }
+      // return {...newState}
       [action.image].forEach(photo => {
         newState[photo.id] = photo;
-      });
-      return {
-        ...newState
-      };
+    })
+    return {
+         ...newState
+    }
     default:
       return state;
   }

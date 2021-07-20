@@ -18,11 +18,3 @@ def users():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
-
-
-# @user_routes.route('/')
-# @login_required
-# def get_all_posts():
-#     posts = Image.query.all()
-#     print('POSTTTSSSSSS', posts)
-#     return {'posts': [post.to_dict() for post in posts]}
