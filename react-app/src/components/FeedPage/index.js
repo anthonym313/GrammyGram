@@ -22,14 +22,12 @@ export default function Feed(){
         const allUsers = Object.assign({},users)
         let arr=[]
         for(let i=0;i < 5; i++){
-            let num = Math.floor(Math.random()*allUsers.length)
+            let num = Math.floor(Math.random()*Object.keys(allUsers).length)
             arr.push(allUsers[num])
         }
-        console.log(num)
-        console.log(allUsers[3])
         return arr
     }   
-    console.log(randomUsers(users))
+    let suggestions = randomUsers(users)
     return(
         <div className='feedpage-container'>
             <div className='users_images-container'>
@@ -59,7 +57,18 @@ export default function Feed(){
                         <h3>{user.username}</h3>
                     </div>
                     <h2>Suggestions For You</h2>
+                    {suggestions?.map((randomUser)=>{
+                        return(
+                            <div>
+                                <div>
+                                    <img src={randomUser.avatar}></img>
+                                    <h3>{randomUser.username}</h3>
+                                </div>
+                                
 
+                            </div>
+                        )
+                    })}
 
 
             </div>
