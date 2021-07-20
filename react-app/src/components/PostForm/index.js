@@ -19,10 +19,10 @@ const PostForm = () => {
         setDescription(e.target.value);
     };
 
+    let image_url = imageUrl;
     const onSubmit = (e) => {
         e.preventDefault();
-        let image_url = imageUrl;
-        dispatch(postImageThunk({ image_url, description, user_id: user.id }));
+        dispatch(postImageThunk({ image_url, description: description, user_id: user.id }));
     }
 
 
@@ -34,17 +34,17 @@ const PostForm = () => {
                 ))}
             </div>
             <div>
-                <label >Image URL </label>
+                <label>Image URL</label>
                 <input
                     name='Image Url'
                     type='text'
                     placeholder='Image Url'
-                    value={imageUrl}
+                    value={image_url}
                     onChange={updateImageUrl}
                 />
             </div>
             <div>
-                <label >Description </label>
+                <label>Description</label>
                 <input
                     name='Description'
                     type='text'

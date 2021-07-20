@@ -16,19 +16,24 @@ export const postImage = (image) => ({
 
 //CREATE
 export const postImageThunk = (payload) => async (dispatch) => {
-  console.log('HAHAHAHAHAHAHAHAHAHAHAHAHA => ', payload);
   const res = await fetch('/api/post', {
     method: 'POST',
-     headers: {
+    headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({
-      payload
-    })
+    body: JSON.stringify(payload)
   })
-  console.log('OVERHEREEEEEEEEE  AFTER => ', payload);
   const newPost = await res.json()
   dispatch(postImage(newPost))
+}
+
+
+export const getImagesThunk = () => async (dispatch) => {
+  const res = await fetch('/api/post/feed')
+  if (res.ok) {
+    const allImages = await res.json();
+    dispatch(getImage(allImages))
+  }
 }
 
 const initialState = { image: null }
