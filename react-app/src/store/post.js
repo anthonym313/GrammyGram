@@ -16,7 +16,7 @@ export const postImage = (image) => ({
 
 //CREATE
 export const postImageThunk = (payload) => async (dispatch) => {
-  const res = await fetch('/api/post', {
+  const res = await fetch('/api/post/upload', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -47,6 +47,13 @@ const imageReducer = (state = initialState, action) => {
         [action.image.id]: action.image
       }
       return newState
+    case GET_IMAGE:
+      action.imgage.forEach(photo => {
+        newState[photo.id] = photo;
+      })
+      return {
+        ...newState
+      }
     default:
       return state;
   }

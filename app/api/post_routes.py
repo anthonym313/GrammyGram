@@ -6,7 +6,7 @@ from flask_login import current_user
 post_routes = Blueprint('post', __name__)
 
 
-@post_routes.route('', methods=['POST'])
+@post_routes.route('/upload', methods=['POST'])
 def index():
 
     req = request.get_json()
