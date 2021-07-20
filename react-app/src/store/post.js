@@ -16,7 +16,7 @@ export const postImage = (image) => ({
 
 //CREATE
 export const postImageThunk = (payload) => async (dispatch) => {
-  const res = await fetch('/api/post/upload', {
+  const res = await fetch('/api/posts/upload', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -29,7 +29,7 @@ export const postImageThunk = (payload) => async (dispatch) => {
 
 
 export const getImagesThunk = () => async (dispatch) => {
-  const res = await fetch('/api/post/feed')
+  const res = await fetch('/api/posts')
   if (res.ok) {
     const allImages = await res.json();
     dispatch(getImage(allImages))
@@ -48,7 +48,7 @@ const imageReducer = (state = initialState, action) => {
       }
       return newState
     case GET_IMAGE:
-      action.imgage.forEach(photo => {
+      action.image.forEach(photo => {
         newState[photo.id] = photo;
       })
       return {

@@ -3,7 +3,7 @@ from app.models import db, Image
 from app.forms import PostForm
 from flask_login import current_user
 
-post_routes = Blueprint('post', __name__)
+post_routes = Blueprint('posts', __name__)
 
 
 @post_routes.route('/upload', methods=['POST'])
@@ -22,4 +22,9 @@ def index():
     return image.to_dict()
 
 
+@post_routes.route('/feed', methods=['GET'])
+def get_all_posts():
+    posts = Image.query.all()
+    print('POSTTTSSSSSS', posts)
+    return jsonify([post.to_dict() for post in posts])
 # @post_routes.route('/<int:id>', methods=['GET'])

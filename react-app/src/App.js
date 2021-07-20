@@ -38,7 +38,7 @@ function App() {
         <ProtectedRoute path='/users' exact={true} >
           <UsersList />
         </ProtectedRoute>
-        <ProtectedRoute path='/post/upload' exact={true} >
+        <ProtectedRoute path='/posts/upload' exact={true} >
           <PostForm />
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
