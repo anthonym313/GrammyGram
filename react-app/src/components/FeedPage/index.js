@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState,useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import './Feed.css'
 import {useSelector} from "react-redux"
 import { getFiveRandomUsers } from '../../store/user';
@@ -10,9 +11,10 @@ export default function Feed(){
     const user = useSelector((state) => state.session.user);
     const [users, setUsers] = useState([]);
     const [suggestions, setSuggestions] = useState([])
+    const dispatch = useDispatch()
 
     useEffect(() => {
-        getFiveRandomUsers()
+        dispatch(getFiveRandomUsers())
     }, []); 
 
     // useEffect(()=>{

@@ -6,27 +6,20 @@ const randomUser = (randomList)=>({
 })
 
 export const getFiveRandomUsers=()=>async(dispatch)=>{
-    const response = await fetch('/api/users/random', {
-     headers:{
-        'Content-Type': 'application/json'
-     }   
-    });
+    const response = await fetch('/api/users/random');
     if (response.ok){
         const users = await response.json();
+        console.log('thunk', users)
         dispatch(randomUser(users));
         return "SUCCESSFULLY GOT RANDOM USERS"
     }
     
 }
-const initialState = {}
+const initialState = []
 export default function reducer(state=initialState, action){
-    let newState={}
     switch(action.type){
         case RANDOM_USER:
-            newState ={
-                ...state, usersList:action.randomList
-            }
-            return newState
+           return action.randomList
         default:
             return state;
     }
