@@ -28,3 +28,12 @@ def get_all_posts():
     posts = Image.query.all()
     return {'posts': [post.to_dict() for post in posts]}
 # @post_routes.route('/<int:id>', methods=['GET'])
+
+
+@post_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def del_post(id):
+    post = Image.query.get(id)
+    db.session.delete(post)
+    db.session.commit()
+    return {'message': 'Post deleted'}
