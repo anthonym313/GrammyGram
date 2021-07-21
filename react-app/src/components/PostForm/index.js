@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 // import { Redirect } from 'react-router-dom';
 import { postImageThunk, getImagesThunk } from "../../store/post";
@@ -29,6 +29,10 @@ const PostForm = () => {
     dispatch(getImagesThunk());
     history.push("/posts/");
   };
+
+//   useEffect(() => {
+//     dispatch(getImagesThunk());
+//   }, [dispatch]);
 
   return (
     <form onSubmit={onSubmit}>
