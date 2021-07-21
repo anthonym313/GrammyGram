@@ -42,6 +42,9 @@ function App() {
 				<ProtectedRoute path='/users' exact={true}>
 					<UsersList />
 				</ProtectedRoute>
+				<ProtectedRoute path='/posts' exact={true} >
+          			<Feed />
+        		</ProtectedRoute>
 				<ProtectedRoute path='/post/upload' exact={true}>
 					<PostForm />
 				</ProtectedRoute>
@@ -59,34 +62,6 @@ function App() {
 		</BrowserRouter>
 	);
 
-  return (
-    <BrowserRouter>
-      <NavBar />
-      <Switch>
-        <Route path='/login' exact={true}>
-          <LoginForm />
-        </Route>
-        <Route path='/sign-up' exact={true}>
-          <SignUpForm />
-        </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList />
-        </ProtectedRoute>
-        <ProtectedRoute path='/posts' exact={true} >
-          <Feed />
-        </ProtectedRoute>
-        <ProtectedRoute path='/posts/upload' exact={true} >
-          <PostForm />
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
-          {/* <Feed/> */}
-        </ProtectedRoute>
-      </Switch>
-    </BrowserRouter>
-  );
 }
 
 export default App;

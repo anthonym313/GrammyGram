@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory, Redirect } from "react-router-dom";
 import { getImagesThunk, deleteImageThunk } from "../../store/post";
 import "./feed.css";
+import Suggestions from "../Suggestions";
 function Feed() {
   const dispatch = useDispatch();
 
@@ -46,6 +47,7 @@ function Feed() {
             </div>
           </div>
         ))}
+        <Suggestions/>
     </div>
   );
 }
