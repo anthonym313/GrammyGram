@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import PostForm from './components/PostForm';
 import Feed from './components/Feed';
+import SinglePost from './components/SinglePost';
 import { authenticate } from './store/session';
 
 function App() {
@@ -43,6 +44,9 @@ function App() {
 				</ProtectedRoute>
 				<ProtectedRoute path='/posts' exact={true}>
 					<Feed />
+				</ProtectedRoute>
+				<ProtectedRoute path='/posts/:postId' exact={true}>
+					<SinglePost />
 				</ProtectedRoute>
 				<ProtectedRoute path='/posts/upload' exact={true}>
 					<PostForm />
