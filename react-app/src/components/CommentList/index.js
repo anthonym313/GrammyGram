@@ -14,6 +14,12 @@ const CommentList = () => {
 	const userId = image.user_id;
 	const newComments = Object.values(allComments);
 
+	const userInfo = (newComments) => {
+		newComments.map((comment) => {
+			
+		})
+	}
+
 	useEffect(() => {
 		if (!postId) {
 			return;
