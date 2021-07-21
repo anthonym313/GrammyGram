@@ -10,6 +10,8 @@ import User from './components/User';
 import PostForm from './components/PostForm';
 import CommentList from './components/CommentList';
 import Feed from './components/Feed';
+import NotFoundPage from './components/NotFoundPage';
+import ExplorePage from './components/ExplorePage';
 import { authenticate } from './store/session';
 
 function App() {
@@ -49,6 +51,10 @@ function App() {
 				<ProtectedRoute path='/' exact={true}>
 					<CommentList />
 				</ProtectedRoute>
+				<ProtectedRoute path='/explore' exact={true}>
+					<ExplorePage/>
+				</ProtectedRoute>
+				<Route component={NotFoundPage}/>
 			</Switch>
 		</BrowserRouter>
 	);
