@@ -12,7 +12,6 @@ function Feed() {
   const pureIm = allPosts[0].posts;
   const [users, setUsers] = useState([]);
 
-  console.log("USEEEEEEEEEEEEEEEEEEEEEEER", users);
   useEffect(() => {
     async function fetchData() {
       const response = await fetch("/api/users/");
@@ -41,12 +40,13 @@ function Feed() {
   };
 
   const postUser = (user) => {
-    user.forEach(u => {
-
-    }
-    )
-  }
-
+    let obj = {};
+    user.forEach((u) => {
+      obj[u.id] = u.username;
+    });
+    return obj
+  };
+  const list = postUser(users);
 
   return (
     <div className="feed-page">
@@ -66,7 +66,7 @@ function Feed() {
             <div className="post-content">
               <div className="post-actions"></div>
               <div className="post-description">
-                <p>{image.user_id.username}</p>
+                <p>{list[image.user_id]}</p>
                 <p>{image.description}</p>
               </div>
               <div className="comments"></div>
