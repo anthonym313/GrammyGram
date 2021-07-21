@@ -1,6 +1,6 @@
 // import fetch from 'node-fetch'
 const POST_IMAGE = "post/POST_IMAGE";
-// const DELETE_IMAGE = "post/DELETE_IMAGE";
+const DELETE_IMAGE = "post/DELETE_IMAGE";
 const GET_FEED = "post/GET_FEED";
 export const getFeed = (image) => {
   return {
@@ -12,6 +12,13 @@ export const postImage = (image) => ({
   type: POST_IMAGE,
   image,
 });
+
+export const deleteImage = (id) => ({
+  type: DELETE_IMAGE,
+  id,
+});
+
+
 //CREATE
 export const postImageThunk = (payload) => async (dispatch) => {
   const res = await fetch("/api/posts/upload", {
@@ -25,14 +32,30 @@ export const postImageThunk = (payload) => async (dispatch) => {
   dispatch(postImage(newPost));
 };
 export const getImagesThunk = () => async (dispatch) => {
-  const res = await fetch("/api/posts");
+  const res = await fetch("/api/posts/");
+
   if (res.ok) {
     const allImages = await res.json();
     // console.log(allImages);
     dispatch(getFeed(allImages));
   }
 };
-const initialState = {thing: ''};
+//DELETE
+export const deleteImageThunk = (id) => async (dispatch) => {
+  const res = await fetch(`/api/posts/${id}`, {
+    method: "DELETE",
+    body: JSON.stringify({ id }),
+  });
+  if (res.ok) {
+    await res.json();
+    dispatch(deleteImage(id));
+    return res;
+  }
+};
+
+const initialState = { thing: "" };
+
+
 const imageReducer = (state = initialState, action) => {
   let newState = {};
   switch (action.type) {
@@ -43,22 +66,16 @@ const imageReducer = (state = initialState, action) => {
       };
       return newState;
     case GET_FEED:
-      // let newState = {};
-      // let obj = Object.entries(...action.image)
-      // newState = {
-      //   ...obj
-      // }
-      //  for (let image in action.image){
-      //    console.log('helloooo', action.image)
-      //   newState[image?.id] = image;
-      // }
-      // return {...newState}
-      [action.image].forEach(photo => {
+      [action.image].forEach((photo) => {
         newState[photo.id] = photo;
-    })
-    return {
-         ...newState
-    }
+      });
+      return {
+        ...newState,
+      };
+    case DELETE_IMAGE:
+      newState = { ...state };
+      delete newState[action.id];
+      return { ...newState };
     default:
       return state;
   }
