@@ -1,0 +1,20 @@
+#explore{
+    margin:0 auto;
+    margin-top: 50px;
+    display:grid;
+    grid-template-columns: repeat(3,200px);
+    grid-auto-rows: minmax(200px, auto);
+    column-gap: 10px;
+    row-gap: 5px;
+    justify-content: center;
+}
+.explore-image{
+    background-color: lightslategray;
+    max-width:auto;
+}
+
+
+.explore-image:hover{
+    opacity:.5;
+    cursor: pointer;
+}
