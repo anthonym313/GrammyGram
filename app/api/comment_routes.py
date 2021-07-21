@@ -7,12 +7,14 @@ comment_routes = Blueprint('comment', __name__)
 
 # GET
 
-@comment_routes.route('/<int:image_id>/comment')
-def all_comments_image(image_id):
-    comments = Comment.query.filter_by(
-        Comment.image_id is image_id).all()
-    # returns all comments based on current image path
-    return comments
+
+# @comment_routes.route('/<int:image_id>/comments')
+# def all_comments_image(image_id):
+#     comments = Comment.query.filter_by(
+#         Comment.image_id is image_id).all()
+#     # returns all comments based on current image path
+#     print('all comments backend', comments.to_dict())
+#     return comments.to_dict()
 
 # POST
 

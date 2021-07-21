@@ -17,5 +17,5 @@ class Comment(db.Model):
             'user_id': self.user_id,
             'image_id': self.image_id,
             'comment': self.comment,
-            'createdAt': self.created_at.strftime('%m-%d-%Y'),
+            # 'createdAt': self.created_at.strftime('%m-%d-%Y'),
         }
