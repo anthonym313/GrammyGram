@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 import { postImageThunk } from '../../store/post';
 
 const PostForm = () => {
-    const [errors, setErrors] = useState([]);
+    // const [errors, setErrors] = useState([]);
     const [imageUrl, setImageUrl] = useState('');
     const [description, setDescription] = useState('');
     const user = useSelector(state => state.session.user);
@@ -29,9 +29,9 @@ const PostForm = () => {
     return (
         <form onSubmit={onSubmit}>
             <div>
-                {errors.map((error, ind) => (
+                {/* {errors.map((error, ind) => (
                     <div key={ind}>{error}</div>
-                ))}
+                ))} */}
             </div>
             <div>
                 <label>Image URL</label>

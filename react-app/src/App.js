@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import PostForm from './components/PostForm';
 import CommentList from './components/CommentList';
+import Feed from './components/Feed';
 import { authenticate } from './store/session';
 
 function App() {
@@ -51,6 +52,35 @@ function App() {
 			</Switch>
 		</BrowserRouter>
 	);
+
+  return (
+    <BrowserRouter>
+      <NavBar />
+      <Switch>
+        <Route path='/login' exact={true}>
+          <LoginForm />
+        </Route>
+        <Route path='/sign-up' exact={true}>
+          <SignUpForm />
+        </Route>
+        <ProtectedRoute path='/users' exact={true} >
+          <UsersList />
+        </ProtectedRoute>
+        <ProtectedRoute path='/posts' exact={true} >
+          <Feed />
+        </ProtectedRoute>
+        <ProtectedRoute path='/posts/upload' exact={true} >
+          <PostForm />
+        </ProtectedRoute>
+        <ProtectedRoute path='/users/:userId' exact={true} >
+          <User />
+        </ProtectedRoute>
+        <ProtectedRoute path='/' exact={true} >
+          {/* <Feed/> */}
+        </ProtectedRoute>
+      </Switch>
+    </BrowserRouter>
+  );
 }
 
 export default App;
