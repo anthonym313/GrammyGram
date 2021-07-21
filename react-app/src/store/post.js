@@ -25,10 +25,9 @@ export const postImageThunk = (payload) => async (dispatch) => {
 	dispatch(postImage(newPost));
 };
 export const getImagesThunk = () => async (dispatch) => {
-	const res = await fetch('/api/posts');
+	const res = await fetch('/api/posts/');
 	if (res.ok) {
 		const allImages = await res.json();
-		// console.log(allImages);
 		dispatch(getFeed(allImages));
 	}
 };

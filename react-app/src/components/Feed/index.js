@@ -12,7 +12,7 @@ function Feed() {
 	const pureIm = allPosts[0].posts;
 	useEffect(() => {
 		dispatch(getImagesThunk());
-		dispatch(singleUser(pureIm.userId));
+		// dispatch(singleUser(pureIm.userId));
 		setUser();
 	}, [dispatch]);
 	return (
