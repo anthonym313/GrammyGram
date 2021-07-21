@@ -2,7 +2,7 @@ from flask import Blueprint,jsonify
 from  sqlalchemy.sql.expression import func
 from random import randint
 from flask_login import login_required
-from app.models import User
+from app.models import User, Image
 
 user_routes = Blueprint('users', __name__)
 
@@ -11,6 +11,7 @@ user_routes = Blueprint('users', __name__)
 @login_required
 def users():
     users = User.query.all()
+    print('USERRRRS', users)
     return {'users': [user.to_dict() for user in users]}
 
 
