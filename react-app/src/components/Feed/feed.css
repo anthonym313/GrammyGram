@@ -1,0 +1,24 @@
+.feed-page {
+  display: flex;
+  flex-direction: column;
+}
+.post-container {
+  width: 615px;
+  flex: 1;
+  margin-left: 20%;
+  border: 1px solid #c0bfbf;
+  border-radius: 3px;
+  margin-bottom: 60px;
+}
+
+.post-content {
+  height: 260px;
+}
+
+.the-image {
+  width: 615px;
+}
+
+.top-bar {
+  height: 60px;
+}

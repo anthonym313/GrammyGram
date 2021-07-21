@@ -8,23 +8,50 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import PostForm from './components/PostForm';
-import Feed from './components/FeedPage';
+import CommentList from './components/CommentList';
+import Feed from './components/Feed';
 import { authenticate } from './store/session';
 
 function App() {
-  const [loaded, setLoaded] = useState(false);
-  const dispatch = useDispatch();
+	const [loaded, setLoaded] = useState(false);
+	const dispatch = useDispatch();
 
-  useEffect(() => {
-    (async () => {
-      await dispatch(authenticate());
-      setLoaded(true);
-    })();
-  }, [dispatch]);
+	useEffect(() => {
+		(async () => {
+			await dispatch(authenticate());
+			setLoaded(true);
+		})();
+	}, [dispatch]);
 
-  if (!loaded) {
-    return null;
-  }
+	if (!loaded) {
+		return null;
+	}
+
+	return (
+		<BrowserRouter>
+			<NavBar />
+			<Switch>
+				<Route path='/login' exact={true}>
+					<LoginForm />
+				</Route>
+				<Route path='/sign-up' exact={true}>
+					<SignUpForm />
+				</Route>
+				<ProtectedRoute path='/users' exact={true}>
+					<UsersList />
+				</ProtectedRoute>
+				<ProtectedRoute path='/post/upload' exact={true}>
+					<PostForm />
+				</ProtectedRoute>
+				<ProtectedRoute path='/users/:userId' exact={true}>
+					<User />
+				</ProtectedRoute>
+				<ProtectedRoute path='/' exact={true}>
+					<CommentList />
+				</ProtectedRoute>
+			</Switch>
+		</BrowserRouter>
+	);
 
   return (
     <BrowserRouter>
@@ -39,14 +66,17 @@ function App() {
         <ProtectedRoute path='/users' exact={true} >
           <UsersList />
         </ProtectedRoute>
-        <ProtectedRoute path='/post/upload' exact={true} >
+        <ProtectedRoute path='/posts' exact={true} >
+          <Feed />
+        </ProtectedRoute>
+        <ProtectedRoute path='/posts/upload' exact={true} >
           <PostForm />
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
-          <Feed/>
+          {/* <Feed/> */}
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
