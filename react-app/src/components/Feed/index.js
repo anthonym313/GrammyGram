@@ -3,18 +3,13 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getImagesThunk } from "../../store/post";
 import "./feed.css";
-
 function Feed() {
   const dispatch = useDispatch();
-
   const allPosts = useSelector((state) => Object.values(state.feedPosts));
-
   const pureIm = allPosts[0].posts;
-
   useEffect(() => {
     dispatch(getImagesThunk());
   }, [dispatch]);
-
   return (
     <div className='feed-page'>
       {pureIm &&
@@ -34,5 +29,4 @@ function Feed() {
     </div>
   );
 }
-
 export default Feed;

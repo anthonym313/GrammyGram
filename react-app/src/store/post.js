@@ -1,21 +1,17 @@
 // import fetch from 'node-fetch'
-
 const POST_IMAGE = "post/POST_IMAGE";
 // const DELETE_IMAGE = "post/DELETE_IMAGE";
 const GET_FEED = "post/GET_FEED";
-
 export const getFeed = (image) => {
   return {
     type: GET_FEED,
     image,
   };
 };
-
 export const postImage = (image) => ({
   type: POST_IMAGE,
   image,
 });
-
 //CREATE
 export const postImageThunk = (payload) => async (dispatch) => {
   const res = await fetch("/api/posts/upload", {
@@ -28,19 +24,15 @@ export const postImageThunk = (payload) => async (dispatch) => {
   const newPost = await res.json();
   dispatch(postImage(newPost));
 };
-
 export const getImagesThunk = () => async (dispatch) => {
   const res = await fetch("/api/posts");
-
   if (res.ok) {
     const allImages = await res.json();
     // console.log(allImages);
     dispatch(getFeed(allImages));
   }
 };
-
 const initialState = {thing: ''};
-
 const imageReducer = (state = initialState, action) => {
   let newState = {};
   switch (action.type) {
@@ -71,5 +63,4 @@ const imageReducer = (state = initialState, action) => {
       return state;
   }
 };
-
 export default imageReducer;
