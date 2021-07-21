@@ -1,0 +1,10 @@
+.users_images_container{
+    float:left;
+    width:75%;
+    background-color: gray;
+}
+.UserSide_container{
+    float:left;
+    width:25%;
+    background-color:lightgreen;
+}
