@@ -33,9 +33,8 @@ export const postImageThunk = (payload) => async (dispatch) => {
   const newPost = await res.json();
   dispatch(postImage(newPost));
 };
-
 export const getImagesThunk = () => async (dispatch) => {
-  const res = await fetch("/api/posts");
+  const res = await fetch("/api/posts/");
 
   if (res.ok) {
     const allImages = await res.json();
@@ -43,7 +42,6 @@ export const getImagesThunk = () => async (dispatch) => {
     dispatch(getFeed(allImages));
   }
 };
-
 //DELETE
 export const deleteImageThunk = (id) => async (dispatch) => {
   const res = await fetch(`/api/posts/${id}`, {
@@ -78,7 +76,7 @@ const imageReducer = (state = initialState, action) => {
     case DELETE_IMAGE:
       newState = { ...state };
       delete newState[action.id];
-      return newState;
+      return { ...newState };
     default:
       return state;
   }

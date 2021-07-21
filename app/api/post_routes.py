@@ -22,7 +22,7 @@ def index():
     return image.to_dict()
 
 
-@post_routes.route('')
+@post_routes.route('/')
 @login_required
 def get_all_posts():
     posts = Image.query.all()

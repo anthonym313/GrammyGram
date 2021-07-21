@@ -1,6 +1,6 @@
 .feed-page {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
 }
 .post-container {
   width: 615px;
