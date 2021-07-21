@@ -1,0 +1,20 @@
+.navbar {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin: 0 auto;
+	padding: 0;
+	width: 100%;
+}
+
+li {
+	list-style-type: none;
+}
+
+.left li {
+	float: left;
+}
+
+.right li {
+	float: right;
+}

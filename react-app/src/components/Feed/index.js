@@ -4,13 +4,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory, Redirect } from "react-router-dom";
 import { getImagesThunk, deleteImageThunk } from "../../store/post";
 import "./feed.css";
-
 function Feed() {
   const dispatch = useDispatch();
+
   const history = useHistory();
+
   const allPosts = useSelector((state) => Object.values(state.feedPosts));
   const pureIm = allPosts[0].posts;
-
   useEffect(() => {
     dispatch(getImagesThunk());
     dispatch(deleteImageThunk());
@@ -22,6 +22,7 @@ function Feed() {
     dispatch(getImagesThunk());
     // history.push("/posts/");
   };
+
 
   return (
     <div className="feed-page">
@@ -48,5 +49,4 @@ function Feed() {
     </div>
   );
 }
-
 export default Feed;
