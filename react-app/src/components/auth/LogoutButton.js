@@ -8,7 +8,13 @@ const LogoutButton = () => {
     await dispatch(logout());
   };
 
-  return <button onClick={onLogout}>Logout</button>;
+  return <img onClick={onLogout}
+              className='navbar-logout nav1'
+							src='logout.svg'
+							alt='Explore'
+							height="20"
+    					width="20"
+						></img>;
 };
 
 export default LogoutButton;
