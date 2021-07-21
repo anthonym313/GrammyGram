@@ -22,7 +22,7 @@ function Feed() {
             <div className="post-content">
               <div className="post-actions"></div>
               <div className="comments"></div>
-              <div classname="post-comment"> </div>
+              <div className="post-comment"> </div>
             </div>
           </div>
         ))}
