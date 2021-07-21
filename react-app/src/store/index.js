@@ -6,7 +6,7 @@ import userReducer from './user'
 
 const rootReducer = combineReducers({
   session,
-  image: imageReducer,
+  feedPosts: imageReducer,
   randomUsers: userReducer
 });
 
