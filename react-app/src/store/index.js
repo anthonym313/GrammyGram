@@ -5,6 +5,7 @@ import imageReducer from './post';
 import userReducer from './user';
 import commentReducer from './comment';
 
+
 const rootReducer = combineReducers({
 	session,
 	feedPosts: imageReducer,

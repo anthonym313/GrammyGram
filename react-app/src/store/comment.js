@@ -1,13 +1,16 @@
 const POST_COMMENT = 'post/POST_COMMENT';
 const GET_COMMENT = 'GET/GET_COMMENT';
+
 export const getComment = (comment) => ({
 	type: GET_COMMENT,
 	comment,
 });
+
 export const postComment = (comment) => ({
 	type: POST_COMMENT,
 	comment,
 });
+
 // GET
 export const getAllComments = (imageId) => async (dispatch) => {
 	const res = await fetch(`/api/post/${imageId}/comments`);
@@ -16,6 +19,7 @@ export const getAllComments = (imageId) => async (dispatch) => {
 		dispatch(getComment(allComments));
 	}
 };
+
 // POST
 export const newComment = (newComment, imageId) => async (dispatch) => {
 	const res = await fetch(`/api/post/${imageId}/comments/create`, {
@@ -23,13 +27,16 @@ export const newComment = (newComment, imageId) => async (dispatch) => {
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify(newComment),
 	});
+
 	if (res.ok) {
 		const createdComment = await res.json();
 		dispatch(postComment(createdComment));
 		return res;
 	}
 };
+
 const initialState = { comment: null };
+
 const commentReducer = (state = initialState, action) => {
 	let newState = {};
 	switch (action.type) {
@@ -48,4 +55,5 @@ const commentReducer = (state = initialState, action) => {
 			return state;
 	}
 };
+
 export default commentReducer;
