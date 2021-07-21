@@ -14,19 +14,36 @@ const NavBar = () => {
 		sessionLinks = (
 			<>
 				<li className='navbar space'></li>
-				<li>
-					<NavLink to='/' exact={true} activeClassName='active'>
+				<li className='nav1'>
+					<NavLink to='/posts' exact={true} activeClassName='active'>
 						<img
-							src='outline_home_black_48dp_1x.png'
+							src='home.svg'
+							className='navbar-home navo'
 							alt='Home'
+							height="20"
+    					width="20"
 						></img>
 					</NavLink>
 				</li>
-				<li>
-					<NavLink to='/' exact={true} activeClassName='active'>
+				<li className='nav1'>
+					<NavLink to='/posts/upload' exact={true} activeClassName='active'>
 						<img
-							src='outline_explore_black_48dp_1x.png'
-							alt='Explore'
+							src='upload.svg'
+							className='nav-upload navo'
+							alt='Upload'
+							height="20"
+    					width="20"
+						></img>
+					</NavLink>
+				</li>
+				<li className='nav1'>
+					<NavLink to='/explore' exact={true} activeClassName='active'>
+						<img
+							src='compass.svg'
+							className='nav-explore navo'
+							alt='Home'
+							height="20"
+    					width="20"
 						></img>
 					</NavLink>
 				</li>
@@ -38,18 +55,26 @@ const NavBar = () => {
 	} else {
 		sessionLinks = (
 			<>
-				<li>
-					<NavLink to='/login' exact={true} activeClassName='active'>
-						Login
+				<li className='navbar space'>
+					<NavLink to='/login' exact={true} activeClassName='active' className= 'login'>
+						<img
+							src='log-in.svg'
+							className='navbar-login nav1'
+							alt='Login'
+							height="20"
+    					width="20"
+						></img>
 					</NavLink>
 				</li>
-				<li>
-					<NavLink
-						to='/sign-up'
-						exact={true}
-						activeClassName='active'
-					>
-						Sign Up
+				<li className='nav-signup nav1'>
+					<NavLink to='/sign-up' exact={true} activeClassName='active'>
+						<img
+							src='sign-up.svg'
+							className='navbar-signup'
+							alt='Sign-Up'
+							height="20"
+    					width="20"
+						></img>
 					</NavLink>
 				</li>
 				<li>
@@ -63,9 +88,10 @@ const NavBar = () => {
 			<ul className='navbar navlinks'>
 				<div className='navbar left'>
 					<li className='navbar logo'>
-						<NavLink to='/' exact={true} activeClassName='active'>
-							<img src='grammygramlogo.png'></img>
-						</NavLink>
+						{/* <NavLink to='/' exact={true} activeClassName='active'>
+							{/* <img src='grammygramlogo.png'></img> */}
+						{/* </NavLink> */}
+							<p className='logo'>GrammyGram</p>
 					</li>
 				</div>
 				<div className='navbar right'>{sessionLinks}</div>
