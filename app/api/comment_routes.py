@@ -7,7 +7,6 @@ comment_routes = Blueprint('comment', __name__)
 
 # GET
 
-
 @comment_routes.route('/<int:image_id>/comment')
 def all_comments_image(image_id):
     comments = Comment.query.filter_by(

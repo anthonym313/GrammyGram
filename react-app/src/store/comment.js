@@ -14,10 +14,8 @@ export const postComment = (comment) => ({
 // GET
 export const getAllComments = (imageId) => async (dispatch) => {
 	const res = await fetch(`/api/post/${imageId}/comments`);
-
 	if (res.ok) {
 		const allComments = await res.json();
-
 		dispatch(getComment(allComments));
 	}
 };

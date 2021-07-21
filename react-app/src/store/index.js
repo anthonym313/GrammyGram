@@ -2,20 +2,15 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session from './session';
 import imageReducer from './post';
-import CommentReducer from './comment';
+import userReducer from './user';
+import commentReducer from './comment';
+
 
 const rootReducer = combineReducers({
 	session,
-	image: imageReducer,
-	comment: CommentReducer,
-import session from './session'
-import imageReducer from './post'
-import userReducer from './user'
-
-const rootReducer = combineReducers({
-  session,
-  feedPosts: imageReducer,
-  randomUsers: userReducer
+	feedPosts: imageReducer,
+	randomUsers: userReducer,
+	comment: commentReducer,
 });
 
 let enhancer;
@@ -27,13 +22,6 @@ if (process.env.NODE_ENV === 'production') {
 	const composeEnhancers =
 		window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 	enhancer = composeEnhancers(applyMiddleware(thunk, logger));
-if (process.env.NODE_ENV === "production") {
-  enhancer = applyMiddleware(thunk);
-} else {
-  const logger = require("redux-logger").default;
-  const composeEnhancers =
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-  enhancer = composeEnhancers(applyMiddleware(thunk, logger));
 }
 
 const configureStore = (preloadedState) => {
