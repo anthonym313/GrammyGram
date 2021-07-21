@@ -1,11 +1,13 @@
-import { createStore, combineReducers, applyMiddleware, compose } from "redux";
-import thunk from "redux-thunk";
-import session from "./session";
-import imageReducer from "./post";
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
+import session from './session'
+import imageReducer from './post'
+import userReducer from './user'
 
 const rootReducer = combineReducers({
   session,
-  feedPosts: imageReducer
+  image: imageReducer,
+  randomUsers: userReducer
 });
 
 let enhancer;
