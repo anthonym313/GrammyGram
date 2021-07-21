@@ -42,7 +42,7 @@ function Feed() {
 
   const postUser = (user) => {
     user.forEach(u => {
-      
+
     }
     )
   }
