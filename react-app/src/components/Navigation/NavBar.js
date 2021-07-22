@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
@@ -9,7 +8,6 @@ import "./Navigation.css";
 const NavBar = () => {
   const user = useSelector((state) => state.session.user);
 
-
   let sessionLinks;
   if (user) {
     sessionLinks = (
@@ -17,38 +15,38 @@ const NavBar = () => {
         <li className="navbar space"></li>
         <li className="nav1">
           <NavLink to="/posts" exact={true} activeClassName="active">
-            <img
+            {/* <img
               src="home.svg"
               className="navbar-home navo"
               alt="Home"
               height="20"
               width="20"
-            ></img>
-            HOME
+            ></img> */}
+            Home
           </NavLink>
         </li>
         <li className="nav1">
           <NavLink to="/posts/upload" exact={true} activeClassName="active">
-            <img
+            {/* <img
               src="upload.svg"
               className="nav-upload navo"
               alt="Upload"
               height="20"
               width="20"
-            ></img>
+            ></img> */}
             Upload
           </NavLink>
         </li>
         <li className="nav1">
           <NavLink to="/explore" exact={true} activeClassName="active">
-            <img
+            {/* <img
               src="compass.svg"
               className="nav-explore navo"
               alt="Home"
               height="20"
               width="20"
-            ></img>
-            Compass
+            ></img> */}
+            Explore
           </NavLink>
         </li>
         <li>
@@ -107,7 +105,6 @@ const NavBar = () => {
       </ul>
     </nav>
   );
-
 };
 
 export default NavBar;

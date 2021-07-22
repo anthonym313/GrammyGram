@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { singleUser } from '../../store/user';
 import { getAllComments } from '../../store/comment';
@@ -15,9 +15,9 @@ const CommentList = () => {
 	const userId = image.user_id;
 	const newComments = Object.values(allComments);
 
-	const userInfo = (newComments) => {
-		newComments.map((comment) => {});
-	};
+	// const userInfo = (newComments) => {
+	// 	newComments.map((comment) => {});
+	// };
 
 	useEffect(() => {
 		if (!postId) {

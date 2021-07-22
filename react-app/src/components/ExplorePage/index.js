@@ -1,10 +1,10 @@
 
 import React from "react";
 import "./ExplorePage.css";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 export default function ExplorePage() {
-  const images = useSelector((state) => Object.values(state.feedPosts));
+  // const images = useSelector((state) => Object.values(state.feedPosts));
 
   const imagesArr = [
     "./grammygramlogo.png",
@@ -21,7 +21,7 @@ export default function ExplorePage() {
       {imagesArr?.map((image) => {
         return (
           <div className="explore-image">
-            <img src={image}></img>
+            <img src={image} alt='explore'></img>
             <div className="explore-image-overlay"></div>
           </div>
         );

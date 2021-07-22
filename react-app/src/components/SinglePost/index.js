@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getSingleImageThunk } from '../../store/post';
 import { singleUser } from '../../store/user';
@@ -14,10 +14,6 @@ function SinglePost() {
 	const user = userArr[0];
 	const userId = image.user_id;
 
-	console.log('user array', user);
-	console.log('thunk user', userArr);
-	console.log('Image', image);
-	console.log('image user id', image.user_id);
 
 	useEffect(() => {
 		if (!postId && !userId) {
