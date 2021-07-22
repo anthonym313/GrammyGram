@@ -1,16 +1,15 @@
 #explore{
     margin:0 auto;
     margin-top: 50px;
-    display:grid;
-    grid-template-columns: repeat(3,200px);
-    grid-auto-rows: minmax(200px, auto);
-    column-gap: 10px;
-    row-gap: 5px;
-    justify-content: center;
+    max-width:1060px;
+    display: flex;
+    flex-wrap: wrap;
+    
+
 }
 .explore-image{
-    background-color: lightslategray;
     max-width:auto;
+    padding:15px;
 }
 
 
