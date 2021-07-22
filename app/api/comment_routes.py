@@ -37,10 +37,10 @@ def index():
 @login_required
 def delete_comment(id):
     # front end provides comment & user session ID
-    req = request.get_json()
-    comment = Comment.query.filter_by(
-        Comment.user_id is current_user.id
-    ).get(id)
-    db.session.delete(comment)
+    userComments = Comment.query.filter(
+        (Comment.user_id == current_user.id)
+    ).all()
+    deleteComment = Comment.query.get(id)
+    db.session.delete(deleteComment)
     db.session.commit()
     return {'message': 'Comment Deleted'}

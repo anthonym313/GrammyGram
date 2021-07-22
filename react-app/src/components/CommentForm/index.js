@@ -24,6 +24,7 @@ const CommentForm = ({ imageId }) => {
 				comment: comment,
 			})
 		);
+		setComment('');
 	};
 
 	return (
