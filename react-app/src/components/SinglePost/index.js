@@ -7,7 +7,7 @@ import CommentList from '../CommentList';
 
 function SinglePost() {
 	const dispatch = useDispatch();
-	const userArr = useSelector((state) => Object.values(state.randomUsers));
+	const userArr = useSelector((state) => Object.values(state.singleUser));
 	const onePost = useSelector((state) => Object.values(state.feedPosts));
 	const { postId } = useParams();
 	const image = onePost[0];
