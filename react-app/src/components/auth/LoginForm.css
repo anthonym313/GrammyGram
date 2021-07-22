@@ -1,9 +1,9 @@
-.modal3 {
+.modal {
   position: fixed;
-  width: 260px;
-  height: 180px;
+  width: 300px;
+  height: 150px;
   top: 50%;
-  left: 50%;
+    left: 50%;
   transform: translate(-50%, -50%);
   background: white;
   box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.9);
@@ -20,7 +20,7 @@
 }
 
 .modal-button {
-  margin-left: 30%;
+  margin-left: 40%;
 }
 
 .modal-button {
@@ -33,7 +33,7 @@
   box-sizing: border-box;
   text-decoration: none;
   font-family: 'Kaushan Script',
-    cursive;
+  cursive;
   font-weight: 300;
   color: black;
   text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
@@ -42,9 +42,6 @@
   margin-top: 10px;
 }
 
-.title_container{
-  margin-left: 40px;
-}
 .modal-button:hover {
   border-color: rgba(255, 255, 255, 1);
 }

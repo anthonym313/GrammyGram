@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 // import { Redirect } from 'react-router-dom';
+
+import './postform.css'
 import { postImageThunk, getImagesThunk } from "../../store/post";
 import { useHistory } from "react-router-dom";
 
@@ -30,36 +32,33 @@ const PostForm = () => {
     history.push("/posts/");
   };
 
-  return (
-    <form onSubmit={onSubmit}>
-      <div>
-        {/* {errors.map((error, ind) => (
-                    <div key={ind}>{error}</div>
-                ))} */}
-      </div>
-      <div>
-        <label>Image URL</label>
-        <input
-          name="Image Url"
-          type="text"
-          placeholder="Image Url"
-          value={image_url}
-          onChange={updateImageUrl}
-        />
-      </div>
-      <div>
-        <label>Description</label>
-        <input
-          name="Description"
-          type="text"
-          placeholder="Description"
-          value={description}
-          onChange={updateDescription}
-        />
-        <button type="submit">Upload</button>
-      </div>
-    </form>
-  );
+
+    return (
+        <form onSubmit={onSubmit} className='modal3'>
+            <div className="title_container">
+            <h2>Upload An Image!</h2>
+            </div>
+            <div className="input_field"> <span><i aria-hidden="true" className="fa fa-image"/> </span>
+                <input
+                    name='Image Url'
+                    type='text'
+                    placeholder='Image Url'
+                    value={image_url}
+                    onChange={updateImageUrl}
+                />
+            </div>
+            <div className="input_field"> <span><i aria-hidden="true" className="fa fa-compass"></i> </span>
+                <input
+                    name='Description'
+                    type='text'
+                    placeholder='Description'
+                    value={description}
+                    onChange={updateDescription}
+                />
+                <button type='submit' className='modal-button'> Upload </button>
+            </div>
+        </form>
+    );
 };
 
 export default PostForm;
