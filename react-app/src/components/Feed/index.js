@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 // import { NavLink } from "react-router-dom";
 
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, Redirect } from 'react-router-dom';
 import { getImagesThunk, deleteImageThunk } from '../../store/post';
+import CommentForm from '../CommentForm';
 import './feed.css';
 import Suggestions from '../Suggestions';
 function Feed() {
@@ -75,13 +76,14 @@ function Feed() {
 								<p>{image.description}</p>
 							</div>
 							<div className='comments'></div>
-							<div className='post-comment'> </div>
+							<div className='post-comment'>
+								<CommentForm imageId={image.id} />
+							</div>
 						</div>
 					</div>
 				))}
 			<Suggestions />
 		</div>
 	);
-
 }
 export default Feed;

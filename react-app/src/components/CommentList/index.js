@@ -15,9 +15,9 @@ const CommentList = () => {
 	const userId = image.user_id;
 	const newComments = Object.values(allComments);
 
-	const userInfo = (newComments) => {
-		newComments.map((comment) => {});
-	};
+	// const userInfo = (newComments) => {
+	// 	newComments.map((comment) => {});
+	// };
 
 	useEffect(() => {
 		if (!postId) {
@@ -33,7 +33,7 @@ const CommentList = () => {
 
 		dispatch(singleUser(userId));
 		dispatch(getAllComments(postId));
-	}, [dispatch, postId]);
+	}, [dispatch, postId, userId]);
 
 	// 		{/* <li key={user.id}>
 	// 			<NavLink to={`/users/${user.id}`}>{user.username}</NavLink>
@@ -56,6 +56,11 @@ const CommentList = () => {
 					<div>
 						Submitted by: {list[comment.user_id]}
 						<li key={comment.id}>{comment.comment}</li>
+						<div>
+							<button>
+								Delete
+							</button>
+						</div>
 					</div>
 				))}
 		</div>
