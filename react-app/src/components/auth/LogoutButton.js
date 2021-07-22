@@ -8,6 +8,7 @@ const LogoutButton = () => {
     await dispatch(logout());
   };
 
+
   // return <button onClick={onLogout}>Logout</button>;
   return (
     <img
@@ -19,6 +20,7 @@ const LogoutButton = () => {
       width="20"
     ></img>
   );
+
 };
 
 export default LogoutButton;

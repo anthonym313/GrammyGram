@@ -40,6 +40,7 @@ const LoginForm = () => {
 				))}
 			</div>
 			<div className='input-values'>
+
 				<label htmlFor='email'></label>
 				<input
 					name='email'
@@ -50,6 +51,7 @@ const LoginForm = () => {
 				/>
 			</div>
 			<div className='input-values'>
+
 				<label htmlFor='password'></label>
 				<input
 					name='password'
@@ -58,8 +60,10 @@ const LoginForm = () => {
 					value={password}
 					onChange={updatePassword}
 				/>
+
 			</div>
 				<button type='submit' className='modal-button'>Login</button>
+
 			{/* <DemoUser/> */}
 		</form>
 	);

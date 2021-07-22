@@ -9,6 +9,7 @@ import "./Navigation.css";
 const NavBar = () => {
   const user = useSelector((state) => state.session.user);
 
+
   let sessionLinks;
   if (user) {
     sessionLinks = (
@@ -106,6 +107,7 @@ const NavBar = () => {
       </ul>
     </nav>
   );
+
 };
 
 export default NavBar;

@@ -1,5 +1,7 @@
+
 const POST_COMMENT = "post/POST_COMMENT";
 const GET_COMMENT = "GET/GET_COMMENT";
+
 
 export const getComment = (comment) => ({
   type: GET_COMMENT,
@@ -34,6 +36,7 @@ export const newComment = (newComment, imageId) => async (dispatch) => {
     dispatch(postComment(createdComment));
     return res;
   }
+
 };
 const initialState = { comment: "" };
 const commentReducer = (state = initialState, action) => {

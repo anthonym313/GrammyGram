@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 // import { Redirect } from 'react-router-dom';
@@ -22,6 +23,7 @@ const PostForm = () => {
 	const updateDescription = (e) => {
 		setDescription(e.target.value);
 	};
+
 
 	const onSubmit = (e) => {
 		e.preventDefault();
@@ -73,6 +75,7 @@ const PostForm = () => {
 			</div>
 		</form>
 	);
+
 };
 
 export default PostForm;
