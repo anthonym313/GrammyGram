@@ -7,7 +7,7 @@ import './feed.css';
 function Feed() {
 	const dispatch = useDispatch();
 	const userArr = useSelector((state) => Object.values(state.session));
-	const [user, setUser] = useState();
+	const [user, setUser] = useState([]);
 	const allPosts = useSelector((state) => Object.values(state.feedPosts));
 	const pureIm = allPosts[0].posts;
 	useEffect(() => {

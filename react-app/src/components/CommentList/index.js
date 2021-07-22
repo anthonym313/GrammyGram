@@ -8,7 +8,7 @@ import { getAllComments } from '../../store/comment';
 const CommentList = () => {
 	const dispatch = useDispatch();
 	const { postId } = useParams();
-	const [users, setUsers] = useState('');
+	const [users, setUsers] = useState([]);
 	const allComments = useSelector((state) => state.comment);
 	const onePost = useSelector((state) => Object.values(state.feedPosts));
 	const image = onePost[0];
@@ -54,7 +54,7 @@ const CommentList = () => {
 			{newComments &&
 				newComments?.map((comment) => (
 					<div>
-						Submitted by: {list[userId]}
+						Submitted by: {list[comment.user_id]}
 						<li key={comment.id}>{comment.comment}</li>
 					</div>
 				))}
