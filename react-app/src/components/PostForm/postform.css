@@ -11,7 +11,7 @@
 }
 
 
-.input-values {
+.input-field {
   /* display: flex; */
   margin-left: 20px;
   margin-top: 20px;
@@ -19,11 +19,11 @@
   align-items: center;
 }
 
-.modal-button {
+.modal-button2 {
   margin-left: 30%;
 }
 
-.modal-button {
+.modal-button2 {
   background-color: #FFB700;
   display: flex;
   padding: 0.3em 1.2em;
@@ -45,12 +45,12 @@
 .title_container{
   margin-left: 40px;
 }
-.modal-button:hover {
+.modal-button2:hover {
   border-color: rgba(255, 255, 255, 1);
 }
 
 @media all and (max-width:30em) {
-  .modal-button {
+  .modal-button2 {
     display: block;
     margin: 0.2em auto;
   }

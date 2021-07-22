@@ -17,37 +17,34 @@ const NavBar = () => {
         <li className="nav1">
           <NavLink to="/posts" exact={true} activeClassName="active">
             <img
-              src="home.svg"
-              className="navbar-home navo"
+              src= "../../img/home.svg"
+              className="navbar-home navo1"
               alt="Home"
               height="20"
               width="20"
             ></img>
-            HOME
           </NavLink>
         </li>
         <li className="nav1">
           <NavLink to="/posts/upload" exact={true} activeClassName="active">
             <img
-              src="upload.svg"
-              className="nav-upload navo"
+              src="../../img/upload.png"
+              className="nav-upload navo2"
               alt="Upload"
-              height="20"
-              width="20"
+              // height="20"
+              // width="20"
             ></img>
-            Upload
           </NavLink>
         </li>
         <li className="nav1">
           <NavLink to="/explore" exact={true} activeClassName="active">
             <img
               src="compass.svg"
-              className="nav-explore navo"
+              className="nav-explore navo3"
               alt="Home"
               height="20"
               width="20"
             ></img>
-            Compass
           </NavLink>
         </li>
         <li>
@@ -67,7 +64,7 @@ const NavBar = () => {
           >
             <img
               src="log-in.svg"
-              className="navbar-login nav1"
+              className="navbar-login nav1 navo4"
               alt="Login"
               height="20"
               width="20"
@@ -78,7 +75,7 @@ const NavBar = () => {
           <NavLink to="/sign-up" exact={true} activeClassName="active">
             <img
               src="sign-up.svg"
-              className="navbar-signup"
+              className="navbar-signup navo5"
               alt="Sign-Up"
               height="20"
               width="20"

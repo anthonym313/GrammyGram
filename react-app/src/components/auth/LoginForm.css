@@ -8,8 +8,8 @@ justify-content: center;
   flex-direction: column;
   justify-content: center;
   position: fixed;
-  width: 300px;
-  height: 150px;
+  width: 260px;
+  height: 180px;
   top: 50%;
   left: 50%;
   transform: translate(-49%, -50%);
@@ -18,21 +18,27 @@ justify-content: center;
   opacity: 0.9;
 }
 
+.loginpic{
+  margin: 5px;
+}
+
+.loginContainer {
+  position: relative;
+  bottom: 20px;
+}
+
 .input-values {
   display: flex;
+  position: relative;
   margin-left: 20px;
-  margin-top: 20px;
-  justify-content: center;
+  margin-top: 8px;
   align-items: center;
 }
 
 .modal-button {
-  margin-left: 40%;
-}
-
-.modal-button {
   background-color: #ffb700;
-  display: flex;
+  /* display: flex; */
+  position: relative;
   padding: 0.3em 1.2em;
   margin: 0 0.1em 0.1em 10;
   border: 0.16em solid rgba(255, 255, 255, 0);
@@ -42,10 +48,11 @@ justify-content: center;
   font-family: "Kaushan Script", cursive;
   font-weight: 300;
   color: black;
-  /* text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+  text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
   text-align: center;
   transition: all 0.2s;
-  margin-top: 10px; */
+  top: 50px;
+  right: 110px;
 }
 
 .modal-button:hover {

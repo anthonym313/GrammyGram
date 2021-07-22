@@ -55,7 +55,7 @@ const PostForm = () => {
                     value={description}
                     onChange={updateDescription}
                 />
-                <button type='submit' className='modal-button'> Upload </button>
+                <button type='submit' className='modal-button2'> Upload </button>
             </div>
         </form>
     );
