@@ -47,7 +47,7 @@ function Feed() {
             </div>
           </div>
         ))}
-        <Suggestions/>
+        {/* <Suggestions/> */}
     </div>
   );
 }
