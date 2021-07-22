@@ -31,14 +31,23 @@ export const singleUser = (id) => async (dispatch) => {
 	}
 };
 
-// const initialState = [];
-const initialState = { users: '' };
-export default function reducer(state = initialState, action) {
+const initialState = [];
+const initialState2 = { users: '' };
+export function reducer(state = initialState, action) {
 	switch (action.type) {
 		case GET_USER:
 			return action.user;
 		case RANDOM_USER:
 			return action.randomList;
+		default:
+			return state;
+	}
+}
+
+export function singleUserReducer(state = initialState2, action) {
+	switch (action.type) {
+		case GET_USER:
+			return action.user;
 		default:
 			return state;
 	}

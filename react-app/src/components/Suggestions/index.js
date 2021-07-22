@@ -12,7 +12,9 @@ export default function Suggestions(){
 
     useEffect(() => {
         dispatch(getFiveRandomUsers())
-    }, []); 
+
+    }, []);
+
 
 
     return(
@@ -32,7 +34,9 @@ export default function Suggestions(){
                                     <img src={randomUser.avatar}></img>
                                     <h3>{randomUser.username}</h3>
                                 </div>
-                                
+
+
+
                             </div>
 
                         )
@@ -40,6 +44,8 @@ export default function Suggestions(){
 
 
             </div>
-    
+
+
     )
 }
+

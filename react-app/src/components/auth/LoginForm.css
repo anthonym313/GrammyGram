@@ -1,39 +1,45 @@
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   position: fixed;
   width: 300px;
   height: 150px;
   top: 50%;
-    left: 50%;
-  transform: translate(-50%, -50%);
+  left: 50%;
+  transform: translate(-49%, -50%);
   background: white;
-  box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.9);
-  opacity: .9;
+  box-shadow: 0 0 30px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0.9;
 }
 
-
 .input-values {
-  /* display: flex; */
-  margin-left: 20px;
+  display: flex;
   margin-top: 20px;
   justify-content: center;
   align-items: center;
 }
 
 .modal-button {
-  margin-left: 40%;
-}
-
-.modal-button {
-  background-color: #FFB700;
+  margin-left: 0;
+  background-color: #ffb700;
   display: flex;
+  width: 60px;
+  justify-content: center;
   padding: 0.3em 1.2em;
   margin: 0 0.1em 0.1em 10;
   border: 0.16em solid rgba(255, 255, 255, 0);
   border-radius: 2em;
   box-sizing: border-box;
   text-decoration: none;
-  font-family: 'Kaushan Script',
-  cursive;
+  font-family: "Kaushan Script", cursive;
   font-weight: 300;
   color: black;
   text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
@@ -46,7 +52,8 @@
   border-color: rgba(255, 255, 255, 1);
 }
 
-@media all and (max-width:30em) {
+
+@media all and (max-width: 30em) {
   .modal-button {
     display: block;
     margin: 0.2em auto;
