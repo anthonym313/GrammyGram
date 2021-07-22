@@ -6,11 +6,13 @@ import { login } from '../../store/session';
 export default function DemoUser(){
     const dispatch = useDispatch();
     const demoLogin = async (e) => {
-		e.preventDefault();
-		return await dispatch(login('demo@aa.io', 'password'));
+        e.preventDefault();
+        await dispatch(login('demo@aa.io', 'password'));
+
+        return
 	};
 
     return(
-        <button onClick={(e) => demoLogin(e)}>Demo User</button>
+        <button className='demo nav1' onClick={(e) => demoLogin(e)}>Demo</button>
     )
 }

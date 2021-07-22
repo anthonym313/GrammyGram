@@ -1,40 +1,44 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 // import { Redirect } from 'react-router-dom';
-import { postImageThunk } from '../../store/post';
+
+import './postform.css'
+import { postImageThunk, getImagesThunk } from "../../store/post";
+import { useHistory } from "react-router-dom";
 
 const PostForm = () => {
-    // const [errors, setErrors] = useState([]);
-    const [imageUrl, setImageUrl] = useState('');
-    const [description, setDescription] = useState('');
-    const user = useSelector(state => state.session.user);
-    const dispatch = useDispatch();
+  // const [errors, setErrors] = useState([]);
+  const history = useHistory();
+  const [imageUrl, setImageUrl] = useState("");
+  const [description, setDescription] = useState("");
+  const user = useSelector((state) => state.session.user);
+  const dispatch = useDispatch();
+  let image_url = imageUrl;
 
+  const updateImageUrl = (e) => {
+    setImageUrl(e.target.value);
+  };
 
-    const updateImageUrl = (e) => {
-        setImageUrl(e.target.value);
-    };
+  const updateDescription = (e) => {
+    setDescription(e.target.value);
+  };
 
-    const updateDescription = (e) => {
-        setDescription(e.target.value);
-    };
-
-    let image_url = imageUrl;
-    const onSubmit = (e) => {
-        e.preventDefault();
-        dispatch(postImageThunk({ image_url, description: description, user_id: user.id }));
-    }
+  const onSubmit = (e) => {
+    e.preventDefault();
+    dispatch(
+      postImageThunk({ image_url, description: description, user_id: user.id })
+    );
+    dispatch(getImagesThunk());
+    history.push("/posts/");
+  };
 
 
     return (
-        <form onSubmit={onSubmit}>
-            <div>
-                {/* {errors.map((error, ind) => (
-                    <div key={ind}>{error}</div>
-                ))} */}
+        <form onSubmit={onSubmit} className='modal3'>
+            <div className="title_container">
+            <h2>Upload An Image!</h2>
             </div>
-            <div>
-                <label>Image URL</label>
+            <div className="input_field"> <span><i aria-hidden="true" className="fa fa-image"/> </span>
                 <input
                     name='Image Url'
                     type='text'
@@ -43,8 +47,7 @@ const PostForm = () => {
                     onChange={updateImageUrl}
                 />
             </div>
-            <div>
-                <label>Description</label>
+            <div className="input_field"> <span><i aria-hidden="true" className="fa fa-compass"></i> </span>
                 <input
                     name='Description'
                     type='text'
@@ -52,7 +55,7 @@ const PostForm = () => {
                     value={description}
                     onChange={updateDescription}
                 />
-                <button type='submit'>Upload</button>
+                <button type='submit' className='modal-button'> Upload </button>
             </div>
         </form>
     );

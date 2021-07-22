@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import './SignupForm.css'
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -43,50 +44,69 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
+    <form onSubmit={onSignUp} className='modal2'>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
+      <div className="title_container">
+          <h2>Join Our Community!</h2>
+        </div>
       <div>
-        <label>User Name</label>
+        {/* <label>User Name</label> */}
+        <div className="input_field"> <span><i aria-hidden="true" className="fa fa-user"></i> </span>
+
         <input
           type='text'
           name='username'
+          placeholder="Username"
           onChange={updateUsername}
           value={username}
         ></input>
+        </div>
       </div>
       <div>
-        <label>Email</label>
+        {/* <label>Email</label> */}
+         <div className="input_field"> <span><i aria-hidden="true" className="fa fa-envelope"/> </span>
+
         <input
           type='text'
           name='email'
+          placeholder="Email"
           onChange={updateEmail}
           value={email}
         ></input>
+         </div>
       </div>
       <div>
-        <label>Password</label>
+        {/* <label>Password</label> */}
+        <div className="input_field"> <span><i aria-hidden="true" className="fa fa-lock"></i> </span>
+
         <input
           type='password'
           name='password'
+          placeholder="Password"
           onChange={updatePassword}
           value={password}
         ></input>
+        </div>
       </div>
       <div>
-        <label>Repeat Password</label>
+        {/* <label>Repeat Password</label> */}
+        <div className="input_field"> <span><i aria-hidden="true" className="fa fa-lock"></i> </span>
+
         <input
           type='password'
           name='repeat_password'
+          placeholder="Re-type Password"
           onChange={updateRepeatPassword}
           value={repeatPassword}
           required={true}
         ></input>
+        </div>
       </div>
-      <button type='submit'>Sign Up</button>
+      <button type='submit' className="button">Sign Up</button>
     </form>
   );
 };

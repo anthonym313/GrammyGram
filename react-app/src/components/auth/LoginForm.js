@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
 import DemoUser from '../DemoUser'
+import './LoginForm.css';
 
 const LoginForm = () => {
 	const [errors, setErrors] = useState([]);
@@ -28,18 +29,18 @@ const LoginForm = () => {
 	};
 
 	if (user) {
-		return <Redirect to='/' />;
+		return <Redirect to='/posts' />;
 	}
 
 	return (
-		<form onSubmit={onLogin}>
+		<form onSubmit={onLogin} className='modal'>
 			<div>
 				{errors.map((error, ind) => (
 					<div key={ind}>{error}</div>
 				))}
 			</div>
-			<div>
-				<label htmlFor='email'>Email</label>
+			<div className='input-values'>
+				<label htmlFor='email'></label>
 				<input
 					name='email'
 					type='text'
@@ -48,8 +49,8 @@ const LoginForm = () => {
 					onChange={updateEmail}
 				/>
 			</div>
-			<div>
-				<label htmlFor='password'>Password</label>
+			<div className='input-values'>
+				<label htmlFor='password'></label>
 				<input
 					name='password'
 					type='password'
@@ -57,9 +58,9 @@ const LoginForm = () => {
 					value={password}
 					onChange={updatePassword}
 				/>
-				<button type='submit'>Login</button>
 			</div>
-			<DemoUser/>
+				<button type='submit' className='modal-button'>Login</button>
+			{/* <DemoUser/> */}
 		</form>
 	);
 };
