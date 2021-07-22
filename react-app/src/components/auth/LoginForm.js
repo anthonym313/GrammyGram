@@ -40,7 +40,7 @@ const LoginForm = () => {
 				))}
 			</div>
 			<div className='input-values'>
-				<label htmlFor='email'>Email: </label>
+				<label htmlFor='email'></label>
 				<input
 					name='email'
 					type='text'
@@ -50,7 +50,7 @@ const LoginForm = () => {
 				/>
 			</div>
 			<div className='input-values'>
-				<label htmlFor='password'>Password: </label>
+				<label htmlFor='password'></label>
 				<input
 					name='password'
 					type='password'

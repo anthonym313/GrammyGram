@@ -11,17 +11,43 @@ function Feed() {
 
   const allPosts = useSelector((state) => Object.values(state.feedPosts));
   const pureIm = allPosts[0].posts;
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch("/api/users/");
+      const responseData = await response.json();
+      setUsers(responseData.users);
+    }
+    fetchData();
+  }, []);
+
   useEffect(() => {
     dispatch(getImagesThunk());
-    dispatch(deleteImageThunk());
+    // dispatch(deleteImageThunk());
     history.push("/posts/");
   }, [dispatch, history]);
+
+  const refresh = () => {
+    dispatch(getImagesThunk());
+    // history.push("/posts/");
+  };
 
   const deletePost = (id) => {
     dispatch(deleteImageThunk(id));
     dispatch(getImagesThunk());
-    // history.push("/posts/");
+    refresh();
+    history.push("/posts/");
   };
+
+  const postUser = (user) => {
+    let obj = {};
+    user.forEach((u) => {
+      obj[u.id] = u.username;
+    });
+    return obj
+  };
+  const list = postUser(users);
 
 
   return (
@@ -41,6 +67,10 @@ function Feed() {
             </div>
             <div className="post-content">
               <div className="post-actions"></div>
+              <div className="post-description">
+                <p>{list[image.user_id]}</p>
+                <p>{image.description}</p>
+              </div>
               <div className="comments"></div>
               <div className="post-comment"> </div>
             </div>

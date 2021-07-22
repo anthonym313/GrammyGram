@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from app.models import db, Image, Comment
+from app.models import db, Image
 from app.forms import PostForm
 from flask_login import current_user, login_required
 post_routes = Blueprint('posts', __name__)
