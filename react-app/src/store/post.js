@@ -47,6 +47,7 @@ export const getSingleImageThunk = (imageId) => async (dispatch) => {
 	if (res.ok) {
 		const singleImage = await res.json();
 		dispatch(getFeed(singleImage));
+		return singleImage;
 	}
 };
 

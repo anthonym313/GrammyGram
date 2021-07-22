@@ -58,7 +58,7 @@ function App() {
         <ProtectedRoute path="/explore" exact={true}>
           <ExplorePage />
         </ProtectedRoute>
-        <ProtectedRoute path="/posts/:id" exact={true}>
+        <ProtectedRoute path="/posts/postId" exact={true}>
           <SinglePost />
         </ProtectedRoute>
         <Route component={NotFoundPage} />
