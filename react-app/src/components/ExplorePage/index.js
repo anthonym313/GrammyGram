@@ -18,7 +18,7 @@ export default function ExplorePage() {
         {console.log(image)}
         return (
           <div className="explore-image">
-            <img src={image.image_url} width='200'></img>
+            <img src={image.image_url} width='300'></img>
             <div className="explore-image-overlay"></div>
           </div>
         );
