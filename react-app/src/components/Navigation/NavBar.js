@@ -16,35 +16,23 @@ const NavBar = () => {
         <li className="navbar space"></li>
         <li className="nav1">
           <NavLink to="/posts" exact={true} activeClassName="active">
-            <img
-              src= "../../img/home.svg"
+            <div
               className="navbar-home navo1"
-              alt="Home"
-              height="20"
-              width="20"
-            ></img>
+            ></div>
           </NavLink>
         </li>
         <li className="nav1">
           <NavLink to="/posts/upload" exact={true} activeClassName="active">
-            <img
-              src="../../img/upload.png"
+            <div
               className="nav-upload navo2"
-              alt="Upload"
-              // height="20"
-              // width="20"
-            ></img>
+            ></div>
           </NavLink>
         </li>
         <li className="nav1">
           <NavLink to="/explore" exact={true} activeClassName="active">
-            <img
-              src="compass.svg"
+            <div
               className="nav-explore navo3"
-              alt="Home"
-              height="20"
-              width="20"
-            ></img>
+            ></div>
           </NavLink>
         </li>
         <li>
@@ -62,24 +50,16 @@ const NavBar = () => {
             activeClassName="active"
             className="login"
           >
-            <img
-              src="log-in.svg"
+            <div
               className="navbar-login nav1 navo4"
-              alt="Login"
-              height="20"
-              width="20"
-            ></img>
+            ></div>
           </NavLink>
         </li>
         <li className="nav-signup nav1">
           <NavLink to="/sign-up" exact={true} activeClassName="active">
-            <img
-              src="sign-up.svg"
+            <div
               className="navbar-signup navo5"
-              alt="Sign-Up"
-              height="20"
-              width="20"
-            ></img>
+            ></div>
           </NavLink>
         </li>
         <li>
