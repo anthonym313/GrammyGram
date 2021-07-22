@@ -45,7 +45,7 @@ function App() {
 				</ProtectedRoute>
 				<ProtectedRoute path='/posts' exact={true} >
           			<Feed />
-        </ProtectedRoute>
+        		</ProtectedRoute>
 				<ProtectedRoute path='/post/upload' exact={true}>
 					<PostForm />
 				</ProtectedRoute>
