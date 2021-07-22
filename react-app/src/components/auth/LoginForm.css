@@ -1,11 +1,12 @@
 body {
   display: flex;
-flex-direction: column;
-justify-content: center;
+  flex-direction: column;
+  justify-content: center;
 }
 .modal {
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
   position: fixed;
   width: 300px;
@@ -20,19 +21,17 @@ justify-content: center;
 
 .input-values {
   display: flex;
-  margin-left: 20px;
   margin-top: 20px;
   justify-content: center;
   align-items: center;
 }
 
 .modal-button {
-  margin-left: 40%;
-}
-
-.modal-button {
+  margin-left: 0;
   background-color: #ffb700;
   display: flex;
+  width: 60px;
+  justify-content: center;
   padding: 0.3em 1.2em;
   margin: 0 0.1em 0.1em 10;
   border: 0.16em solid rgba(255, 255, 255, 0);
@@ -42,10 +41,10 @@ justify-content: center;
   font-family: "Kaushan Script", cursive;
   font-weight: 300;
   color: black;
-  /* text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+  text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
   text-align: center;
   transition: all 0.2s;
-  margin-top: 10px; */
+  margin-top: 10px;
 }
 
 .modal-button:hover {
