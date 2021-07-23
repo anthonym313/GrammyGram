@@ -59,7 +59,7 @@ def seed_images():
         user_id =18,image_url = 'https://assets.capitalfm.com/2011/07/john-legend-1297675266-view-1.jpg', description='When we think about equality and freedom and justice, we know we’ve got more work to do, and we’re going to do that work. We want to do that work, and we hope that our song is inspiration for those who want to do that work as well.'
     )
     photo20= Image(
-        user_id = 23,image_url = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.self.com%2Fstory%2Fjustin-biebers-grammys-performance&psig=AOvVaw3yA0o2pcD0fksoxZToHtYM&ust=1627053307570000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCIDM14r89vECFQAAAAAdAAAAABAG', description='I amm looking forward to influencing others in a positive way. My message is you can do anything if you just put your mind to it'
+        user_id = 23,image_url = 'https://cdn.britannica.com/82/182082-050-C006C642/Justin-Bieber-2013.jpg', description='I amm looking forward to influencing others in a positive way. My message is you can do anything if you just put your mind to it'
     )
     photo21= Image(
         user_id = 30,image_url = 'https://onerpm.com/wp-content/uploads/sites/4/2021/03/Picture1.png', description='Una aventura es mas bonita cuando escapamos solos tu y yo'

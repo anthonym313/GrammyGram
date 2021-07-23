@@ -1,34 +1,46 @@
-from flask import Blueprint, redirect
+from flask import Blueprint, request, redirect
 from app.models import db, Comment
 from app.forms import CommentForm
-from flask_login import current_user
+from flask_login import current_user, login_required
 
-comment_routes = Blueprint('comment', __name__)
+comment_routes = Blueprint('comments', __name__)
 
 # GET
 
-
-@comment_routes.route('/<int:image_id>/comments')
-def all_comments_image(image_id):
-    comments = Comment.query.filter_by(
-        Comment.image_id is image_id).all()
-    # returns all comments based on current image path
-    print('all comments backend', comments.to_dict())
-    return comments.to_dict()
+# This is in post_routes
+# @comment_routes.route('/<int:image_id>/comments')
+# def all_comments_image(image_id):
+#     comments = Comment.query.filter_by(
+#         Comment.image_id is image_id).all()
+#     # returns all comments based on current image path
+#     print('all comments backend', comments.to_dict())
+#     return comments.to_dict()
 
 # POST
 
 
-@comment_routes.route('/<int:image_id>/comment/create', methods=['POST'])
+@comment_routes.route('/create', methods=['POST'])
+@login_required
 def index():
-    # comment forms
-    form = CommentForm()
-    # if comment form valdiated
-    if form.validate_on_submit():
-        newComment = Comment()
-        form.populate_obj(newComment)
-        # populate object fields
-        db.session.add(newComment)
-        db.session.commit()
-        return redirect('/api/image/:id')
-    return '404 error'
+    req = request.get_json()
+    newComment = Comment(
+        user_id=current_user.id,
+        image_id=req['image_id'],
+        comment=req['comment']
+    )
+    db.session.add(newComment)
+    db.session.commit()
+    return newComment.to_dict()
+
+
+@comment_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def delete_comment(id):
+    # front end provides comment & user session ID
+    userComments = Comment.query.filter(
+        (Comment.user_id == current_user.id)
+    ).all()
+    deleteComment = Comment.query.get(id)
+    db.session.delete(deleteComment)
+    db.session.commit()
+    return {'message': 'Comment Deleted'}
