@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import { singleUser } from '../../store/user';
 import { getAllComments, delComment } from '../../store/comment';
 import CommentForm from '../CommentForm';
-import EditCommentForm from '../EditCommentForm';
+import EditCommentBtn from '../EditCommentForm/EditCommentBtn';
 
 const CommentList = () => {
 	const dispatch = useDispatch();
@@ -75,7 +75,7 @@ const CommentList = () => {
 							</NavLink>
 						</div>
 						<li key={comment.id}>{comment.comment}</li>
-						<div>
+						{/* <div>
 							{comment.user_id === currentUser.id ? (
 								<div>
 									<button
@@ -95,6 +95,9 @@ const CommentList = () => {
 									) : null}
 								</div>
 							) : null}
+						</div> */}
+						<div>
+							<EditCommentBtn comment={comment} />
 						</div>
 					</div>
 				))}
