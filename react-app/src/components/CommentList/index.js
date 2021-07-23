@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { singleUser } from '../../store/user';
 import { getAllComments, delComment } from '../../store/comment';
@@ -46,11 +46,8 @@ const CommentList = () => {
 	};
 
 	const showEdit = (id) => {
-		setRender(true)
-	}
-	// 		{/* <li key={user.id}>
-	// 			<NavLink to={`/users/${user.id}`}>{user.username}</NavLink>
-	// 		</li> */}
+		setRender(true);
+	};
 
 	const postUser = (user) => {
 		let obj = {};
@@ -67,7 +64,16 @@ const CommentList = () => {
 			{newComments &&
 				newComments?.map((comment) => (
 					<div>
-						Submitted by: {list[comment.user_id]}
+						<div
+							className='comment-user-submission'
+							key={list[comment.user_id]}
+						>
+							{' '}
+							Submitted by:
+							<NavLink to={`/users/${list[comment.user_id]}`}>
+								{list[comment.user_id]}
+							</NavLink>
+						</div>
 						<li key={comment.id}>{comment.comment}</li>
 						<div>
 							{comment.user_id === currentUser.id ? (

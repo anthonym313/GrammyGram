@@ -5,12 +5,9 @@ import { editComment } from '../../store/comment';
 
 const EditCommentForm = ({ comment }) => {
 	const dispatch = useDispatch();
-	const [editComment, setEditComment] = useState('');
+	const [editOneComment, setEditOneComment] = useState(comment.comment);
+	const [showForm, setShowForm] = useState(false);
 	const loggedInUser = useSelector((state) => state.session.user);
-
-	const updateComment = (e) => {
-		setEditComment(e.target.value);
-	};
 
 	const onSubmit = (e) => {
 		e.preventDefault();
@@ -19,20 +16,23 @@ const EditCommentForm = ({ comment }) => {
 			editComment({
 				image_id: comment.image_id,
 				user_id: loggedInUser,
-				comment: comment,
+				comment: editOneComment,
 			})
 		);
-		setEditComment('');
+		setEditOneComment('');
 	};
+
+	useEffect(() => {}, [dispatch, editOneComment]);
 
 	return (
 		<form onSubmit={onSubmit}>
 			<div>
+				{console.log('comment div', comment.comment)}
 				<textarea
 					label='Edit Comment'
 					placeholder={comment.comment}
-					value={comment}
-					onChange={updateComment}
+					value={editOneComment}
+					onChange={(e) => setEditOneComment(e.target.value)}
 				></textarea>
 				<button type='submit'>Post</button>
 			</div>
