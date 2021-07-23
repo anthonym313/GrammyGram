@@ -39,8 +39,8 @@ const LoginForm = () => {
 					<div key={ind}>{error}</div>
 				))}
 			</div>
-			<div className='input-values'>
-
+			<div className='loginContainer'>
+				<div className='input-values'> <span><i aria-hidden="true" className="fa fa-envelope loginpic"/> </span>
 				<label htmlFor='email'></label>
 				<input
 					name='email'
@@ -50,8 +50,7 @@ const LoginForm = () => {
 					onChange={updateEmail}
 				/>
 			</div>
-			<div className='input-values'>
-
+			<div className='input-values'> <span><i aria-hidden="true" className="fa fa-lock loginpic"></i> </span>
 				<label htmlFor='password'></label>
 				<input
 					name='password'
@@ -60,10 +59,9 @@ const LoginForm = () => {
 					value={password}
 					onChange={updatePassword}
 				/>
-
-			</div>
 				<button type='submit' className='modal-button'>Login</button>
-
+				</div>
+				</div>
 			{/* <DemoUser/> */}
 		</form>
 	);

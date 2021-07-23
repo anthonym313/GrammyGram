@@ -35,7 +35,6 @@ export const newComment = (newComment, imageId) => async (dispatch) => {
     dispatch(postComment(createdComment));
     return res;
   }
-
 };
 const initialState = { comment: "" };
 const commentReducer = (state = initialState, action) => {

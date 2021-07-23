@@ -1,10 +1,9 @@
-
 import React from "react";
 import "./ExplorePage.css";
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 export default function ExplorePage() {
-  // const images = useSelector((state) => Object.values(state.feedPosts));
+  const images = useSelector((state) => Object.values(state.feedPosts));
 
   const imagesArr = [
     "./grammygramlogo.png",
@@ -28,5 +27,4 @@ export default function ExplorePage() {
       })}
     </div>
   );
-
 }

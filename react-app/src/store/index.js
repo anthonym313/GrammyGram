@@ -2,16 +2,13 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import session from "./session";
 import imageReducer from "./post";
-import {reducer, singleUserReducer} from "./user";
+// import userReducer from "./user";
 import commentReducer from "./comment";
-
-
 
 const rootReducer = combineReducers({
   session,
   feedPosts: imageReducer,
-  randomUsers: reducer,
-  singleUser: singleUserReducer,
+  // randomUsers: userReducer,
   comment: commentReducer,
 });
 

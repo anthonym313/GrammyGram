@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
@@ -15,39 +16,23 @@ const NavBar = () => {
         <li className="navbar space"></li>
         <li className="nav1">
           <NavLink to="/posts" exact={true} activeClassName="active">
-            {/* <img
-              src="home.svg"
-              className="navbar-home navo"
-              alt="Home"
-              height="20"
-              width="20"
-            ></img> */}
-            Home
+            <div
+              className="navbar-home navo1"
+            ></div>
           </NavLink>
         </li>
-        {/* <li className="nav1"> */}
+        <li className="nav1">
           <NavLink to="/posts/upload" exact={true} activeClassName="active">
-            {/* <img
-              src="upload.svg"
-              className="nav-upload navo"
-              alt="Upload"
-              height="20"
-              width="20"
-            ></img> */}
-            <div className='upload-svg'></div>
-            {/* Upload */}
+            <div
+              className="nav-upload navo2"
+            ></div>
           </NavLink>
-        {/* </li> */}
+        </li>
         <li className="nav1">
           <NavLink to="/explore" exact={true} activeClassName="active">
-            {/* <img
-              src="compass.svg"
-              className="nav-explore navo"
-              alt="Home"
-              height="20"
-              width="20"
-            ></img> */}
-            Explore
+            <div
+              className="nav-explore navo3"
+            ></div>
           </NavLink>
         </li>
         <li>
@@ -65,24 +50,16 @@ const NavBar = () => {
             activeClassName="active"
             className="login"
           >
-            <img
-              src="log-in.svg"
-              className="navbar-login nav1"
-              alt="Login"
-              height="20"
-              width="20"
-            ></img>
+            <div
+              className="navbar-login nav1 navo4"
+            ></div>
           </NavLink>
         </li>
         <li className="nav-signup nav1">
           <NavLink to="/sign-up" exact={true} activeClassName="active">
-            <img
-              src="sign-up.svg"
-              className="navbar-signup"
-              alt="Sign-Up"
-              height="20"
-              width="20"
-            ></img>
+            <div
+              className="navbar-signup navo5"
+            ></div>
           </NavLink>
         </li>
         <li>

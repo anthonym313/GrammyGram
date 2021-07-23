@@ -1,6 +1,5 @@
-
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 // import { Redirect } from 'react-router-dom';
 
 import './postform.css';
@@ -76,6 +75,32 @@ const PostForm = () => {
 		</form>
 	);
 
+    return (
+        <form onSubmit={onSubmit} className='modal3'>
+            <div className="title_container">
+            <h2>Upload An Image!</h2>
+            </div>
+            <div className="input_field"> <span><i aria-hidden="true" className="fa fa-image"/> </span>
+                <input
+                    name='Image Url'
+                    type='text'
+                    placeholder='Image Url'
+                    value={image_url}
+                    onChange={updateImageUrl}
+                />
+            </div>
+            <div className="input_field"> <span><i aria-hidden="true" className="fa fa-compass"></i> </span>
+                <input
+                    name='Description'
+                    type='text'
+                    placeholder='Description'
+                    value={description}
+                    onChange={updateDescription}
+                />
+                <button type='submit' className='modal-button2'> Upload </button>
+            </div>
+        </form>
+    );
 };
 
 export default PostForm;

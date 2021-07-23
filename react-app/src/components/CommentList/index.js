@@ -33,7 +33,7 @@ const CommentList = () => {
 
 		dispatch(singleUser(userId));
 		dispatch(getAllComments(postId));
-	}, [dispatch, postId]);
+	}, [dispatch, postId, userId]);
 
 	// 		{/* <li key={user.id}>
 	// 			<NavLink to={`/users/${user.id}`}>{user.username}</NavLink>
