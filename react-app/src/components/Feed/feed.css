@@ -9,6 +9,7 @@
   border: 1px solid #c0bfbf;
   border-radius: 3px;
   margin-bottom: 60px;
+  background-color: rgb(230, 230, 233);
 }
 
 .post-content {
@@ -41,6 +42,7 @@ body {
     Arial, sans-serif;
   font-size: 14px;
   line-height: 18px;
+  background-color: rgba(139, 139, 139, 0.404);
 }
 
 .username-post {
