@@ -1,99 +1,94 @@
 .navbar {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	margin: 0;
-	padding: 0;
-	width: 100%;
-	position: relative;
-	top: -4px;
-	text-decoration: none;
-
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  position: relative;
+  top: -4px;
+  text-decoration: none;
 }
 
 li {
-	list-style-type: none;
+  list-style-type: none;
 }
 
-.nav1{
-	transition: transform .2s;
+.nav1 {
+  transition: transform 0.2s;
 }
 
-.nav1:hover{
-	transform: scale(1.1);
+.nav1:hover {
+  transform: scale(1.1);
 }
 
-.demo{
-	position: relative;
-	transform: none;
-	background-color:#FFB700;
-	font-family: 'Kaushan Script',
-	cursive;
+.demo {
+  position: relative;
+  transform: none;
+  background-color: #ffb700;
+  font-family: "Kaushan Script", cursive;
 }
 
-.demo:hover{
-	 border-color: #191716;
+.demo:hover {
+  border-color: #191716;
 }
 
-.navbar-login{
-	margin-top: 9px;
+.navbar-login {
+  margin-top: 9px;
 }
-
 
 .left li {
-	float: left;
+  float: left;
 }
 
 .right li {
-	display: flex;
-	justify-content: flex-end;
-	margin-right: 8px;
-	margin-left: 5px;
-	margin-top: 6px;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 8px;
+  margin-left: 5px;
+  margin-top: 6px;
 }
 
-
-.nav-signup{
-	margin: 0 10px 0 10px;
-	padding-left: 5px;
-	padding-right: 5px;
-	border-left: 2px solid #FFB700;
-	border-right: 2px solid #FFB700;
+.nav-signup {
+  margin: 0 10px 0 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-left: 2px solid #ffb700;
+  border-right: 2px solid #ffb700;
 }
-.nav-upload{
-		border-left: 2px solid #FFB700;
-		border-right: 2px solid #FFB700;
-		padding-left: 5px;
-		padding-right: 5px;
+.nav-upload {
+  border-left: 2px solid #ffb700;
+  border-right: 2px solid #ffb700;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .nav-explore {
-	margin: 0;
-	padding-right: 5px;
-	border-right: 2px solid #FFB700;
+  margin: 0;
+  padding-right: 5px;
+  border-right: 2px solid #ffb700;
 }
 
-
-.navlinks{
-	/* border: 1px solid black; */
-	margin-bottom: 20px;
-	background-color: #191716;
-	 /* opacity: .7; */
-	 /* transition: all 0.2s; */
-	  /* background-color: #f1bb4e; */
+.navlinks {
+  /* border: 1px solid black; */
+  margin-bottom: 20px;
+  background-color: #191716;
+  /* opacity: .7; */
+  /* transition: all 0.2s; */
+  /* background-color: #f1bb4e; */
 }
 
-.logo{
-	text-decoration: none;
-	font-family: 'Kaushan Script', cursive;
-	margin: 6px 0 5px 0;
-	padding: 0 0 0 0;
-	color: #FFB700;
-	font-size: 20px;
+.logo {
+  text-decoration: none;
+  font-family: "Kaushan Script", cursive;
+  margin: 6px 0 5px 0;
+  padding: 0 0 0 0;
+  color: #ffb700;
+  font-size: 20px;
 }
 
-body{
-	margin: 0;
+body {
+  margin: 0;
 }
 
 /* .navbar-home{

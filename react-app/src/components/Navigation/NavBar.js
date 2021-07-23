@@ -25,7 +25,7 @@ const NavBar = () => {
             Home
           </NavLink>
         </li>
-        <li className="nav1">
+        {/* <li className="nav1"> */}
           <NavLink to="/posts/upload" exact={true} activeClassName="active">
             {/* <img
               src="upload.svg"
@@ -34,9 +34,10 @@ const NavBar = () => {
               height="20"
               width="20"
             ></img> */}
-            Upload
+            <div className='upload-svg'></div>
+            {/* Upload */}
           </NavLink>
-        </li>
+        {/* </li> */}
         <li className="nav1">
           <NavLink to="/explore" exact={true} activeClassName="active">
             {/* <img

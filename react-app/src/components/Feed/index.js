@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { getImagesThunk, deleteImageThunk } from "../../store/post";
+import { getImagesThunk } from "../../store/post";
 import EditButton from "./EditButton";
 import Suggestions from "../Suggestions";
 import "./feed.css";
@@ -29,15 +29,15 @@ function Feed() {
     history.push("/posts/");
   }, [dispatch, history]);
 
-  const refresh = () => {
-    dispatch(getImagesThunk());
-  };
+  // const refresh = () => {
+  //   dispatch(getImagesThunk());
+  // };
 
-  const deletePost = (id) => {
-    dispatch(deleteImageThunk(id));
-    dispatch(getImagesThunk());
-    refresh();
-  };
+  // const deletePost = (id) => {
+  //   dispatch(deleteImageThunk(id));
+  //   dispatch(getImagesThunk());
+  //   refresh();
+  // };
 
   const postUser = (user) => {
     let obj = {};
@@ -48,13 +48,27 @@ function Feed() {
   };
   const list = postUser(users);
 
+  const postAvatar = (user) => {
+    let obj = {};
+    user.forEach((u) => {
+      obj[u.id] = u.avatar;
+    });
+    return obj;
+  };
+  const avt = postAvatar(users);
+
   return (
     <div className="feed-page">
       {pureIm &&
         pureIm?.map((image) => (
           <div key={image.id} className="post-container">
             <div className="top-bar">
-              <button onClick={() => deletePost(image.id)}>Delete</button>
+              <img
+                className="post-avatar"
+                src={avt[image.user_id]}
+                alt="avatar"
+              ></img>
+              <p className="username-post">{list[image.user_id]}</p>
             </div>
             <div className="image-container">
               <img
@@ -65,13 +79,19 @@ function Feed() {
             </div>
             <div className="post-content">
               <div className="post-actions"></div>
+
               <div className="post-description">
-                <p>{list[image.user_id]}</p>
+                <div className='info-container'>
+                <p className="username-post">{list[image.user_id]}</p>
+
                 <p>{image.description}</p>
-                <div>
+
+                </div>
+                <div className="edit-button">
                   <EditButton image={image} />
                 </div>
               </div>
+
               <div className="comments"></div>
               <div className="post-comment"> </div>
             </div>

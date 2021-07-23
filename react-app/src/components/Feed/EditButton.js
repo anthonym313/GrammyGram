@@ -1,15 +1,28 @@
 import React, { useState, useEffect } from "react";
 // import { useDispatch } from "react-redux";
 import EditDesc from "../EditDesc";
+import { useDispatch } from "react-redux";
+
+import { getImagesThunk, deleteImageThunk } from "../../store/post";
+
 // import { useHistory } from "react-router";
 
 function EditButton({ image }) {
   const [showMenu, setShowMenu] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
-
+  const dispatch = useDispatch();
   // useEffect(() => {
   //   dispatch(uploadActions.getPostThunk(id));
   // }, [dispatch, id]);
+    const refresh = () => {
+      dispatch(getImagesThunk());
+    };
+
+   const deletePost = (id) => {
+     dispatch(deleteImageThunk(id));
+     dispatch(getImagesThunk());
+     refresh();
+   };
 
   const openMenu = () => {
     if (showMenu) return;
@@ -30,10 +43,6 @@ function EditButton({ image }) {
     setShowEdit(false);
   };
 
-  // const deletePost = (id) => {
-  //   dispatch(deleteImageThunk(id));
-  //   history.push("/");
-  // };
   useEffect(() => {
     if (!showMenu) return;
     const closeMenu = () => {
@@ -54,25 +63,14 @@ function EditButton({ image }) {
 
   return (
     <div className="edit-menu">
-      <button
-        className="edit-btn"
-        id="elipses"
-        onClick={showMenu === true ? closeMenu : openMenu}
-      >
-        elipses
-      </button>
-      {showMenu && (
-        <div className="edit-dropdown">
-          {/* <button onClick={() => deletePost(id)} className="delete-btn"> */}
-          {/* Delete */}
-          {/* </button> */}
-          <button
-            onClick={showEdit === true ? closeEdit : openEdit}
-            className="delete-btn"
-            id="edit-btn"
-          >
+      <button className="edit-button" id="elipses" onClick={showMenu === true ? closeMenu : openMenu}>
+      </button> {showMenu &&
+        (<div className="edit-dropdown">
+          <button onClick={showEdit === true ? closeEdit : openEdit} className="delete-btn" id="edit-btn">
             Edit
           </button>
+          <button onClick={() => deletePost(image.id)}>Delete</button>
+
           {showEdit && <EditDesc image={image} />}
         </div>
       )}

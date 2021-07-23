@@ -23,7 +23,6 @@ def index():
 def get_all_posts():
     posts = Image.query.all()
     return {'posts': [post.to_dict() for post in posts]}
-# @post_routes.route('/<int:id>', methods=['GET'])
 
 
 @post_routes.route('/<int:id>', methods=['DELETE'])
