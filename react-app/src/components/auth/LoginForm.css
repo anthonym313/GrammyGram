@@ -1,15 +1,17 @@
 body {
   display: flex;
-flex-direction: column;
-justify-content: center;
+  flex-direction: column;
+  justify-content: center;
 }
 .modal {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
+  align-content: center;
+  align-items: center;
   position: fixed;
-  width: 260px;
-  height: 180px;
+  width: 250px;
+  height: 250px;
   top: 50%;
   left: 50%;
   transform: translate(-49%, -50%);
@@ -18,41 +20,47 @@ justify-content: center;
   opacity: 0.9;
 }
 
-.loginpic{
+.loginpic {
   margin: 5px;
 }
 
 .loginContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
   position: relative;
   bottom: 20px;
+  height: 200px;
+  justify-content: space-between;
 }
 
 .input-values {
   display: flex;
   position: relative;
-  margin-left: 20px;
-  margin-top: 8px;
   align-items: center;
+  justify-content: space-between;
 }
 
 .modal-button {
-  background-color: #ffb700;
-  /* display: flex; */
-  position: relative;
+  text-align: center;
+  color: black;
+  font-weight: 300;
+  font-family: "Kaushan Script", cursive;
+  background-color: #f1bb4e;
+  display: inline-block;
   padding: 0.3em 1.2em;
-  margin: 0 0.1em 0.1em 10;
+  margin: 0 0.1em 0.1em 0;
   border: 0.16em solid rgba(255, 255, 255, 0);
   border-radius: 2em;
   box-sizing: border-box;
   text-decoration: none;
-  font-family: "Kaushan Script", cursive;
+  font-family: "Roboto", sans-serif;
   font-weight: 300;
-  color: black;
+  color: #ffffff;
   text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
   text-align: center;
   transition: all 0.2s;
-  top: 50px;
-  right: 110px;
 }
 
 .modal-button:hover {
@@ -65,3 +73,7 @@ justify-content: center;
     margin: 0.2em auto;
   }
 }
+
+/* input {
+  margin-left:10px;
+} */

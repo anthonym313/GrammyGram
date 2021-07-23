@@ -1,5 +1,5 @@
 .modal3 {
-  position: fixed;
+  /* position: fixed;
   width: 260px;
   height: 180px;
   top: 50%;
@@ -7,24 +7,31 @@
   transform: translate(-50%, -50%);
   background: white;
   box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.9);
-  opacity: .9;
-}
-
-
-.input-field {
-  /* display: flex; */
-  margin-left: 20px;
-  margin-top: 20px;
+  opacity: .9; */
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-49%, -50%);
+  background: white;
+  box-shadow: 0 0 30px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0.9;
   align-items: center;
 }
 
-.modal-button2 {
-  margin-left: 30%;
+.input_field {
+  display: flex;
+  position: relative;
+  align-items: center;
+justify-content: space-between;
 }
 
 .modal-button2 {
-  background-color: #FFB700;
+  background-color: #ffb700;
   display: flex;
   padding: 0.3em 1.2em;
   margin: 0 0.1em 0.1em 10;
@@ -32,8 +39,7 @@
   border-radius: 2em;
   box-sizing: border-box;
   text-decoration: none;
-  font-family: 'Kaushan Script',
-    cursive;
+  font-family: "Kaushan Script", cursive;
   font-weight: 300;
   color: black;
   text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
@@ -42,12 +48,11 @@
   margin-top: 10px;
 }
 
-
 .modal-button2:hover {
   border-color: rgba(255, 255, 255, 1);
 }
 
-@media all and (max-width:30em) {
+@media all and (max-width: 30em) {
   .modal-button2 {
     display: block;
     margin: 0.2em auto;

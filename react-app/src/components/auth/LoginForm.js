@@ -33,38 +33,51 @@ const LoginForm = () => {
 	}
 
 	return (
-		<form onSubmit={onLogin} className='modal'>
-			<div>
-				{errors.map((error, ind) => (
-					<div key={ind}>{error}</div>
-				))}
-			</div>
-			<div className='loginContainer'>
-				<div className='input-values'> <span><i aria-hidden="true" className="fa fa-envelope loginpic"/> </span>
-				<label htmlFor='email'></label>
-				<input
-					name='email'
-					type='text'
-					placeholder='Email'
-					value={email}
-					onChange={updateEmail}
-				/>
-			</div>
-			<div className='input-values'> <span><i aria-hidden="true" className="fa fa-lock loginpic"></i> </span>
-				<label htmlFor='password'></label>
-				<input
-					name='password'
-					type='password'
-					placeholder='Password'
-					value={password}
-					onChange={updatePassword}
-				/>
-				<button type='submit' className='modal-button'>Login</button>
-				</div>
-				</div>
-			{/* <DemoUser/> */}
-		</form>
-	);
+    <form onSubmit={onLogin} className="modal">
+      <div>
+        {errors.map((error, ind) => (
+			<div key={ind}>{error}</div>
+			))}
+      </div>
+      <div className="loginContainer">
+			<h2>Login!</h2>
+        <div className="input-values">
+          <div>
+
+
+          {/* {" "} */}
+          <span>
+            <i aria-hidden="true" className="fa fa-envelope loginpic" />{" "}
+          </span>
+          <input
+            name="email"
+            type="text"
+            placeholder="Email"
+            value={email}
+            onChange={updateEmail}
+            />
+            </div>
+        </div>
+          <div>
+
+          <span>
+            <i aria-hidden="true" className="fa fa-lock loginpic"></i>{" "}
+          </span>
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={updatePassword}
+            />
+            </div>
+          <button type="submit" className="modal-button">
+            Login
+          </button>
+      </div>
+      {/* <DemoUser/> */}
+    </form>
+  );
 };
 
 export default LoginForm;
