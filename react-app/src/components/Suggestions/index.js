@@ -36,20 +36,6 @@ export default function Suggestions() {
       <div className="user-profile-holder">
         <img src={user.avatar} alt="small avi" className="user-avi"></img>
         <p className="profile-user">{user.username}</p>
-        {/* {suggestions?.map((randomUser) => {
-          return (
-            <div className="random-div">
-              <img
-                src={randomUser.avatar}
-                className="random-usr"
-                alt="random-user"
-              ></img>
-              <p className="random-username">
-                {randomUser.username.substring(0, 7) + "..."}
-              </p>
-            </div>
-          );
-        })} */}
       </div>
     </div>
   );

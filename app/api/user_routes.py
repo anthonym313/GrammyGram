@@ -25,15 +25,15 @@ def user(id):
 @user_routes.route('/random')
 @login_required
 def random_user():
-    # all_users = User.query.all()
-    # userlist=[]
-    # i = 0
-    # while i < 5:
-    #     user = User.query.get(randint(0,len(all_users)))
-    #     userlist.append(user.to_dict())
-    #     i += 1
-    # return userlist
-
     random_users = User.query.order_by(func.random()).limit(6).all()
     print(random_users)
     return jsonify([user.to_dict() for user in random_users])
+
+
+
+
+@user_routes.route('/smallgroup')
+@login_required
+def smallgroup_user():
+    smallgroup_users = User.query.order_by(func.random()).limit(4).all()
+    return jsonify([user.to_dict() for user in smallgroup_users])
