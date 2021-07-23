@@ -13,7 +13,7 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     images = db.relationship('Image', back_populates='users')
-    comments = db.relationship('Comment', back_populates='users')
+    comments = db.relationship('Comment', back_populates='user')
     likes = db.relationship('Like', back_populates='users')
 
     @property

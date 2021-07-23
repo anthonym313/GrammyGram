@@ -15,7 +15,6 @@ export const getFiveRandomUsers = () => async (dispatch) => {
 	const response = await fetch('/api/users/random');
 	if (response.ok) {
 		const users = await response.json();
-		console.log('thunk', users);
 		dispatch(randomUser(users));
 		return 'SUCCESSFULLY GOT RANDOM USERS';
 	}
@@ -23,10 +22,8 @@ export const getFiveRandomUsers = () => async (dispatch) => {
 
 export const singleUser = (id) => async (dispatch) => {
 	const res = await fetch(`/api/users/${id}`);
-	// console.log('res', res.json());
 	if (res.ok) {
 		const user = await res.json();
-		console.log('thunk user', user);
 		dispatch(getUser(user));
 	}
 };

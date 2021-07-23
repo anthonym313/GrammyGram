@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, Redirect } from 'react-router-dom';
 import { getImagesThunk, deleteImageThunk } from '../../store/post';
 import CommentForm from '../CommentForm';
+import LikesList from '../LikesList';
 import './feed.css';
 import Suggestions from '../Suggestions';
 function Feed() {
@@ -74,6 +75,10 @@ function Feed() {
 							<div className='post-description'>
 								<p>{list[image.user_id]}</p>
 								<p>{image.description}</p>
+							</div>
+							<div className='likes'>
+								{/* Likes currently show on all images, due to loop?*/}
+								<LikesList imageId={image.id} />
 							</div>
 							<div className='comments'></div>
 							<div className='post-comment'>

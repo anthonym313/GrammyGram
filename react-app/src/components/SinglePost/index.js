@@ -14,11 +14,6 @@ function SinglePost() {
 	const user = userArr[0];
 	const userId = image.user_id;
 
-	console.log('user array', user);
-	console.log('thunk user', userArr);
-	console.log('Image', image);
-	console.log('image user id', image.user_id);
-
 	useEffect(() => {
 		if (!postId && !userId) {
 			return;

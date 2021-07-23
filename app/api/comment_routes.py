@@ -37,10 +37,30 @@ def index():
 @login_required
 def delete_comment(id):
     # front end provides comment & user session ID
-    userComments = Comment.query.filter(
-        (Comment.user_id == current_user.id)
-    ).all()
     deleteComment = Comment.query.get(id)
-    db.session.delete(deleteComment)
-    db.session.commit()
+    if (deleteComment.user_id == current_user.id):
+        db.session.delete(deleteComment)
+        db.session.commit()
     return {'message': 'Comment Deleted'}
+
+
+@comment_routes.route('/<int:id>/edit', methods=['PUT'])
+@login_required
+def edit_comment(id):
+    req = request.get_json()
+    # front end provides comment & user session ID
+    editComment = Comment(
+        user_id=current_user.id,
+        image_id=req['image_id'],
+        comment=req
+    )
+    db.session.add(editComment)
+    db.session.commit()
+    return editComment.to_dict()
+
+    #     req = request.get_json()
+    # newComment = Comment(
+    #     user_id=current_user.id,
+    #     image_id=req['image_id'],
+    #     comment=req['comment']
+    # )

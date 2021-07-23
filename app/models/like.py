@@ -15,6 +15,6 @@ class Like(db.Model):
         return {
             'id': self.id,
             'user_id': self.user_id,
-            'image_id': self.image_url,
+            'image_id': self.image_id,
             'like': self.like
         }
