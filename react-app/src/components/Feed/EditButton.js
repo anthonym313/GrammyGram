@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import { useDispatch } from "react-redux";
 import EditDesc from "../EditDesc";
 import { useDispatch } from "react-redux";
 
@@ -63,16 +62,20 @@ function EditButton({ image }) {
 
   return (
     <div className="edit-menu">
-      <button className="edit-button" id="elipses" onClick={showMenu === true ? closeMenu : openMenu}>
-      </button> {showMenu &&
-        (<div className="edit-dropdown">
-          <button onClick={showEdit === true ? closeEdit : openEdit} className="delete-btn" id="edit-btn">
-            Edit
-          </button>
-          <button onClick={() => deletePost(image.id)}>Delete</button>
+      <button
+        className="edit-button"
+        id="elipses"
+        onClick={showMenu === true ? closeMenu : openMenu}
+      ></button>
 
+      {showMenu && (
+        <div className="edit-dropdown">
+            <button onClick={showEdit === true ? closeEdit : openEdit} className="delete-btn" id="edit-btn">
+              Edit
+            </button>
+            <button onClick={() => deletePost(image.id)}>Delete</button>
           {showEdit && <EditDesc image={image} />}
-        </div>
+          </div>
       )}
     </div>
   );

@@ -20,7 +20,7 @@ export default function Suggestions(){
     return(
             <div className="UserSide-container">
                     <div className='user-avi_small'>
-                        <img src={user.avatar} alt='small avi'></img>
+                        {/* <img src={user.avatar} alt='small avi'></img> */}
                     </div>
                     <div>
                         <h3>{user.username}</h3>

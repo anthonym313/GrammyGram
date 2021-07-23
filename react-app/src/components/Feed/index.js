@@ -29,15 +29,6 @@ function Feed() {
     history.push("/posts/");
   }, [dispatch, history]);
 
-  // const refresh = () => {
-  //   dispatch(getImagesThunk());
-  // };
-
-  // const deletePost = (id) => {
-  //   dispatch(deleteImageThunk(id));
-  //   dispatch(getImagesThunk());
-  //   refresh();
-  // };
 
   const postUser = (user) => {
     let obj = {};
@@ -87,7 +78,7 @@ function Feed() {
                 <p>{image.description}</p>
 
                 </div>
-                <div className="edit-button">
+                <div>
                   <EditButton image={image} />
                 </div>
               </div>
