@@ -1,10 +1,15 @@
 const RANDOM_USER = 'user/RANDOM_USER';
 const GET_USER = 'user/GET_USER';
+const SMALLGROUP_USER = 'user/SMALLGROUP_USER'
 
 const randomUser = (randomList) => ({
 	type: RANDOM_USER,
 	randomList,
 });
+const smallGroupUser = (list) => ({
+	type: SMALLGROUP_USER,
+	list,
+})
 
 const getUser = (user) => ({
 	type: GET_USER,
@@ -17,6 +22,14 @@ export const getFiveRandomUsers = () => async (dispatch) => {
 		const users = await response.json();
 		dispatch(randomUser(users));
 		return 'SUCCESSFULLY GOT RANDOM USERS';
+	}
+};
+export const getSmallGroupOfUsers = () => async (dispatch) => {
+	const response = await fetch('/api/users/smallgroup');
+	if (response.ok) {
+		const users = await response.json();
+		dispatch(smallGroupUser(users));
+		return 'SUCCESSFULLY GOT SMALL GROUP OF USERS';
 	}
 };
 
@@ -45,6 +58,15 @@ export function singleUserReducer(state = initialState2, action) {
 	switch (action.type) {
 		case GET_USER:
 			return action.user;
+		default:
+			return state;
+	}
+}
+
+export function smallGroupReducer (state = initialState, action){
+	switch (action.type){
+		case SMALLGROUP_USER:
+			return action.list;
 		default:
 			return state;
 	}

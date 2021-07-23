@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session from './session';
 import imageReducer from './post';
-import { reducer, singleUserReducer } from './user';
+import { reducer, singleUserReducer,smallGroupReducer } from './user';
 import commentReducer from './comment';
 import { likesReducer, dislikesReducer } from './like';
 
@@ -10,6 +10,7 @@ const rootReducer = combineReducers({
 	session,
 	feedPosts: imageReducer,
 	randomUsers: reducer,
+	smallRandGroup: smallGroupReducer,
 	singleUser: singleUserReducer,
 	comment: commentReducer,
 	likes: likesReducer,

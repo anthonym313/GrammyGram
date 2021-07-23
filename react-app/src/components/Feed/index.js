@@ -7,6 +7,7 @@ import "./feed.css";
 import CommentForm from '../CommentForm';
 import LikesList from '../LikesList';
 import Suggestions from '../Suggestions';
+import SmallSuggestions from "../SmallSuggestions";
 
 
 function Feed() {
@@ -94,6 +95,8 @@ function Feed() {
           </div>
         ))}
       <Suggestions />
+      <SmallSuggestions/>
+    
     </div>
   );
 }
