@@ -5,11 +5,13 @@ import { useParams } from 'react-router-dom';
 import { singleUser } from '../../store/user';
 import { getAllComments, delComment } from '../../store/comment';
 import CommentForm from '../CommentForm';
+import EditCommentBtn from '../EditCommentForm/EditCommentBtn';
 
 const CommentList = () => {
 	const dispatch = useDispatch();
 	const { postId } = useParams();
 	const [users, setUsers] = useState([]);
+	const [render, setRender] = useState(false);
 	const allComments = useSelector((state) => state.comment);
 	const currentUser = useSelector((state) => state.session.user);
 	const onePost = useSelector((state) => Object.values(state.feedPosts));
@@ -43,9 +45,9 @@ const CommentList = () => {
 		refresh();
 	};
 
-	// 		{/* <li key={user.id}>
-	// 			<NavLink to={`/users/${user.id}`}>{user.username}</NavLink>
-	// 		</li> */}
+	const showEdit = (id) => {
+		setRender(true);
+	};
 
 	const postUser = (user) => {
 		let obj = {};
@@ -62,9 +64,18 @@ const CommentList = () => {
 			{newComments &&
 				newComments?.map((comment) => (
 					<div>
-						Submitted by: {list[comment.user_id]}
+						<div
+							className='comment-user-submission'
+							key={list[comment.user_id]}
+						>
+							{' '}
+							Submitted by:
+							<NavLink to={`/users/${list[comment.user_id]}`}>
+								{list[comment.user_id]}
+							</NavLink>
+						</div>
 						<li key={comment.id}>{comment.comment}</li>
-						<div>
+						{/* <div>
 							{comment.user_id === currentUser.id ? (
 								<div>
 									<button
@@ -72,8 +83,21 @@ const CommentList = () => {
 									>
 										Delete
 									</button>
+									<button onClick={() => setRender(true)}>
+										Edit
+									</button>
+									{render ? (
+										<div key={comment.id}>
+											<EditCommentForm
+												comment={comment}
+											/>
+										</div>
+									) : null}
 								</div>
 							) : null}
+						</div> */}
+						<div>
+							<EditCommentBtn comment={comment} />
 						</div>
 					</div>
 				))}

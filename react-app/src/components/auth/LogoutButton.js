@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
+import './LogoutButton.css'
 
 const LogoutButton = () => {
   const dispatch = useDispatch();
@@ -8,19 +9,14 @@ const LogoutButton = () => {
     await dispatch(logout());
   };
 
-
   // return <button onClick={onLogout}>Logout</button>;
   return (
-    <img
+    <div
       onClick={onLogout}
-      className="navbar-logout nav1"
-      src="logout.svg"
-      alt="Explore"
-      height="20"
-      width="20"
-    ></img>
-  );
+      className="navbar-logout navo6"
 
+    ></div>
+  );
 };
 
 export default LogoutButton;

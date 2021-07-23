@@ -1,93 +1,118 @@
 // import fetch from 'node-fetch'
-const POST_IMAGE = 'post/POST_IMAGE';
-const DELETE_IMAGE = 'post/DELETE_IMAGE';
-const GET_FEED = 'post/GET_FEED';
+const POST_IMAGE = "post/POST_IMAGE";
+const DELETE_IMAGE = "post/DELETE_IMAGE";
+const GET_FEED = "post/GET_FEED";
+const UPDATE_IMAGE = "post/UPDATE_IMAGE";
+
 export const getFeed = (image) => {
-	return {
-		type: GET_FEED,
-		image,
-	};
+  return {
+    type: GET_FEED,
+    image,
+  };
 };
 export const postImage = (image) => ({
-	type: POST_IMAGE,
-	image,
+  type: POST_IMAGE,
+  image,
 });
 
 export const deleteImage = (id) => ({
-	type: DELETE_IMAGE,
-	id,
+  type: DELETE_IMAGE,
+  id,
+});
+
+export const updateImage = (image) => ({
+  type: UPDATE_IMAGE,
+  image,
 });
 
 //CREATE
 export const postImageThunk = (payload) => async (dispatch) => {
-	const res = await fetch('/api/posts/upload', {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify(payload),
-	});
-	const newPost = await res.json();
-	dispatch(postImage(newPost));
+  const res = await fetch("/api/posts/upload", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+  const newPost = await res.json();
+  dispatch(postImage(newPost));
 };
 export const getImagesThunk = () => async (dispatch) => {
-	const res = await fetch('/api/posts/');
+  const res = await fetch("/api/posts/");
 
-
-	if (res.ok) {
-		const allImages = await res.json();
-		dispatch(getFeed(allImages));
-	}
+  if (res.ok) {
+    const allImages = await res.json();
+    dispatch(getFeed(allImages));
+  }
 };
 
+//UPDATE
+export const updateImageThunk = (id, description) => async (dispatch) => {
+  const res = await fetch(`/api/posts/${id}/${description}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ id, description }),
+  });
+  if (res.ok) {
+    const updateDesc = await res.json();
+    dispatch(getFeed(updateDesc));
+  }
+};
 // only thing missing
 export const getSingleImageThunk = (imageId) => async (dispatch) => {
-	const res = await fetch(`/api/posts/${imageId}`);
+  const res = await fetch(`/api/posts/${imageId}`);
 
-	if (res.ok) {
-		const singleImage = await res.json();
-		dispatch(getFeed(singleImage));
-		return singleImage;
-	}
+  if (res.ok) {
+    const singleImage = await res.json();
+    dispatch(getFeed(singleImage));
+    return singleImage;
+  }
 };
 
 //DELETE
 export const deleteImageThunk = (id) => async (dispatch) => {
-	const res = await fetch(`/api/posts/${id}`, {
-		method: 'DELETE',
-		body: JSON.stringify({ id }),
-	});
-	if (res.ok) {
-		await res.json();
-		dispatch(deleteImage(id));
-		return res;
-	}
+  const res = await fetch(`/api/posts/${id}`, {
+    method: "DELETE",
+    body: JSON.stringify({ id }),
+  });
+  if (res.ok) {
+    await res.json();
+    dispatch(deleteImage(id));
+    return res;
+  }
 };
 
-const initialState = { thing: '' };
+const initialState = { thing: "" };
 
 const imageReducer = (state = initialState, action) => {
-	let newState = {};
-	switch (action.type) {
-		case POST_IMAGE:
-			newState = {
-				...state,
-				[action.image.id]: action.image,
-			};
-			return newState;
-		case GET_FEED:
-			[action.image].forEach((photo) => {
-				newState[photo.id] = photo;
-			});
-			return {
-				...newState,
-			};
-		case DELETE_IMAGE:
-			newState = { ...state };
-			delete newState[action.id];
-			return { ...newState };
-		default:
-			return state;
-	}
+  let newState = {};
+  switch (action.type) {
+    case POST_IMAGE:
+      newState = {
+        ...state,
+        [action.image.id]: action.image,
+      };
+      return newState;
+    case GET_FEED:
+      [action.image].forEach((photo) => {
+        newState[photo.id] = photo;
+      });
+      return {
+        ...newState,
+      };
+    case DELETE_IMAGE:
+      newState = { ...state };
+      delete newState[action.id];
+      return { ...newState };
+    case UPDATE_IMAGE:
+      newState = {
+        ...(state[action.image.id] = action.image),
+      };
+      return newState;
+    default:
+      return state;
+  }
 };
 export default imageReducer;

@@ -1,17 +1,15 @@
-
 body {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+flex-direction: column;
+justify-content: center;
 }
 .modal {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   position: fixed;
-  width: 300px;
-  height: 150px;
+  width: 260px;
+  height: 180px;
   top: 50%;
   left: 50%;
   transform: translate(-49%, -50%);
@@ -20,19 +18,27 @@ body {
   opacity: 0.9;
 }
 
+.loginpic{
+  margin: 5px;
+}
+
+.loginContainer {
+  position: relative;
+  bottom: 20px;
+}
+
 .input-values {
   display: flex;
-  margin-top: 20px;
-  justify-content: center;
+  position: relative;
+  margin-left: 20px;
+  margin-top: 8px;
   align-items: center;
 }
 
 .modal-button {
-  margin-left: 0;
   background-color: #ffb700;
-  display: flex;
-  width: 60px;
-  justify-content: center;
+  /* display: flex; */
+  position: relative;
   padding: 0.3em 1.2em;
   margin: 0 0.1em 0.1em 10;
   border: 0.16em solid rgba(255, 255, 255, 0);
@@ -45,13 +51,13 @@ body {
   text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
   text-align: center;
   transition: all 0.2s;
-  margin-top: 10px;
+  top: 50px;
+  right: 110px;
 }
 
 .modal-button:hover {
   border-color: rgba(255, 255, 255, 1);
 }
-
 
 @media all and (max-width: 30em) {
   .modal-button {
