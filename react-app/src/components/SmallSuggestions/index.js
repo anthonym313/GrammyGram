@@ -5,15 +5,33 @@ import { getSmallGroupOfUsers } from "../../store/user";
 import './SmallSuggestions.css'
 
 export default function SmallSuggestions(){
-    // const smallSug = useSelector((state) => state.)
+    const smallRandomUserList = useSelector((state) => state.smallRandGroup)
+
     const dispatch = useDispatch();
     useEffect(()=>{
         dispatch(getSmallGroupOfUsers());
     },[dispatch]);
 
 return(
-    <div>
-        <h1>hi</h1>
+    <div >
+        
+        <div className = 'random-holder'>
+            {smallRandomUserList?.map((user)=>{
+                return (
+                    <div className='random-div'>
+                        <img
+                        src={user.avatar}
+                        className="random-usr"
+                        alt="random-user"
+                        ></img>
+                        <p className="random-username">
+                        {user.username.substring(0, 7) + "..."}
+                        </p>
+                    </div>
+                  
+                )
+            })}
+        </div>
     </div>
 )
 }
