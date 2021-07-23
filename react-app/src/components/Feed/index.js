@@ -83,7 +83,9 @@ function Feed() {
                 </div>
               </div>
 
-              <div className="comments"></div>
+              <div className="comments">
+                
+              </div>
               <div className="post-comment"> </div>
             </div>
           </div>
