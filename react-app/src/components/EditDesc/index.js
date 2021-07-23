@@ -23,16 +23,17 @@ function EditDesc({ image }) {
         <label className="edit-desc"></label>
         <label>
           <textarea
-            placeholder="Description"
+            placeholder="Edit Caption"
             type="text"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
-            rows="3"
+            rows="2"
             cols="20"
+            className="edit-desc-input"
           />
         </label>
-        <button className="upload-btn" type="submit">
+        <button className="edit-btn descpost-btn" type="submit">
           Post!
         </button>
       </form>

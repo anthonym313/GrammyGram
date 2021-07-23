@@ -70,12 +70,22 @@ function EditButton({ image }) {
 
       {showMenu && (
         <div className="edit-dropdown">
-            <button onClick={showEdit === true ? closeEdit : openEdit} className="delete-btn" id="edit-btn">
-              Edit
-            </button>
-            <button onClick={() => deletePost(image.id)}>Delete</button>
+          <button
+            onClick={showEdit === true ? closeEdit : openEdit}
+            className="edit-btn editing-post"
+            id="edit-btn"
+          >
+            Edit
+          </button>
+          <button
+            // id="edit-btn"
+            className="delete-btn edit-btn"
+            onClick={() => deletePost(image.id)}
+          >
+            Delete
+          </button>
           {showEdit && <EditDesc image={image} />}
-          </div>
+        </div>
       )}
     </div>
   );

@@ -75,7 +75,7 @@ function Feed() {
                 <div className='info-container'>
                 <p className="username-post">{list[image.user_id]}</p>
 
-                <p>{image.description}</p>
+                <p className='caption-post'>{image.description}</p>
 
                 </div>
                 <div>
