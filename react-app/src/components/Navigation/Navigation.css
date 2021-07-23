@@ -8,6 +8,7 @@
   position: relative;
   top: -4px;
   text-decoration: none;
+  padding-top: 5px;
 }
 
 li {
@@ -39,6 +40,7 @@ li {
 
 .left li {
   float: left;
+  margin-left: 25px;
 }
 
 .right li {

@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory} from "react-router-dom";
-import { getImagesThunk, deleteImageThunk } from '../../store/post';
+import { useHistory } from "react-router-dom";
+import { getImagesThunk, deleteImageThunk } from "../../store/post";
 import EditButton from "./EditButton";
 import "./feed.css";
-import CommentForm from '../CommentForm';
-import LikesList from '../LikesList';
-import Suggestions from '../Suggestions';
-
+import CommentForm from "../CommentForm";
+import LikesList from "../LikesList";
+import Suggestions from "../Suggestions";
 
 function Feed() {
   const dispatch = useDispatch();
 
   const history = useHistory();
-
+  const loggedIn = useSelector((state) => state.session).user;
   const allPosts = useSelector((state) => Object.values(state.feedPosts));
   const pureIm = allPosts[0].posts;
   const [users, setUsers] = useState([]);
+
 
   useEffect(() => {
     async function fetchData() {
@@ -31,7 +31,6 @@ function Feed() {
     dispatch(getImagesThunk());
     history.push("/posts/");
   }, [dispatch, history]);
-
 
   const postUser = (user) => {
     let obj = {};
@@ -75,20 +74,19 @@ function Feed() {
               <div className="post-actions"></div>
 
               <div className="post-description">
-                <div className='info-container'>
-                <p className="username-post">{list[image.user_id]}</p>
+                <div className="info-container">
+                  <p className="username-post">{list[image.user_id]}</p>
 
-                <p className='caption-post'>{image.description}</p>
-
+                  <p className="caption-post">{image.description}</p>
                 </div>
-                <div>
-                  <EditButton image={image} />
-                </div>
+                {loggedIn?.id === image.user_id && (
+                  <div>
+                    <EditButton image={image} />
+                  </div>
+                )}
               </div>
 
-              <div className="comments">
-
-              </div>
+              <div className="comments"></div>
               <div className="post-comment"> </div>
             </div>
           </div>
