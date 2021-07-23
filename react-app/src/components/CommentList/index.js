@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { singleUser } from '../../store/user';
 import { getAllComments, delComment } from '../../store/comment';
 import CommentForm from '../CommentForm';
+import EditCommentForm from '../EditCommentForm';
 
 const CommentList = () => {
 	const dispatch = useDispatch();
 	const { postId } = useParams();
 	const [users, setUsers] = useState([]);
+	const [render, setRender] = useState(false);
 	const allComments = useSelector((state) => state.comment);
 	const currentUser = useSelector((state) => state.session.user);
 	const onePost = useSelector((state) => Object.values(state.feedPosts));
@@ -43,6 +45,9 @@ const CommentList = () => {
 		refresh();
 	};
 
+	const showEdit = (id) => {
+		setRender(true)
+	}
 	// 		{/* <li key={user.id}>
 	// 			<NavLink to={`/users/${user.id}`}>{user.username}</NavLink>
 	// 		</li> */}
@@ -72,6 +77,16 @@ const CommentList = () => {
 									>
 										Delete
 									</button>
+									<button onClick={() => setRender(true)}>
+										Edit
+									</button>
+									{render ? (
+										<div key={comment.id}>
+											<EditCommentForm
+												comment={comment}
+											/>
+										</div>
+									) : null}
 								</div>
 							) : null}
 						</div>

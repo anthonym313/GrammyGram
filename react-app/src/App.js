@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -16,7 +15,6 @@ import ExplorePage from "./components/ExplorePage";
 import SinglePost from "./components/SinglePost";
 import { authenticate } from "./store/session";
 
-
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -31,7 +29,6 @@ function App() {
   if (!loaded) {
     return null;
   }
-
 
   return (
     <BrowserRouter>
@@ -58,14 +55,13 @@ function App() {
         <ProtectedRoute path="/explore" exact={true}>
           <ExplorePage />
         </ProtectedRoute>
-        <ProtectedRoute path="/posts/:postId" exact={true}>
+        <ProtectedRoute path="/posts/:id" exact={true}>
           <SinglePost />
         </ProtectedRoute>
         <Route component={NotFoundPage} />
       </Switch>
     </BrowserRouter>
   );
-
 }
 
 export default App;

@@ -23,7 +23,6 @@ def index():
 def get_all_posts():
     posts = Image.query.all()
     return {'posts': [post.to_dict() for post in posts]}
-# @post_routes.route('/<int:id>', methods=['GET'])
 
 
 @post_routes.route('/<int:id>', methods=['DELETE'])
@@ -33,6 +32,16 @@ def del_post(id):
     db.session.delete(post)
     db.session.commit()
     return {'message': 'Post deleted'}
+
+
+@post_routes.route('/<int:id>/<description>', methods=['PUT'])
+@login_required
+def edit_post(id, description):
+    post = Image.query.get(id)
+    # print('****************', post)
+    post.description = description
+    db.session.commit()
+    return post.to_dict()
 
 
 @post_routes.route('/<int:image_id>/comments')

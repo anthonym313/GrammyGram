@@ -34,6 +34,6 @@ def random_user():
     #     i += 1
     # return userlist
 
-    random_users = User.query.order_by(func.random()).limit(5).all()
+    random_users = User.query.order_by(func.random()).limit(6).all()
     print(random_users)
     return jsonify([user.to_dict() for user in random_users])

@@ -9,7 +9,6 @@ import "./Navigation.css";
 const NavBar = () => {
   const user = useSelector((state) => state.session.user);
 
-
   let sessionLinks;
   if (user) {
     sessionLinks = (
@@ -17,38 +16,23 @@ const NavBar = () => {
         <li className="navbar space"></li>
         <li className="nav1">
           <NavLink to="/posts" exact={true} activeClassName="active">
-            <img
-              src="home.svg"
-              className="navbar-home navo"
-              alt="Home"
-              height="20"
-              width="20"
-            ></img>
-            HOME
+            <div
+              className="navbar-home navo1"
+            ></div>
           </NavLink>
         </li>
         <li className="nav1">
           <NavLink to="/posts/upload" exact={true} activeClassName="active">
-            <img
-              src="upload.svg"
-              className="nav-upload navo"
-              alt="Upload"
-              height="20"
-              width="20"
-            ></img>
-            Upload
+            <div
+              className="nav-upload navo2"
+            ></div>
           </NavLink>
         </li>
         <li className="nav1">
           <NavLink to="/explore" exact={true} activeClassName="active">
-            <img
-              src="compass.svg"
-              className="nav-explore navo"
-              alt="Home"
-              height="20"
-              width="20"
-            ></img>
-            Compass
+            <div
+              className="nav-explore navo3"
+            ></div>
           </NavLink>
         </li>
         <li>
@@ -66,24 +50,16 @@ const NavBar = () => {
             activeClassName="active"
             className="login"
           >
-            <img
-              src="log-in.svg"
-              className="navbar-login nav1"
-              alt="Login"
-              height="20"
-              width="20"
-            ></img>
+            <div
+              className="navbar-login nav1 navo4"
+            ></div>
           </NavLink>
         </li>
         <li className="nav-signup nav1">
           <NavLink to="/sign-up" exact={true} activeClassName="active">
-            <img
-              src="sign-up.svg"
-              className="navbar-signup"
-              alt="Sign-Up"
-              height="20"
-              width="20"
-            ></img>
+            <div
+              className="navbar-signup navo5"
+            ></div>
           </NavLink>
         </li>
         <li>
@@ -107,7 +83,6 @@ const NavBar = () => {
       </ul>
     </nav>
   );
-
 };
 
 export default NavBar;

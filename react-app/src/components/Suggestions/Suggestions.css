@@ -1,10 +1,64 @@
-.users_images_container{
-    float:left;
-    width:75%;
-    background-color: gray;
+.users_images_container {
+  float: left;
+  width: 75%;
+  background-color: gray;
 }
-.UserSide_container{
-    float:left;
-    width:25%;
-    background-color:lightgreen;
+.UserSide-container {
+  display: flex;
+}
+
+.random-usr,
+.user-avi {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.random-holder {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 20%;
+  border: 1px solid #c0bfbf;
+  border-radius: 3px;
+  margin-bottom: 2em;
+  width: 615px;
+  justify-content: center;
+    background-color: rgb(230, 230, 233);
+
+}
+
+.random-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90px;
+  font-size: 13px;
+  font-weight: 600;
+  align-items: center;
+  margin-left: 1em;
+  margin-right: 1em;
+  margin-top: 10px;
+}
+
+.profile-user {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.user-avi {
+  margin-top: 10px;
+}
+
+.user-profile-holder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin-top: 10px; */
+  margin-left: 8em;
+  border: 1px solid #c0bfbf;
+  border-radius: 3px;
+  width: 15em;
+  position: sticky;
+    background-color: rgb(230, 230, 233);
+
 }

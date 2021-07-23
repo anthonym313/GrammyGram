@@ -36,7 +36,6 @@ export const newComment = (newComment) => async (dispatch) => {
 
 	if (res.ok) {
 		const createdComment = await res.json();
-		console.log('thunk comment', createdComment);
 		dispatch(postComment(createdComment));
 		return createdComment;
 	}
@@ -51,6 +50,18 @@ export const delComment = (id) => async (dispatch) => {
 		await res.json();
 		dispatch(deleteComment(id));
 		return res;
+	}
+};
+
+export const editComment = (newComment) => async (dispatch) => {
+	const res = await fetch(`/api/comments/${newComment.id}/edit`, {
+		method: 'PUT',
+		body: JSON.stringify({ newComment }),
+	});
+	if (res.ok) {
+		const newComment = await res.json();
+		dispatch(postComment(newComment));
+		return newComment;
 	}
 };
 
