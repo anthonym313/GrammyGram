@@ -1,26 +1,25 @@
-import React from "react";
+
+import React,{useEffect} from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getImagesThunk } from "../../store/post";
 import "./ExplorePage.css";
-import { useSelector } from "react-redux";
 
 export default function ExplorePage() {
-  const images = useSelector((state) => Object.values(state.feedPosts));
+  const allposts = useSelector((state) => Object.values(state.feedPosts));
+  const dispatch = useDispatch();
+  const imagesArr = allposts[0].posts
+  useEffect(()=>{
+    dispatch(getImagesThunk());
+  },[dispatch])
 
-  const imagesArr = [
-    "./grammygramlogo.png",
-    "./grammygramlogo.png",
-    "./grammygramlogo.png",
-    "./grammygramlogo.png",
-    "./grammygramlogo.png",
-    "./grammygramlogo.png",
-    "./grammygramlogo.png",
-    "./grammygramlogo.png",
-  ];
   return (
     <div id="explore">
       {imagesArr?.map((image) => {
+        // {console.log(image)}
         return (
           <div className="explore-image">
             <img src={image} alt='explore'></img>
+            {/* <img src={image.image_url} width='300'></img> */}
             <div className="explore-image-overlay"></div>
           </div>
         );

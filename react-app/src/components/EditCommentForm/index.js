@@ -1,38 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import './CommentForm.css';
+import { editComment } from '../../store/comment';
 
-import { newComment } from '../../store/comment';
-
-const CommentForm = ({ imageId }) => {
+const EditCommentForm = ({ comment }) => {
 	const dispatch = useDispatch();
-	const [comment, setComment] = useState('');
+	const [editComment, setEditComment] = useState('');
 	const loggedInUser = useSelector((state) => state.session.user);
 
 	const updateComment = (e) => {
-		setComment(e.target.value);
+		setEditComment(e.target.value);
 	};
 
 	const onSubmit = (e) => {
 		e.preventDefault();
 
 		dispatch(
-			newComment({
-				image_id: imageId,
+			editComment({
+				image_id: comment.image_id,
 				user_id: loggedInUser,
 				comment: comment,
 			})
 		);
-		setComment('');
+		setEditComment('');
 	};
 
 	return (
 		<form onSubmit={onSubmit}>
 			<div>
 				<textarea
-					label='add a comment'
-					placeholder='Add a comment...'
+					label='Edit Comment'
+					placeholder={comment.comment}
 					value={comment}
 					onChange={updateComment}
 				></textarea>
@@ -42,4 +40,4 @@ const CommentForm = ({ imageId }) => {
 	);
 };
 
-export default CommentForm;
+export default EditCommentForm;

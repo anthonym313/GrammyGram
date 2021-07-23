@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { getImagesThunk } from "../../store/post";
+import { useHistory} from "react-router-dom";
+import { getImagesThunk, deleteImageThunk } from '../../store/post';
 import EditButton from "./EditButton";
-import Suggestions from "../Suggestions";
 import "./feed.css";
+import CommentForm from '../CommentForm';
+import LikesList from '../LikesList';
+import Suggestions from '../Suggestions';
+
 
 function Feed() {
   const dispatch = useDispatch();
@@ -84,7 +87,7 @@ function Feed() {
               </div>
 
               <div className="comments">
-                
+
               </div>
               <div className="post-comment"> </div>
             </div>
