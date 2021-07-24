@@ -53,50 +53,48 @@ function Feed() {
   const avt = postAvatar(users);
 
   return (
-    <div className="feed-page">
-      {pureIm &&
-        pureIm?.map((image) => (
-          <div key={image.id} className="post-container">
-            <div className="top-bar">
-              <img
-                className="post-avatar"
-                src={avt[image.user_id]}
-                alt="avatar"
-              ></img>
-              <p className="username-post">{list[image.user_id]}</p>
-            </div>
-            <div className="image-container">
-              <img
-                src={image?.image_url}
-                alt="feed-images"
-                className="the-image"
-              />
-            </div>
-            <div className="post-content">
-              <div className="post-actions"></div>
-
-              <div className="post-description">
-                <div className='info-container'>
+    <div>
+      <div className="feed-page">
+        <SmallSuggestions />
+        <Suggestions />
+        {pureIm &&
+          pureIm?.map((image) => (
+            <div key={image.id} className="post-container">
+              <div className="top-bar">
+                <img
+                  className="post-avatar"
+                  src={avt[image.user_id]}
+                  alt="avatar"
+                ></img>
                 <p className="username-post">{list[image.user_id]}</p>
-
-                <p className='caption-post'>{image.description}</p>
-
-                </div>
-                <div>
-                  <EditButton image={image} />
-                </div>
               </div>
-
-              <div className="comments">
-
+              <div className="image-container">
+                <img
+                  src={image?.image_url}
+                  alt="feed-images"
+                  className="the-image"
+                />
               </div>
-              <div className="post-comment"> </div>
+              <div className="post-content">
+                <div className="post-actions"></div>
+
+                <div className="post-description">
+                  <div className="info-container">
+                    <p className="username-post">{list[image.user_id]}</p>
+
+                    <p className="caption-post">{image.description}</p>
+                  </div>
+                  <div>
+                    <EditButton image={image} />
+                  </div>
+                </div>
+
+                <div className="comments"></div>
+                <div className="post-comment"> </div>
+              </div>
             </div>
-          </div>
-        ))}
-      <Suggestions />
-      <SmallSuggestions/>
-    
+          ))}
+      </div>
     </div>
   );
 }
