@@ -21,7 +21,7 @@ def index():
 @post_routes.route('/')
 @login_required
 def get_all_posts():
-    posts = Image.query.all()
+    posts = Image.query.order_by(Image.id.desc())
     return {'posts': [post.to_dict() for post in posts]}
 
 
