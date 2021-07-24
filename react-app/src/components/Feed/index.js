@@ -1,56 +1,42 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useHistory} from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory, useParams } from 'react-router-dom';
 import { getImagesThunk, deleteImageThunk } from '../../store/post';
-import EditButton from "./EditButton";
-import "./feed.css";
+import { getAllUsers } from '../../store/user';
+import EditButton from './EditButton';
+import './feed.css';
 import CommentForm from '../CommentForm';
 import LikesList from '../LikesList';
+import CommentList from '../CommentList';
 import Suggestions from '../Suggestions';
 import SmallSuggestions from "../SmallSuggestions";
 
-
 function Feed() {
-  const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-  const history = useHistory();
+	const history = useHistory();
 
-  const allPosts = useSelector((state) => Object.values(state.feedPosts));
-  const pureIm = allPosts[0].posts;
-  const [users, setUsers] = useState([]);
+	const allPosts = useSelector((state) => Object.values(state.feedPosts));
+	const allUsers = useSelector((state) => Object.values(state.userList));
+	const pureIm = allPosts[0].posts;
+	const usersList = allUsers[0].users;
+	const [users, setUsers] = useState([]);
 
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch("/api/users/");
-      const responseData = await response.json();
-      setUsers(responseData.users);
-    }
-    fetchData();
-  }, []);
+	useEffect(() => {
+		async function fetchData() {
+			const response = await fetch('/api/users/');
+			const responseData = await response.json();
+			console.log('response', responseData.users);
+			setUsers(responseData.users);
+		}
+		fetchData();
+		dispatch(getAllUsers());
+	}, [dispatch]);
 
-  useEffect(() => {
-    dispatch(getImagesThunk());
-    history.push("/posts/");
-  }, [dispatch, history]);
-
-
-  const postUser = (user) => {
-    let obj = {};
-    user.forEach((u) => {
-      obj[u.id] = u.username;
-    });
-    return obj;
-  };
-  const list = postUser(users);
-
-  const postAvatar = (user) => {
-    let obj = {};
-    user.forEach((u) => {
-      obj[u.id] = u.avatar;
-    });
-    return obj;
-  };
-  const avt = postAvatar(users);
+	useEffect(() => {
+		dispatch(getImagesThunk());
+		history.push('/posts/');
+	}, [dispatch, history]);
 
   return (
     <div>

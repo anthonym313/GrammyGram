@@ -44,10 +44,10 @@ def edit_post(id, description):
     return post.to_dict()
 
 
-@post_routes.route('/<int:image_id>/comments')
-def all_comments_image(image_id):
+@post_routes.route('/<int:id>/comments')
+def all_comments_image(id):
     allComments = Comment.query.filter(
-        (Comment.image_id == image_id)).all()
+        (Comment.image_id == id)).all()
     # returns all comments based on current image path
     return jsonify([comment.to_dict() for comment in allComments])
 
