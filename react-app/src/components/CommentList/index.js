@@ -7,22 +7,15 @@ import { getAllComments, delComment } from '../../store/comment';
 import CommentForm from '../CommentForm';
 import EditCommentBtn from '../EditCommentForm/EditCommentBtn';
 
-const CommentList = () => {
+const CommentList = ({ image }) => {
 	const dispatch = useDispatch();
-	const { postId } = useParams();
 	const [users, setUsers] = useState([]);
-	const [render, setRender] = useState(false);
+	const [showForm, setShowForm] = useState(false);
 	const allComments = useSelector((state) => state.comment);
-	const currentUser = useSelector((state) => state.session.user);
-	const onePost = useSelector((state) => Object.values(state.feedPosts));
-	const image = onePost[0];
 	const userId = image.user_id;
+	const postId = image.id;
 	const newComments = Object.values(allComments);
-
-	const refresh = () => {
-		dispatch(getAllComments(postId));
-	};
-
+	console.log('commentList before thunk', postId);
 	useEffect(() => {
 		if (!postId) {
 			return;
@@ -36,18 +29,9 @@ const CommentList = () => {
 		fetchData();
 
 		dispatch(singleUser(userId));
+		console.log('commentList useEffect postId', postId);
 		dispatch(getAllComments(postId));
 	}, [dispatch, postId, userId]);
-
-	const handleDelete = (id) => {
-		dispatch(delComment(id));
-		dispatch(getAllComments(postId));
-		refresh();
-	};
-
-	const showEdit = (id) => {
-		setRender(true);
-	};
 
 	const postUser = (user) => {
 		let obj = {};
@@ -56,7 +40,18 @@ const CommentList = () => {
 		});
 		return obj;
 	};
+
+	const postAvatar = (user) => {
+		let obj = {};
+		user.forEach((u) => {
+			obj[u.id] = u.avatar;
+		});
+		return obj;
+	};
+
 	const list = postUser(users);
+
+	const avt = postAvatar(users);
 
 	return (
 		<div className='commentList-container'>
@@ -68,40 +63,24 @@ const CommentList = () => {
 							className='comment-user-submission'
 							key={list[comment.user_id]}
 						>
-							{' '}
-							Submitted by:
-							<NavLink to={`/users/${list[comment.user_id]}`}>
-								{list[comment.user_id]}
-							</NavLink>
+							<img
+								className='post-avatar'
+								src={avt[image.user_id]}
+								alt='avatar'
+							></img>
+							<p className='username-post'>
+								<NavLink to={`/users/${list[comment.user_id]}`}>
+									{list[comment.user_id]}
+								</NavLink>
+							</p>
 						</div>
 						<li key={comment.id}>{comment.comment}</li>
-						{/* <div>
-							{comment.user_id === currentUser.id ? (
-								<div>
-									<button
-										onClick={() => handleDelete(comment.id)}
-									>
-										Delete
-									</button>
-									<button onClick={() => setRender(true)}>
-										Edit
-									</button>
-									{render ? (
-										<div key={comment.id}>
-											<EditCommentForm
-												comment={comment}
-											/>
-										</div>
-									) : null}
-								</div>
-							) : null}
-						</div> */}
 						<div>
 							<EditCommentBtn comment={comment} />
 						</div>
 					</div>
 				))}
-			<CommentForm imageId={postId} />
+			{/* <CommentForm imageId={postId} /> */}
 		</div>
 	);
 };

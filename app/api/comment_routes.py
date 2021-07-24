@@ -46,21 +46,12 @@ def delete_comment(id):
 
 @comment_routes.route('/<int:id>/edit', methods=['PUT'])
 @login_required
-def edit_comment(id):
+def editComment(id):
     req = request.get_json()
-    # front end provides comment & user session ID
-    editComment = Comment(
-        user_id=current_user.id,
-        image_id=req['image_id'],
-        comment=req
-    )
-    db.session.add(editComment)
-    db.session.commit()
+    editComment = Comment.query.get(id)
+    print('backend1')
+    if (req['userId'] == current_user.id):
+        editComment.comment = req['comment']
+        db.session.commit()
+    print('backend1 statement')
     return editComment.to_dict()
-
-    #     req = request.get_json()
-    # newComment = Comment(
-    #     user_id=current_user.id,
-    #     image_id=req['image_id'],
-    #     comment=req['comment']
-    # )

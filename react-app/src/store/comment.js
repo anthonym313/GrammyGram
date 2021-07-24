@@ -1,6 +1,7 @@
 const POST_COMMENT = 'comment/POST_COMMENT';
 const GET_COMMENT = 'comment/GET_COMMENT';
 const DEL_COMMENT = 'comment/DEL_COMMENT';
+const PUT_COMMENT = 'comment/PUT_COMMENT';
 
 export const getComment = (comment) => ({
 	type: GET_COMMENT,
@@ -17,8 +18,14 @@ export const deleteComment = (comment) => ({
 	comment,
 });
 
+export const putComment = (comment) => ({
+	type: PUT_COMMENT,
+	comment,
+});
+
 // GET
 export const getAllComments = (imageId) => async (dispatch) => {
+	console.log('thunkId', imageId);
 	const res = await fetch(`/api/posts/${imageId}/comments`);
 	if (res.ok) {
 		const allComments = await res.json();
@@ -53,14 +60,19 @@ export const delComment = (id) => async (dispatch) => {
 	}
 };
 
-export const editComment = (newComment) => async (dispatch) => {
-	const res = await fetch(`/api/comments/${newComment.id}/edit`, {
+// PUT
+export const editComment = (id, userId, comment) => async (dispatch) => {
+	const res = await fetch(`/api/comments/${id}/edit`, {
 		method: 'PUT',
-		body: JSON.stringify({ newComment }),
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify({ id: id, userId: userId, comment: comment }),
 	});
 	if (res.ok) {
 		const newComment = await res.json();
-		dispatch(postComment(newComment));
+		// console.log('thunk', newComment);
+		dispatch(putComment(newComment));
 		return newComment;
 	}
 };
@@ -84,6 +96,10 @@ const commentReducer = (state = initialState, action) => {
 			newState = { ...state };
 			delete newState[action.id];
 			return { ...newState };
+
+		case PUT_COMMENT:
+			newState = { ...(state[action.comment.id] = action.comment) };
+			return newState;
 		default:
 			return state;
 	}
