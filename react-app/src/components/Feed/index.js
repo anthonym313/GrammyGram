@@ -9,6 +9,7 @@ import CommentForm from '../CommentForm';
 import LikesList from '../LikesList';
 import CommentList from '../CommentList';
 import Suggestions from '../Suggestions';
+import SmallSuggestions from "../SmallSuggestions";
 
 function Feed() {
 	const dispatch = useDispatch();
@@ -37,73 +38,50 @@ function Feed() {
 		history.push('/posts/');
 	}, [dispatch, history]);
 
-	const postUser = (user) => {
-		let obj = {};
-		user.forEach((u) => {
-			obj[u.id] = u.username;
-		});
-		return obj;
-	};
-	const list = postUser(users);
+  return (
+    <div>
+      <div className="feed-page">
+        <SmallSuggestions />
+        <Suggestions />
+        {pureIm &&
+          pureIm?.map((image) => (
+            <div key={image.id} className="post-container">
+              <div className="top-bar">
+                <img
+                  className="post-avatar"
+                  src={avt[image.user_id]}
+                  alt="avatar"
+                ></img>
+                <p className="username-post">{list[image.user_id]}</p>
+              </div>
+              <div className="image-container">
+                <img
+                  src={image?.image_url}
+                  alt="feed-images"
+                  className="the-image"
+                />
+              </div>
+              <div className="post-content">
+                <div className="post-actions"></div>
 
-	const postAvatar = (user) => {
-		let obj = {};
-		user.forEach((u) => {
-			obj[u.id] = u.avatar;
-		});
-		return obj;
-	};
-	const avt = postAvatar(users);
+                <div className="post-description">
+                  <div className="info-container">
+                    <p className="username-post">{list[image.user_id]}</p>
 
-	return (
-		<div className='feed-page'>
-			{pureIm &&
-				pureIm?.map((image) => (
-					<div key={image.id} className='post-container'>
-						<div className='top-bar'>
-							<img
-								className='post-avatar'
-								src={avt[image.user_id]}
-								alt='avatar'
-							></img>
-							<p className='username-post'>
-								{list[image.user_id]}
-							</p>
-						</div>
-						<div className='image-container'>
-							<img
-								src={image?.image_url}
-								alt='feed-images'
-								className='the-image'
-							/>
-						</div>
-						<div className='post-content'>
-							<div className='post-actions'></div>
+                    <p className="caption-post">{image.description}</p>
+                  </div>
+                  <div>
+                    <EditButton image={image} />
+                  </div>
+                </div>
 
-							<div className='post-description'>
-								<div className='info-container'>
-									<p className='username-post'>
-										{list[image.user_id]}
-									</p>
-
-									<p className='caption-post'>
-										{image.description}
-									</p>
-								</div>
-								<div>
-									<EditButton image={image} />
-								</div>
-							</div>
-
-							<div className='comments'>
-								<CommentList image={image} />
-							</div>
-							<div className='post-comment'> </div>
-						</div>
-					</div>
-				))}
-			<Suggestions />
-		</div>
-	);
+                <div className="comments"></div>
+                <div className="post-comment"> </div>
+              </div>
+            </div>
+          ))}
+      </div>
+    </div>
+  );
 }
 export default Feed;

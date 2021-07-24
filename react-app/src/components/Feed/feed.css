@@ -1,11 +1,14 @@
 .feed-page {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
+  /* flex-; */
+  align-items: flex-end;
+  width: 65%;
 }
 .post-container {
   width: 615px;
   flex: 1;
-  margin-left: 20%;
+  /* margin-left: 20%; */
   border: 1px solid #c0bfbf;
   border-radius: 3px;
   margin-bottom: 60px;
@@ -24,7 +27,7 @@
   height: 70px;
   display: flex;
   align-items: flex-start;
-  justify-content: flex-starts;
+  justify-content: flex-start;
   margin-left: 15px;
   margin-top: 15px;
 }

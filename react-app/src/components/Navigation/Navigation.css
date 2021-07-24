@@ -39,6 +39,7 @@ li {
 
 .left li {
   float: left;
+  margin-left: 1.5em;
 }
 
 .right li {
@@ -73,6 +74,7 @@ li {
 
 .navlinks {
   /* border: 1px solid black; */
+  padding-top: 15px;
   margin-bottom: 20px;
   background-color: #191716;
   /* opacity: .7; */
