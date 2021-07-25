@@ -14,7 +14,6 @@ function SinglePost() {
 	const { postId } = useParams();
 	const userId = image.user_id;
 
-	console.log(user.username);
 	useEffect(() => {
 		dispatch(getSingleImageThunk(Number(postId)));
 		dispatch(singleUser(userId));

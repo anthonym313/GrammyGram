@@ -17,7 +17,6 @@ const EditCommentForm = ({ comment }) => {
     return (
         <form onSubmit={onSubmit}>
             <div>
-                {console.log('comment div', comment.comment)}
                 <textarea
                     label='Edit Comment'
                     placeholder={comment.comment}

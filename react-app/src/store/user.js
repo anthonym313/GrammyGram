@@ -1,7 +1,7 @@
 const RANDOM_USER = 'user/RANDOM_USER';
 const GET_USER = 'user/GET_USER';
 const ALL_USERS = 'user/ALL_USERS';
-const SMALLGROUP_USER = 'user/SMALLGROUP_USER'
+const SMALLGROUP_USER = 'user/SMALLGROUP_USER';
 
 const randomUser = (randomList) => ({
 	type: RANDOM_USER,
@@ -10,7 +10,7 @@ const randomUser = (randomList) => ({
 const smallGroupUser = (list) => ({
 	type: SMALLGROUP_USER,
 	list,
-})
+});
 
 const getUser = (user) => ({
 	type: GET_USER,
@@ -51,7 +51,6 @@ export const getAllUsers = () => async (dispatch) => {
 	const res = await fetch('/api/users/');
 	if (res.ok) {
 		const users = await res.json();
-		console.log('thunk', users);
 		dispatch(allUsers(users));
 	}
 };
@@ -90,8 +89,8 @@ export function allUsersReducer(state = initialState3, action) {
 	}
 }
 
-export function smallGroupReducer (state = initialState, action){
-	switch (action.type){
+export function smallGroupReducer(state = initialState, action) {
+	switch (action.type) {
 		case SMALLGROUP_USER:
 			return action.list;
 		default:
