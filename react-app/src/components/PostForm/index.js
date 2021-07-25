@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-// import { Redirect } from 'react-router-dom';
-
 import "./postform.css";
 import { postImageThunk, getImagesThunk } from "../../store/post";
 import { useHistory } from "react-router-dom";
 
 const PostForm = () => {
-  // const [errors, setErrors] = useState([]);
   const history = useHistory();
   const [imageUrl, setImageUrl] = useState("");
   const [description, setDescription] = useState("");

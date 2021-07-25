@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getSingleImageThunk } from "../../store/post";
-import { singleUser } from "../../store/user";
 import { useParams, useHistory } from "react-router-dom";
 import CommentList from "../CommentList";
-import EditButton from "../Feed/EditButton";
 import "../Feed/feed.css";
 function SinglePost() {
   const dispatch = useDispatch();
   const userArr = useSelector((state) => Object.values(state.singleUser));
   const onePost = useSelector((state) => Object.values(state.feedPosts));
-  const loggedIn = useSelector((state) => state.session).user;
   const { postId } = useParams();
   const history = useHistory();
   const image = onePost[0];

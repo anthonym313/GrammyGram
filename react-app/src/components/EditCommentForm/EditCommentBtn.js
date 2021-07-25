@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import EditDesc from '../EditDesc';
 import { useDispatch } from 'react-redux';
-
 import { getAllComments, delComment } from '../../store/comment';
 import EditCommentForm from './index';
 
-// import { useHistory } from "react-router";
 
 function EditButton({ comment }) {
 	const [showMenu, setShowMenu] = useState(false);

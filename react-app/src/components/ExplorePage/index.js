@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {Link} from 'react-router-dom';
 import { getImagesThunk } from "../../store/post";
 import "./ExplorePage.css";
-
 export default function ExplorePage() {
   const allposts = useSelector((state) => Object.values(state.feedPosts));
   const dispatch = useDispatch();
@@ -11,16 +9,13 @@ export default function ExplorePage() {
   useEffect(() => {
     dispatch(getImagesThunk());
   }, [dispatch]);
-
   return (
     <div id="explore">
       {imagesArr?.map((image) => {
-        {console.log(image)}
         return (
           <div className="explore-image">
-            <Link to={`/posts/${image.id}`}>
-              <img src={image.image_url} width="300" alt="explore-post"></img>
-            </Link>
+            <img src={image.image_url} width="300" alt="explore-post"></img>
+            <div className="explore-image-overlay"></div>
           </div>
         );
       })}

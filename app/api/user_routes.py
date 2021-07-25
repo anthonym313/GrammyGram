@@ -18,7 +18,6 @@ def users():
 @login_required
 def user(id):
     user = User.query.get(id)
-    # print('SINGLUAR ~~~~~ user', user.to_dict())
     return jsonify([user.to_dict()])
 
 

@@ -12,8 +12,6 @@ like_routes = Blueprint('likes', __name__)
 def all_likes_image(image_id):
     allLikes = Like.query.filter(
         Like.image_id == image_id).all()
-
-    # returns all likes based on current image
     return jsonify([likeObj.to_dict() for likeObj in allLikes
                     if likeObj.like is True])
 
@@ -24,8 +22,6 @@ def all_likes_image(image_id):
 def all_dislikes_image(image_id):
     allLikes = Like.query.filter(
         Like.image_id == image_id).all()
-
-    # returns all likes based on current image
     return jsonify([likeObj.to_dict() for likeObj in allLikes
                     if likeObj.like is False])
 

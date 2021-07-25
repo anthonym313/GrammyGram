@@ -74,13 +74,10 @@ li {
 }
 
 .navlinks {
-  /* border: 1px solid black; */
   padding-top: 15px;
   margin-bottom: 20px;
   background-color: #191716;
-  /* opacity: .7; */
-  /* transition: all 0.2s; */
-  /* background-color: #f1bb4e; */
+
 }
 
 .logo {

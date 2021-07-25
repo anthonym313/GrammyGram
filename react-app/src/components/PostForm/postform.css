@@ -1,13 +1,5 @@
 .modal3 {
-  /* position: fixed;
-  width: 260px;
-  height: 180px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.9);
-  opacity: .9; */
+
   display: flex;
   flex-direction: column;
   justify-content: center;

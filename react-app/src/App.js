@@ -8,7 +8,6 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import PostForm from "./components/PostForm";
-import CommentList from "./components/CommentList";
 import Feed from "./components/Feed";
 import NotFoundPage from "./components/NotFoundPage";
 import ExplorePage from "./components/ExplorePage";

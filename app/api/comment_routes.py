@@ -23,7 +23,6 @@ def index():
 @comment_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
 def delete_comment(id):
-    # front end provides comment & user session ID
     deleteComment = Comment.query.get(id)
     if (deleteComment.user_id == current_user.id):
         db.session.delete(deleteComment)

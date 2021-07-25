@@ -1,6 +1,5 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-// import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
 
 export default function DemoUser(){
