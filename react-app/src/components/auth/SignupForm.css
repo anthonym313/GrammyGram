@@ -1,5 +1,6 @@
 .input_field {
   margin: 10px;
+  width: 200px;
 }
 
 .form_container {
@@ -16,9 +17,9 @@
   border-radius: 2em;
   box-sizing: border-box;
   text-decoration: none;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 300;
-  color: #FFFFFF;
+  color: #ffffff;
   text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
   text-align: center;
   transition: all 0.2s;
@@ -28,7 +29,7 @@
   border-color: rgba(255, 255, 255, 1);
 }
 
-@media all and (max-width:30em) {
+@media all and (max-width: 30em) {
   .button {
     display: block;
     margin: 0.2em auto;
@@ -36,14 +37,29 @@
 }
 
 .modal2 {
+  /* display: flex;
+  flex-direction: column;
   position: fixed;
   width: 300px;
-  height: 240px;
+  height: 300px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: white;
   box-shadow: 0 0 30px 8px rgba(0, 0, 0, 0.2);
-  opacity: .9;
-  padding-left: 20px;
+  opacity: 0.9;
+  padding-left: 20px; */
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-49%, -50%);
+  background: white;
+  box-shadow: 0 0 30px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0.9;
 }

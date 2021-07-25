@@ -13,10 +13,8 @@ function Feed() {
   const dispatch = useDispatch();
 
   const history = useHistory();
-
-  const allPosts = useSelector((state) => Object.values(state.feedPosts));
   const loggedIn = useSelector((state) => state.session).user;
-
+  const allPosts = useSelector((state) => Object.values(state.feedPosts));
   const pureIm = allPosts[0].posts;
   const pureCmt = allPosts[0].comments;
   const [users, setUsers] = useState([]);
@@ -30,10 +28,8 @@ function Feed() {
     fetchData();
   }, []);
 
-
   useEffect(() => {
     dispatch(getImagesThunk());
-
   }, [dispatch]);
 
   const postUser = (user) => {

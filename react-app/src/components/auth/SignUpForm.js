@@ -40,7 +40,7 @@ const SignUpForm = () => {
   };
 
   if (user) {
-    return <Redirect to="/posts" />;
+    return <Redirect to="/posts/" />;
   }
 
   return (
@@ -86,7 +86,7 @@ const SignUpForm = () => {
         </div>
       </div>
       <div>
-        <label>Password</label>
+        {/* <label>Password</label> */}
         <div className="input_field">
           {" "}
           <span>
@@ -102,7 +102,7 @@ const SignUpForm = () => {
         </div>
       </div>
       <div>
-        <label>Repeat Password</label>
+        {/* <label>Repeat Password</label> */}
         <div className="input_field">
           {" "}
           <span>
