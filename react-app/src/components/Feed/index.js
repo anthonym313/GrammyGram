@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory} from "react-router-dom";
-import { getImagesThunk, deleteImageThunk } from '../../store/post';
+import { useHistory, Link } from "react-router-dom";
+import { getImagesThunk, deleteImageThunk } from "../../store/post";
 import EditButton from "./EditButton";
+import CommentForm from "../CommentForm";
 import "./feed.css";
-import CommentForm from '../CommentForm';
-import LikesList from '../LikesList';
-import Suggestions from '../Suggestions';
+import Suggestions from "../Suggestions";
 import SmallSuggestions from "../SmallSuggestions";
-
 
 function Feed() {
   const dispatch = useDispatch();
@@ -17,6 +15,7 @@ function Feed() {
 
   const allPosts = useSelector((state) => Object.values(state.feedPosts));
   const pureIm = allPosts[0].posts;
+  const pureCmt = allPosts[0].comments;
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -32,7 +31,6 @@ function Feed() {
     dispatch(getImagesThunk());
     history.push("/posts/");
   }, [dispatch, history]);
-
 
   const postUser = (user) => {
     let obj = {};
@@ -69,11 +67,13 @@ function Feed() {
                 <p className="username-post">{list[image.user_id]}</p>
               </div>
               <div className="image-container">
-                <img
-                  src={image?.image_url}
-                  alt="feed-images"
-                  className="the-image"
-                />
+                <Link to={`/posts/${image?.id}`}>
+                  <img
+                    src={image?.image_url}
+                    alt="feed-images"
+                    className="the-image"
+                  />
+                </Link>
               </div>
               <div className="post-content">
                 <div className="post-actions"></div>
@@ -89,8 +89,25 @@ function Feed() {
                   </div>
                 </div>
 
-                <div className="comments"></div>
-                <div className="post-comment"> </div>
+                <div className="comments">
+                  {pureCmt &&
+                    pureCmt?.map((comment) => (
+                      <div>
+                        {comment.image_id === image.id && (
+                          <div className="post-description" id='post-desc-id'>
+                            <p className="username-post">
+                              {list[comment.user_id]}
+                            </p>
+                            <p className="caption-post">{comment.comment}</p>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                </div>
+                {/* <CommentList /> */}
+                <div className="post-comment">
+                  <CommentForm imageId={image.id} />
+                </div>
               </div>
             </div>
           ))}

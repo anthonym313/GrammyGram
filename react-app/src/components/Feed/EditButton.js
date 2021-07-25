@@ -79,7 +79,7 @@ function EditButton({ image }) {
           </button>
           <button
             // id="edit-btn"
-            className="delete-btn edit-btn"
+            className="delete-btn edit-btn" 
             onClick={() => deletePost(image.id)}
           >
             Delete

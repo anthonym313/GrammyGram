@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import './CommentForm.css';
-
+import "../Feed/feed.css";
 import { newComment } from '../../store/comment';
 
 const CommentForm = ({ imageId }) => {
@@ -28,16 +27,15 @@ const CommentForm = ({ imageId }) => {
 	};
 
 	return (
-		<form onSubmit={onSubmit}>
-			<div>
+		<form onSubmit={onSubmit} className='comment-post-form'>
 				<textarea
 					label='add a comment'
 					placeholder='Add a comment...'
 					value={comment}
-					onChange={updateComment}
+				onChange={updateComment}
+				className='input-stretch'
 				></textarea>
-				<button type='submit'>Post</button>
-			</div>
+				<button className='stretch-btn' type='submit'>Post</button>
 		</form>
 	);
 };

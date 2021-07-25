@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 import DemoUser from "../DemoUser";
 import "./Navigation.css";
@@ -16,23 +16,17 @@ const NavBar = () => {
         <li className="navbar space"></li>
         <li className="nav1">
           <NavLink to="/posts" exact={true} activeClassName="active">
-            <div
-              className="navbar-home navo1"
-            ></div>
+            <div className="navbar-home navo1"></div>
           </NavLink>
         </li>
         <li className="nav1">
           <NavLink to="/posts/upload" exact={true} activeClassName="active">
-            <div
-              className="nav-upload navo2"
-            ></div>
+            <div className="nav-upload navo2"></div>
           </NavLink>
         </li>
         <li className="nav1">
           <NavLink to="/explore" exact={true} activeClassName="active">
-            <div
-              className="nav-explore navo3"
-            ></div>
+            <div className="nav-explore navo3"></div>
           </NavLink>
         </li>
         <li>
@@ -50,16 +44,12 @@ const NavBar = () => {
             activeClassName="active"
             className="login"
           >
-            <div
-              className="navbar-login nav1 navo4"
-            ></div>
+            <div className="navbar-login nav1 navo4"></div>
           </NavLink>
         </li>
         <li className="nav-signup nav1">
           <NavLink to="/sign-up" exact={true} activeClassName="active">
-            <div
-              className="navbar-signup navo5"
-            ></div>
+            <div className="navbar-signup navo5"></div>
           </NavLink>
         </li>
         <li>
@@ -76,7 +66,9 @@ const NavBar = () => {
             {/* <NavLink to='/' exact={true} activeClassName='active'>
 							{/* <img src='grammygramlogo.png'></img> */}
             {/* </NavLink> */}
-            <p className="logo">GrammyGram</p>
+            <Link to="/posts">
+              <p className="logo">GrammyGram</p>
+            </Link>
           </li>
         </div>
         <div className="navbar right">{sessionLinks}</div>

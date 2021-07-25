@@ -22,7 +22,11 @@ def index():
 @login_required
 def get_all_posts():
     posts = Image.query.order_by(Image.id.desc())
-    return {'posts': [post.to_dict() for post in posts]}
+    comments = Comment.query.order_by(Comment.id.desc())
+    return {
+        'posts': [post.to_dict() for post in posts],
+        'comments': [comment.to_dict() for comment in comments]
+    }
 
 
 @post_routes.route('/<int:id>', methods=['DELETE'])
@@ -38,7 +42,6 @@ def del_post(id):
 @login_required
 def edit_post(id, description):
     post = Image.query.get(id)
-    # print('****************', post)
     post.description = description
     db.session.commit()
     return post.to_dict()

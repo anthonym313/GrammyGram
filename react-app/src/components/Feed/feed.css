@@ -60,19 +60,6 @@ body {
   margin-right: 20px;
 }
 
-/* .edit-menu {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  align-content: flex-start;
-  height: 50px;
-  width: 70px;
-  margin-right: 15px;
-  margin-top: 5px;
-} */
-
 .info-container {
   display: flex;
   flex-wrap: wrap;
@@ -97,13 +84,60 @@ body {
   transition-duration: 0.4s;
 }
 
-/* .edit-dropdown {
-  position: absolute;
-  flex-wrap: wrap;
+.comments {
+  height: 130px;
+  overflow-y: scroll;
+}
+
+#post-container-id {
+  margin-left: 30%;
+}
+
+.post-comment {
   display: flex;
-  justify-content: space-around;
-  align-items: flex-end;
-  height: 30px;
-  width: 100px;
-  background-color: blue;
-} */
+  margin-top: 15px;
+  border: 1px solid #c0bfbf;
+  border-bottom: 0;
+  border-left: 0;
+  border-right: 0;
+}
+.input-stretch {
+  flex-grow: 1;
+  border: 0;
+  background-color: rgb(230, 230, 233);
+}
+
+.comment-post-form {
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  flex-grow: 1;
+}
+
+.stretch-btn {
+  background-color: transparent;
+  color: #313131;
+  transition-duration: 0.3s;
+  text-decoration: none;
+  border: 0;
+  width: 60px;
+  align-items: center;
+  /* border-radius: 6px; */
+}
+
+.stretch-btn:hover {
+  color: white;
+  background-color: #ffb700;
+}
+
+#post-desc-id {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+#user-desc-id, #capt-desc-id {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}

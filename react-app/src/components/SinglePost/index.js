@@ -4,6 +4,8 @@ import { getSingleImageThunk } from "../../store/post";
 import { singleUser } from "../../store/user";
 import { useParams } from "react-router-dom";
 import CommentList from "../CommentList";
+import EditButton from "../Feed/EditButton";
+import "../Feed/feed.css";
 
 function SinglePost() {
   const dispatch = useDispatch();
@@ -23,19 +25,34 @@ function SinglePost() {
   }, [dispatch, postId, userId]);
 
   return (
-    <ul>
-      <h3>Submitted by: {user.username}</h3>
-      <li>
-        <strong>Post Id</strong> {postId}
-      </li>
+    <div className="post-container" id="post-container-id">
+      {/* <div className="top-bar">
+        <img
+          className="post-avatar"
+          src={avt[image.user_id]}
+          alt="avatar"
+        ></img>
+        <p className="username-post">{list[image.user_id]}</p>
+      </div> */}
+      <div className="top-bar">
+        <p className="username-post">{user.username}</p>
+      </div>
       <div className="image-container">
         <img src={image?.image_url} alt="feed-images" className="the-image" />
       </div>
-      <li>Caption: {image?.description}</li>
+      <div className="post-description">
+        <div className="info-container">
+          <p className="username-post">{user.username}</p>
+          <p className="caption-post">{image?.description}</p>
+        </div>
+        <div>
+          <EditButton image={image} />
+        </div>
+      </div>
       <div>
         <CommentList />
       </div>
-    </ul>
+    </div>
   );
 }
 export default SinglePost;

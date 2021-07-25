@@ -12,12 +12,10 @@ const EditCommentForm = ({ comment }) => {
 	const onSubmit = (e) => {
 		e.preventDefault();
 
-		dispatch(
-			editComment({
-				image_id: comment.image_id,
-				user_id: loggedInUser,
-				comment: editOneComment,
-			})
+		dispatch(editComment(comment.id, editOneComment,
+				comment.image_id,
+				// user_id: loggedInUser,
+			)
 		);
 		setEditOneComment('');
 	};

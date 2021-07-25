@@ -2,7 +2,7 @@
 const POST_IMAGE = "post/POST_IMAGE";
 const DELETE_IMAGE = "post/DELETE_IMAGE";
 const GET_FEED = "post/GET_FEED";
-const UPDATE_IMAGE = "post/UPDATE_IMAGE";
+// const UPDATE_IMAGE = "post/UPDATE_IMAGE";
 
 export const getFeed = (image) => {
   return {
@@ -20,10 +20,10 @@ export const deleteImage = (id) => ({
   id,
 });
 
-export const updateImage = (image) => ({
-  type: UPDATE_IMAGE,
-  image,
-});
+// export const updateImage = (image) => ({
+//   type: UPDATE_IMAGE,
+//   image,
+// });
 
 //CREATE
 export const postImageThunk = (payload) => async (dispatch) => {
@@ -37,6 +37,8 @@ export const postImageThunk = (payload) => async (dispatch) => {
   const newPost = await res.json();
   dispatch(postImage(newPost));
 };
+
+//READ
 export const getImagesThunk = () => async (dispatch) => {
   const res = await fetch("/api/posts/");
 
@@ -106,11 +108,11 @@ const imageReducer = (state = initialState, action) => {
       newState = { ...state };
       delete newState[action.id];
       return { ...newState };
-    case UPDATE_IMAGE:
-      newState = {
-        ...(state[action.image.id] = action.image),
-      };
-      return newState;
+    // case UPDATE_IMAGE:
+    //   newState = {
+    //     ...(state[action.image.id] = action.image),
+    //   };
+    //   return newState;
     default:
       return state;
   }
