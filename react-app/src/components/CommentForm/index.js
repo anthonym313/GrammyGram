@@ -11,11 +11,7 @@ const CommentForm = ({ imageId }) => {
   const [comment, setComment] = useState("");
   const loggedInUser = useSelector((state) => state.session.user);
   const history = useHistory()
-  // const updateComment = (e) => {
-  //   setComment(e.target.value);
-  // };
-
-  //   console.log(`______________`, imageId);
+ 
   const onSubmit = (e) => {
     e.preventDefault();
 
