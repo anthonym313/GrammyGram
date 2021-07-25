@@ -14,7 +14,6 @@ export default function ExplorePage() {
   return (
     <div id="explore">
       {imagesArr?.map((image) => {
-        // {console.log(image)}
         return (
           <div className="explore-image">
             <img src={image.image_url} width="300" alt="explore-post"></img>

@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
 import EditDesc from "../EditDesc";
 import { useDispatch } from "react-redux";
-
 import { getImagesThunk, deleteImageThunk } from "../../store/post";
 
-// import { useHistory } from "react-router";
 
 function EditButton({ image }) {
   const [showMenu, setShowMenu] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const dispatch = useDispatch();
-  
+
     const refresh = () => {
       dispatch(getImagesThunk());
     };
@@ -76,7 +74,6 @@ function EditButton({ image }) {
             Edit
           </button>
           <button
-            // id="edit-btn"
             className="delete-btn edit-btn"
             onClick={() => deletePost(image.id)}
           >

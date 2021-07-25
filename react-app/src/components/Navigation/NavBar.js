@@ -63,9 +63,6 @@ const NavBar = () => {
       <ul className="navbar navlinks">
         <div className="navbar left">
           <li className="navbar logo">
-            {/* <NavLink to='/' exact={true} activeClassName='active'>
-							{/* <img src='grammygramlogo.png'></img> */}
-            {/* </NavLink> */}
             <Link to="/posts">
               <p className="logo">GrammyGram</p>
             </Link>

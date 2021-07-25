@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { updateImageThunk, getImagesThunk } from "../../store/post";
 import "./EditDesc.css";
-// import { useParams } from "react-router-dom";
 
 function EditDesc({ image }) {
   const dispatch = useDispatch();

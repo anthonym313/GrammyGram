@@ -17,7 +17,6 @@
 .random-holder {
   display: flex;
   justify-content: flex-start;
-  /* margin-left: 20%; */
   border: 1px solid #c0bfbf;
   border-radius: 3px;
   margin-bottom: 2em;

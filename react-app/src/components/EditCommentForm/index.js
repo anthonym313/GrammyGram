@@ -1,20 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import '../Feed/feed.css'
 import { editComment } from '../../store/comment';
 
 const EditCommentForm = ({ comment }) => {
 	const dispatch = useDispatch();
 	const [editOneComment, setEditOneComment] = useState(comment.comment);
-	const [showForm, setShowForm] = useState(false);
-	const loggedInUser = useSelector((state) => state.session.user);
 
 	const onSubmit = (e) => {
 		e.preventDefault();
 
 		dispatch(editComment(comment.id, editOneComment,
 				comment.image_id,
-				// user_id: loggedInUser,
 			)
 		);
 		setEditOneComment('');

@@ -51,7 +51,6 @@ def edit_post(id, description):
 def all_comments_image(image_id):
     allComments = Comment.query.filter(
         (Comment.image_id == image_id)).all()
-    # returns all comments based on current image path
     return jsonify([comment.to_dict() for comment in allComments])
 
 
