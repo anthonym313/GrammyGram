@@ -30,7 +30,7 @@ function Feed() {
 
   useEffect(() => {
     dispatch(getImagesThunk());
-  }, [dispatch]);
+  }, []);
 
   const postUser = (user) => {
     let obj = {};
