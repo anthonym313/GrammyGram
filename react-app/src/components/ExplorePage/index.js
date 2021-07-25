@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import {Link} from 'react-router-dom';
 import { getImagesThunk } from "../../store/post";
 import "./ExplorePage.css";
 export default function ExplorePage() {
@@ -14,8 +15,9 @@ export default function ExplorePage() {
       {imagesArr?.map((image) => {
         return (
           <div className="explore-image">
-            <img src={image.image_url} width="300" alt="explore-post"></img>
-            <div className="explore-image-overlay"></div>
+              <Link to={`/posts/${image.id}`}>
+                <img src={image.image_url} width="300" alt="explore-post"></img>
+              </Link>
           </div>
         );
       })}
