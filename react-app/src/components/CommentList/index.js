@@ -16,6 +16,8 @@ const CommentList = () => {
   const image = onePost[0];
   const userId = image.user_id;
   const newComments = Object.values(allComments);
+  const loggedIn = useSelector((state) => state.session).user;
+
   const refresh = () => {
     dispatch(getAllComments(postId));
   };
@@ -37,14 +39,14 @@ const CommentList = () => {
     dispatch(getAllComments(postId));
     refresh();
   };
- const openEdit = () => {
-   if (showEdit) return;
-   setShowEdit(true);
- };
- const closeEdit = () => {
-   if (!showEdit) return;
-   setShowEdit(false);
- };
+  const openEdit = () => {
+    if (showEdit) return;
+    setShowEdit(true);
+  };
+  const closeEdit = () => {
+    if (!showEdit) return;
+    setShowEdit(false);
+  };
   const postUser = (user) => {
     let obj = {};
     user.forEach((u) => {
@@ -70,21 +72,25 @@ const CommentList = () => {
                   <p className="caption-post" id="capt-desc-id">
                     {comment.comment}
                   </p>
-                  <button
-                    className="edit-btn editing-post"
-                    id="edit-btn"
-                    onClick={showEdit === true ? closeEdit : openEdit}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    className="delete-btn edit-btn"
-                    id="edit-btn"
-                    onClick={() => handleDelete(comment.id)}
-                  >
-                    Delete
-                  </button>
-                   {showEdit && <EditCommentForm comment={comment} />}
+                  {loggedIn?.id === comment?.user_id && (
+                    <div>
+                      <button
+                        className="edit-btn editing-post"
+                        id="edit-btn"
+                        onClick={showEdit === true ? closeEdit : openEdit}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        className="delete-btn edit-btn"
+                        id="edit-btn"
+                        onClick={() => handleDelete(comment.id)}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  )}
+                  {showEdit && <EditCommentForm comment={comment} />}
                 </div>
               </div>
             </div>
