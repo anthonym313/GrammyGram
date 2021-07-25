@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
+import '../Feed/feed.css'
 import { editComment } from '../../store/comment';
 
 const EditCommentForm = ({ comment }) => {
@@ -32,7 +32,7 @@ const EditCommentForm = ({ comment }) => {
 					value={editOneComment}
 					onChange={(e) => setEditOneComment(e.target.value)}
 				></textarea>
-				<button type='submit'>Post</button>
+				<button className='stretch-btn' id='edit-btn'type='submit'>Post</button>
 			</div>
 		</form>
 	);

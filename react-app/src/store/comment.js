@@ -59,7 +59,7 @@ export const delComment = (id) => async (dispatch) => {
   }
 };
 
-export const editComment = (id, comment, image_id) => async (dispatch) => {
+export const editComment = (id, comment) => async (dispatch) => {
   const res = await fetch(`/api/comments/${id}/edit/${comment}`, {
     method: "PUT",
     headers: {

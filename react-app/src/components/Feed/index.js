@@ -7,6 +7,7 @@ import CommentForm from "../CommentForm";
 import "./feed.css";
 import Suggestions from "../Suggestions";
 import SmallSuggestions from "../SmallSuggestions";
+import { getAllComments } from "../../store/comment";
 
 function Feed() {
   const dispatch = useDispatch();
@@ -14,6 +15,8 @@ function Feed() {
   const history = useHistory();
 
   const allPosts = useSelector((state) => Object.values(state.feedPosts));
+  const loggedIn = useSelector((state) => state.session).user;
+
   const pureIm = allPosts[0].posts;
   const pureCmt = allPosts[0].comments;
   const [users, setUsers] = useState([]);
@@ -27,10 +30,11 @@ function Feed() {
     fetchData();
   }, []);
 
+
   useEffect(() => {
     dispatch(getImagesThunk());
-    history.push("/posts/");
-  }, [dispatch, history]);
+
+  }, [dispatch]);
 
   const postUser = (user) => {
     let obj = {};
@@ -82,11 +86,15 @@ function Feed() {
                   <div className="info-container">
                     <p className="username-post">{list[image.user_id]}</p>
 
-                    <p className="caption-post">{image.description}</p>
+                    <p className="caption-post">
+                      {image.description.substring(0, 60) + "..."}
+                    </p>
                   </div>
-                  <div>
-                    <EditButton image={image} />
-                  </div>
+                  {loggedIn?.id === image.user_id && (
+                    <div>
+                      <EditButton image={image} />
+                    </div>
+                  )}
                 </div>
 
                 <div className="comments">
@@ -94,7 +102,7 @@ function Feed() {
                     pureCmt?.map((comment) => (
                       <div>
                         {comment.image_id === image.id && (
-                          <div className="post-description" id='post-desc-id'>
+                          <div className="post-description" id="post-desc-id">
                             <p className="username-post">
                               {list[comment.user_id]}
                             </p>
@@ -104,7 +112,7 @@ function Feed() {
                       </div>
                     ))}
                 </div>
-                {/* <CommentList /> */}
+
                 <div className="post-comment">
                   <CommentForm imageId={image.id} />
                 </div>
