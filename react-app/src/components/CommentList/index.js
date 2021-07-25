@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { singleUser } from "../../store/user";
 import { getAllComments, delComment } from "../../store/comment";
@@ -14,14 +13,10 @@ const CommentList = () => {
   const dispatch = useDispatch();
   const { postId } = useParams();
   const [users, setUsers] = useState([]);
-  const [render, setRender] = useState(false);
-  const [showMenu, setShowMenu] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const allComments = useSelector((state) => state.comment);
-  const currentUser = useSelector((state) => state.session.user);
   const onePost = useSelector((state) => Object.values(state.feedPosts));
   const image = onePost[0];
-  console.log('111111111',image)
   const userId = image.user_id;
   const newComments = Object.values(allComments);
 
@@ -55,9 +50,7 @@ const CommentList = () => {
    if (showEdit) return;
    setShowEdit(true);
  };
-//  const showEdit = (id) => {
-//    setRender(true);
-//  };
+
 
  const closeEdit = () => {
    if (!showEdit) return;

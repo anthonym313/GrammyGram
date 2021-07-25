@@ -14,15 +14,10 @@ function SinglePost() {
   const loggedIn = useSelector((state) => state.session).user;
   const { postId } = useParams();
   const history = useHistory();
-
-  // console.log('$$$$$$$$$$$$$$$', typeof(postId), postId);
   const image = onePost[0];
   const user = userArr[0];
-  // const userId = image.user_id;
 
   useEffect(() => {
-    // e.preventDefault();
-    // dispatch(singleUser(userId));
     dispatch(getSingleImageThunk(Number(postId)));
     history.push(`/posts/${postId}`);
   }, [dispatch, postId, history]);

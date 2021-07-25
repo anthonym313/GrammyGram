@@ -1,17 +1,12 @@
 const POST_COMMENT = "comment/POST_COMMENT";
 const GET_COMMENT = "comment/GET_COMMENT";
 const DEL_COMMENT = "comment/DEL_COMMENT";
-// const UPDATE_COMMENT = "comment/UPDATE_COMMENT";
 
 export const getComment = (comment) => ({
   type: GET_COMMENT,
   comment,
 });
 
-// export const updateComment = (comment) => ({
-// 	type: UPDATE_COMMENT,
-// 	comment,
-// });
 
 export const postComment = (comment) => ({
   type: POST_COMMENT,
