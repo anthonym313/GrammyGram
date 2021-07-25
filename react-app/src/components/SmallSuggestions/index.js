@@ -15,16 +15,14 @@ export default function SmallSuggestions() {
 
   return (
     <div className="small-container">
-
-        <div className='panel-user-info'>
+      <div className="panel-user-info">
         <img src={user.avatar} alt="small avi" className="user-avi"></img>
         <p className="profile-user">{user.username}</p>
-        <div className="small-holder">
-          </div>
-        </div>
+        <div className="small-holder"></div>
+      </div>
       <div className="user-profile-holder">
-          <div className='panel-random-info'>
-
+        <div className="panel-random-info">
+          <p className="sug-for-you"> Suggestions for you</p>
           {smallRandomUserList?.map((user) => {
             return (
               <div className="small-random-div">
@@ -33,13 +31,11 @@ export default function SmallSuggestions() {
                   className="small-random-usr"
                   alt="random-user"
                 ></img>
-                <p className="small-random-username">
-                  {user.username}
-                </p>
+                <p className="small-random-username">{user.username}</p>
               </div>
             );
           })}
-          </div>
+        </div>
       </div>
     </div>
   );

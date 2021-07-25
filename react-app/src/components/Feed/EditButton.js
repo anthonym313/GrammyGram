@@ -10,9 +10,7 @@ function EditButton({ image }) {
   const [showMenu, setShowMenu] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(uploadActions.getPostThunk(id));
-  // }, [dispatch, id]);
+  
     const refresh = () => {
       dispatch(getImagesThunk());
     };

@@ -61,33 +61,34 @@ function EditButton({ comment }) {
 	}, [showEdit]);
 
 	return (
-		<div className='edit-menu'>
-			<button
-				className='edit-button'
-				id='elipses'
-				onClick={showMenu === true ? closeMenu : openMenu}
-			></button>
+    <div className="edit-menu">
+      <button
+        className="edit-button"
+        id="elipses"
+        onClick={showMenu === true ? closeMenu : openMenu}
+      ></button>
 
-			{showMenu && (
-				<div className='edit-dropdown'>
-					<button
-						onClick={showEdit === true ? closeEdit : openEdit}
-						className='edit-btn editing-post'
-						id='edit-btn'
-					>
-						Edit
-					</button>
-					<button
-						className='delete-btn edit-btn'
-						onClick={() => handleDelete(comment.id)}
-					>
-						Delete
-					</button>
-					{showEdit && <EditCommentForm comment={comment} />}
-				</div>
-			)}
-		</div>
-	);
+      {showMenu && (
+        <div className="edit-dropdown">
+          <button
+            onClick={showEdit === true ? closeEdit : openEdit}
+            className="edit-btn editing-post"
+            id="edit-btn"
+          >
+            Edit
+          </button>
+          <button
+            className="delete-btn edit-btn"
+            id="edit-btn"
+            onClick={() => handleDelete(comment.id)}
+          >
+            Delete
+          </button>
+          {showEdit && <EditCommentForm comment={comment} />}
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default EditButton;

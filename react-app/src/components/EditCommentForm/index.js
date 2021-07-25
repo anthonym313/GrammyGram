@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { editComment, getAllComments } from '../../store/comment';
+import '../Feed/feed.css'
+import { editComment } from '../../store/comment';
 
 const EditCommentForm = ({ comment }) => {
 	const dispatch = useDispatch();
@@ -12,9 +13,12 @@ const EditCommentForm = ({ comment }) => {
 	const onSubmit = (e) => {
 		e.preventDefault();
 
-		dispatch(editComment(comment.id, loggedInUser.id, editOneComment));
-		dispatch(getAllComments(comment.image_id));
-		// setEditOneComment('');
+		dispatch(editComment(comment.id, editOneComment,
+				comment.image_id,
+				// user_id: loggedInUser,
+			)
+		);
+		setEditOneComment('');
 	};
 
 	useEffect(() => {
@@ -22,20 +26,19 @@ const EditCommentForm = ({ comment }) => {
 	}, [dispatch, comment.image_id]);
 
 	return (
-		<div>
-			<form onSubmit={onSubmit}>
-				<div>
-					<textarea
-						label='Edit Comment'
-						placeholder={comment.comment}
-						value={editOneComment}
-						onChange={(e) => setEditOneComment(e.target.value)}
-						required
-					></textarea>
-					<button type='submit'>Post</button>
-				</div>
-			</form>
-		</div>
+
+		<form onSubmit={onSubmit}>
+			<div>
+				{console.log('comment div', comment.comment)}
+				<textarea
+					label='Edit Comment'
+					placeholder={comment.comment}
+					value={editOneComment}
+					onChange={(e) => setEditOneComment(e.target.value)}
+				></textarea>
+				<button className='stretch-btn' id='edit-btn'type='submit'>Post</button>
+			</div>
+		</form>
 	);
 };
 

@@ -94,3 +94,8 @@
   background-color: #ffb700;
   color: white;
 }
+
+#edit-btn {
+  margin-top: 6px;
+  /* margin-left: 3em; */
+}

@@ -5,19 +5,6 @@ from flask_login import current_user, login_required
 
 comment_routes = Blueprint('comments', __name__)
 
-# GET
-
-# This is in post_routes
-# @comment_routes.route('/<int:image_id>/comments')
-# def all_comments_image(image_id):
-#     comments = Comment.query.filter_by(
-#         Comment.image_id is image_id).all()
-#     # returns all comments based on current image path
-#     print('all comments backend', comments.to_dict())
-#     return comments.to_dict()
-
-# POST
-
 
 @comment_routes.route('/create', methods=['POST'])
 @login_required
@@ -44,14 +31,12 @@ def delete_comment(id):
     return {'message': 'Comment Deleted'}
 
 
-@comment_routes.route('/<int:id>/edit', methods=['PUT'])
+@comment_routes.route('/<int:id>/edit/<comment>', methods=['PUT'])
 @login_required
-def editComment(id):
-    req = request.get_json()
-    editComment = Comment.query.get(id)
-    print('backend1')
-    if (req['userId'] == current_user.id):
-        editComment.comment = req['comment']
-        db.session.commit()
-    print('backend1 statement')
-    return editComment.to_dict()
+def edit_comment(id, comment):
+
+    post = Comment.query.get(id)
+    post.comment = comment
+
+    db.session.commit()
+    return post.to_dict()

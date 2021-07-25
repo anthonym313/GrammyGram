@@ -1,50 +1,42 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getSingleImageThunk } from '../../store/post';
-import { singleUser } from '../../store/user';
-import { useParams } from 'react-router-dom';
-import CommentList from '../CommentList';
-import CommentForm from '../CommentForm';
-
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getSingleImageThunk } from "../../store/post";
+import { singleUser } from "../../store/user";
+import { useParams, useHistory } from "react-router-dom";
+import CommentList from "../CommentList";
+import EditButton from "../Feed/EditButton";
+import "../Feed/feed.css";
 function SinglePost() {
-	const dispatch = useDispatch();
-	const user = useSelector((state) => Object.values(state.singleUser));
-	const onePost = useSelector((state) => Object.values(state.feedPosts));
-	// const { postId } = useParams();
-	const image = onePost[0];
-	const postId = image.id;
-	console.log('new post id', image.id);
-	const userId = image.user_id;
-
-	useEffect(() => {
-		if (!postId && !userId) {
-			return;
-		}
-		dispatch(singleUser(userId));
-		dispatch(getSingleImageThunk(postId));
-	}, [dispatch, postId, userId]);
-
-	return (
-		<ul>
-			<h3>Submitted by: {user.username}</h3>
-			<li>
-				<strong>Post Id</strong> {postId}
-			</li>
-			<div className='image-container'>
-				<img
-					src={image?.image_url}
-					alt='feed-images'
-					className='the-image'
-				/>
-			</div>
-			<li>Caption: {image?.description}</li>
-			<div>
-				<CommentList image={image} />
-			</div>
-			<div>
-				<CommentForm imageId={postId} />
-			</div>
-		</ul>
-	);
+  const dispatch = useDispatch();
+  const userArr = useSelector((state) => Object.values(state.singleUser));
+  const onePost = useSelector((state) => Object.values(state.feedPosts));
+  const loggedIn = useSelector((state) => state.session).user;
+  const { postId } = useParams();
+  const history = useHistory();
+  const image = onePost[0];
+  const user = userArr[0];
+  useEffect(() => {
+    dispatch(getSingleImageThunk(Number(postId)));
+    history.push(`/posts/${postId}`);
+  }, [dispatch, postId, history]);
+  return (
+    <div className="post-container" id="post-container-id">
+      <div className="top-bar">
+        <p className="username-post">{user.username}</p>
+      </div>
+      <div className="image-container">
+        <img src={image?.image_url} alt="feed-images" className="the-image" />
+      </div>
+      <div className="post-description">
+        <div className="info-container">
+          <p className="username-post">{user.username}</p>
+          <p className="caption-post">{image?.description}</p>
+        </div>
+      </div>
+      <div>
+        <CommentList />
+      </div>
+    </div>
+  );
 }
 export default SinglePost;
