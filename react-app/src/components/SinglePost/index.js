@@ -3,19 +3,27 @@ import { useSelector, useDispatch } from "react-redux";
 import { getSingleImageThunk } from "../../store/post";
 import { useParams, useHistory } from "react-router-dom";
 import CommentList from "../CommentList";
+import { singleUser } from "../../store/user";
+
 import "../Feed/feed.css";
+
 function SinglePost() {
   const dispatch = useDispatch();
-  const userArr = useSelector((state) => Object.values(state.singleUser));
+  const userArr = useSelector((state) => Object.values(state.singleUser))[0];
   const onePost = useSelector((state) => Object.values(state.feedPosts));
   const { postId } = useParams();
   const history = useHistory();
   const image = onePost[0];
+  const userId = image.user_id;
   const user = userArr[0];
+
+  console.log(user.username);
   useEffect(() => {
     dispatch(getSingleImageThunk(Number(postId)));
-    history.push(`/posts/${postId}`);
-  }, [dispatch, postId, history]);
+    dispatch(singleUser(userId));
+    // history.push(`/posts/${postId}`);
+  }, [dispatch, postId, userId]);
+
   return (
     <div className="post-container" id="post-container-id">
       <div className="top-bar">
