@@ -6,7 +6,6 @@ import { useParams, useHistory } from "react-router-dom";
 import CommentList from "../CommentList";
 import EditButton from "../Feed/EditButton";
 import "../Feed/feed.css";
-
 function SinglePost() {
   const dispatch = useDispatch();
   const userArr = useSelector((state) => Object.values(state.singleUser));
@@ -14,19 +13,12 @@ function SinglePost() {
   const loggedIn = useSelector((state) => state.session).user;
   const { postId } = useParams();
   const history = useHistory();
-
-  // console.log('$$$$$$$$$$$$$$$', typeof(postId), postId);
   const image = onePost[0];
   const user = userArr[0];
-  // const userId = image.user_id;
-
   useEffect(() => {
-    // e.preventDefault();
-    // dispatch(singleUser(userId));
     dispatch(getSingleImageThunk(Number(postId)));
     history.push(`/posts/${postId}`);
   }, [dispatch, postId, history]);
-
   return (
     <div className="post-container" id="post-container-id">
       <div className="top-bar">

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
 import '../Feed/feed.css'
 import { editComment } from '../../store/comment';
 
 const EditCommentForm = ({ comment }) => {
 	const dispatch = useDispatch();
 	const [editOneComment, setEditOneComment] = useState(comment.comment);
-	const [showForm, setShowForm] = useState(false);
+	const [showForm, setShowForm] = useState(true);
 	const loggedInUser = useSelector((state) => state.session.user);
 
 	const onSubmit = (e) => {
@@ -20,9 +21,12 @@ const EditCommentForm = ({ comment }) => {
 		setEditOneComment('');
 	};
 
-	useEffect(() => {}, [dispatch, editOneComment]);
+	useEffect(() => {
+		dispatch(getAllComments(comment.image_id));
+	}, [dispatch, comment.image_id]);
 
 	return (
+
 		<form onSubmit={onSubmit}>
 			<div>
 				{console.log('comment div', comment.comment)}
