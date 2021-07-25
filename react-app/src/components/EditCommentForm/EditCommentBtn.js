@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-
 import { getAllComments, delComment } from '../../store/comment';
 import EditCommentForm from './index';
 
