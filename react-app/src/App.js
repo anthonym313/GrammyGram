@@ -14,6 +14,7 @@ import ExplorePage from "./components/ExplorePage";
 import SinglePost from "./components/SinglePost";
 import { authenticate } from "./store/session";
 
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();

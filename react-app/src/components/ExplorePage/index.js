@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getImagesThunk } from "../../store/post";
 import "./ExplorePage.css";
-
 export default function ExplorePage() {
   const allposts = useSelector((state) => Object.values(state.feedPosts));
   const dispatch = useDispatch();
@@ -10,7 +9,6 @@ export default function ExplorePage() {
   useEffect(() => {
     dispatch(getImagesThunk());
   }, [dispatch]);
-
   return (
     <div id="explore">
       {imagesArr?.map((image) => {

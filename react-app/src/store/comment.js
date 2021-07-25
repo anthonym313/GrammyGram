@@ -1,23 +1,18 @@
 const POST_COMMENT = "comment/POST_COMMENT";
 const GET_COMMENT = "comment/GET_COMMENT";
 const DEL_COMMENT = "comment/DEL_COMMENT";
-
 export const getComment = (comment) => ({
   type: GET_COMMENT,
   comment,
 });
-
-
 export const postComment = (comment) => ({
   type: POST_COMMENT,
   comment,
 });
-
 export const deleteComment = (comment) => ({
   type: DEL_COMMENT,
   comment,
 });
-
 // GET
 export const getAllComments = (imageId) => async (dispatch) => {
   const res = await fetch(`/api/posts/${imageId}/comments`);
@@ -26,7 +21,6 @@ export const getAllComments = (imageId) => async (dispatch) => {
     dispatch(getComment(allComments));
   }
 };
-
 // POST
 export const newComment = (newComment) => async (dispatch) => {
   const res = await fetch(`/api/comments/create`, {
@@ -34,14 +28,12 @@ export const newComment = (newComment) => async (dispatch) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(newComment),
   });
-
   if (res.ok) {
     const createdComment = await res.json();
     dispatch(postComment(createdComment));
     return createdComment;
   }
 };
-
 export const delComment = (id) => async (dispatch) => {
   const res = await fetch(`/api/comments/${id}`, {
     method: "DELETE",
@@ -53,7 +45,6 @@ export const delComment = (id) => async (dispatch) => {
     return res;
   }
 };
-
 export const editComment = (id, comment) => async (dispatch) => {
   const res = await fetch(`/api/comments/${id}/edit/${comment}`, {
     method: "PUT",
@@ -68,7 +59,6 @@ export const editComment = (id, comment) => async (dispatch) => {
     return newComment;
   }
 };
-
 const initialState = { comment: "" };
 const commentReducer = (state = initialState, action) => {
   let newState = {};
@@ -92,5 +82,4 @@ const commentReducer = (state = initialState, action) => {
       return state;
   }
 };
-
 export default commentReducer;

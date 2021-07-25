@@ -4,7 +4,6 @@ import { getSingleImageThunk } from "../../store/post";
 import { useParams, useHistory } from "react-router-dom";
 import CommentList from "../CommentList";
 import "../Feed/feed.css";
-
 function SinglePost() {
   const dispatch = useDispatch();
   const userArr = useSelector((state) => Object.values(state.singleUser));
@@ -13,12 +12,10 @@ function SinglePost() {
   const history = useHistory();
   const image = onePost[0];
   const user = userArr[0];
-
   useEffect(() => {
     dispatch(getSingleImageThunk(Number(postId)));
     history.push(`/posts/${postId}`);
   }, [dispatch, postId, history]);
-
   return (
     <div className="post-container" id="post-container-id">
       <div className="top-bar">

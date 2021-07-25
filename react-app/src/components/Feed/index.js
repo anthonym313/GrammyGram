@@ -8,17 +8,14 @@ import "./feed.css";
 import Suggestions from "../Suggestions";
 import SmallSuggestions from "../SmallSuggestions";
 import { getAllComments } from "../../store/comment";
-
 function Feed() {
   const dispatch = useDispatch();
-
   const history = useHistory();
   const loggedIn = useSelector((state) => state.session).user;
   const allPosts = useSelector((state) => Object.values(state.feedPosts));
   const pureIm = allPosts[0].posts;
   const pureCmt = allPosts[0].comments;
   const [users, setUsers] = useState([]);
-
   useEffect(() => {
     async function fetchData() {
       const response = await fetch("/api/users/");
@@ -27,11 +24,9 @@ function Feed() {
     }
     fetchData();
   }, []);
-
   useEffect(() => {
     dispatch(getImagesThunk());
   }, []);
-
   const postUser = (user) => {
     let obj = {};
     user.forEach((u) => {
@@ -40,7 +35,6 @@ function Feed() {
     return obj;
   };
   const list = postUser(users);
-
   const postAvatar = (user) => {
     let obj = {};
     user.forEach((u) => {
@@ -49,7 +43,6 @@ function Feed() {
     return obj;
   };
   const avt = postAvatar(users);
-
   return (
     <div>
       <div className="feed-page">
@@ -77,11 +70,9 @@ function Feed() {
               </div>
               <div className="post-content">
                 <div className="post-actions"></div>
-
                 <div className="post-description">
                   <div className="info-container">
                     <p className="username-post">{list[image.user_id]}</p>
-
                     <p className="caption-post">
                       {image.description.substring(0, 60) + "..."}
                     </p>
@@ -92,7 +83,6 @@ function Feed() {
                     </div>
                   )}
                 </div>
-
                 <div className="comments">
                   {pureCmt &&
                     pureCmt?.map((comment) => (
@@ -108,7 +98,6 @@ function Feed() {
                       </div>
                     ))}
                 </div>
-
                 <div className="post-comment">
                   <CommentForm imageId={image.id} />
                 </div>

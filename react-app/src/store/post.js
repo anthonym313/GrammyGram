@@ -2,7 +2,6 @@
 const POST_IMAGE = "post/POST_IMAGE";
 const DELETE_IMAGE = "post/DELETE_IMAGE";
 const GET_FEED = "post/GET_FEED";
-
 export const getFeed = (image) => {
   return {
     type: GET_FEED,
@@ -13,12 +12,10 @@ export const postImage = (image) => ({
   type: POST_IMAGE,
   image,
 });
-
 export const deleteImage = (id) => ({
   type: DELETE_IMAGE,
   id,
 });
-
 //CREATE
 export const postImageThunk = (payload) => async (dispatch) => {
   const res = await fetch("/api/posts/upload", {
@@ -31,17 +28,14 @@ export const postImageThunk = (payload) => async (dispatch) => {
   const newPost = await res.json();
   dispatch(postImage(newPost));
 };
-
 //READ
 export const getImagesThunk = () => async (dispatch) => {
   const res = await fetch("/api/posts/");
-
   if (res.ok) {
     const allImages = await res.json();
     dispatch(getFeed(allImages));
   }
 };
-
 //UPDATE
 export const updateImageThunk = (id, description) => async (dispatch) => {
   const res = await fetch(`/api/posts/${id}/${description}`, {
@@ -56,17 +50,14 @@ export const updateImageThunk = (id, description) => async (dispatch) => {
     dispatch(getFeed(updateDesc));
   }
 };
-
 export const getSingleImageThunk = (imageId) => async (dispatch) => {
   const res = await fetch(`/api/posts/${imageId}`);
-
   if (res.ok) {
     const singleImage = await res.json();
     dispatch(getFeed(singleImage));
     return singleImage;
   }
 };
-
 //DELETE
 export const deleteImageThunk = (id) => async (dispatch) => {
   const res = await fetch(`/api/posts/${id}`, {
@@ -79,9 +70,7 @@ export const deleteImageThunk = (id) => async (dispatch) => {
     return res;
   }
 };
-
 const initialState = { thing: "" };
-
 const imageReducer = (state = initialState, action) => {
   let newState = {};
   switch (action.type) {
