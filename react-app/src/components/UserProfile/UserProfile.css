@@ -1,0 +1,23 @@
+.userProfile-container{
+    max-width: 93.5rem;
+    margin:0 auto;
+    padding: 0 2rem;
+}
+.userProfile{
+    padding:5rem 0;
+}
+
+.profile-image{
+    float:left;
+    width:calc(33%-1 rem);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-right: 3rem;
+}
+
+.profile-image img {
+    border-radius: 50%;
+    width:150px;
+    height:150px;
+}
