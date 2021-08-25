@@ -39,11 +39,12 @@ export const getSmallGroupOfUsers = () => async (dispatch) => {
 	}
 };
 
-export const singleUser = (id) => async (dispatch) => {
-	const res = await fetch(`/api/users/${id}`);
+export const singleUser = (userId) => async (dispatch) => {
+	const res = await fetch(`/api/users/${userId}`);
 	if (res.ok) {
 		const user = await res.json();
 		dispatch(getUser(user));
+		return user;
 	}
 };
 
@@ -52,6 +53,7 @@ export const getAllUsers = () => async (dispatch) => {
 	if (res.ok) {
 		const users = await res.json();
 		dispatch(allUsers(users));
+
 	}
 };
 
@@ -65,11 +67,11 @@ export function reducer(state = initialState, action) {
 	}
 }
 
-const initialState2 = { user: '' };
+const initialState2 = {};
 export function singleUserReducer(state = initialState2, action) {
 	switch (action.type) {
 		case GET_USER:
-			return { user: action.user };
+			return {user:action.user};
 		default:
 			return state;
 	}

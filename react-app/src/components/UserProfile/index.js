@@ -1,20 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useDispatch,useSelector } from 'react-redux';
+import {singleUser} from '../../store/user'
 
-function User() {
-	const [user, setUser] = useState({});
+function UserProfile() {
+	const user = useSelector((state)=> state.singleUser.user)
 	const { userId } = useParams();
-
+	const dispatch = useDispatch();
+	
 	useEffect(() => {
-		if (!userId) {
-			return;
-		}
-		(async () => {
-			const response = await fetch(`/api/users/${userId}`);
-			const user = await response.json();
-			setUser(user);
-		})();
-	}, [userId]);
+		dispatch(singleUser(userId))
+		
+	}, [dispatch,userId]);
 
 	if (!user) {
 		return null;
@@ -34,4 +31,4 @@ function User() {
 		</ul>
 	);
 }
-export default User;
+export default UserProfile;
