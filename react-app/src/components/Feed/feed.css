@@ -132,6 +132,21 @@ body {
   flex-grow: 1;
 }
 
+#edit-comment-form {
+  z-index: 5;
+}
+.comment-edit-form::before {
+  content: "";
+  width: 20px;
+  z-index: 4;
+  height: 20px;
+  /* border: 1px solid #c0bfbf; */
+  background-color: #f1f1f1;
+  position: absolute;
+  bottom: 70%;
+  transform: rotate(45deg);
+}
+
 .comment-edit-form {
   display: flex;
   position: absolute;

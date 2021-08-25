@@ -5,7 +5,6 @@ import "../Feed/feed.css";
 
 function SingleCommentBtn({ comment }) {
   const [showEdit, setShowEdit] = useState(false);
-
   const openEdit = () => {
     if (showEdit) return;
     setShowEdit(true);
@@ -24,7 +23,7 @@ function SingleCommentBtn({ comment }) {
       >
         Edit
       </button>
-        {showEdit && <EditCommentForm comment={comment} />}
+        {showEdit && <EditCommentForm comId={comment.id} />}
 
       </>);
 }

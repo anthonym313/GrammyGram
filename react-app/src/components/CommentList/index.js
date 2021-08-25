@@ -12,7 +12,7 @@ const CommentList = () => {
   const dispatch = useDispatch();
   const { postId } = useParams();
   const [users, setUsers] = useState([]);
-  const [showEdit, setShowEdit] = useState(false);
+  // const [showEdit, setShowEdit] = useState(false);
   const allComments = useSelector((state) => state.comment);
   const onePost = useSelector((state) => Object.values(state.feedPosts));
   const image = onePost[0];
@@ -42,14 +42,14 @@ const CommentList = () => {
     dispatch(getAllComments(postId));
     refresh();
   };
-  const openEdit = () => {
-    if (showEdit) return;
-    setShowEdit(true);
-  };
-  const closeEdit = () => {
-    if (!showEdit) return;
-    setShowEdit(false);
-  };
+  // const openEdit = () => {
+  //   if (showEdit) return;
+  //   setShowEdit(true);
+  // };
+  // const closeEdit = () => {
+  //   if (!showEdit) return;
+  //   setShowEdit(false);
+  // };
   const postUser = (user) => {
     let obj = {};
     user.forEach((u) => {

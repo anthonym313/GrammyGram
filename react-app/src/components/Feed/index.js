@@ -7,7 +7,12 @@ import CommentForm from "../CommentForm";
 import "./feed.css";
 import Suggestions from "../Suggestions";
 import SmallSuggestions from "../SmallSuggestions";
+import SingleCommentBtn from "../CommentList/SingleCommentBtn";
+import CommentList from "../CommentList";
+import { delComment } from "../../store/comment";
 import { getAllComments } from "../../store/comment";
+
+
 function Feed() {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -28,7 +33,7 @@ function Feed() {
 
   useEffect(() => {
     dispatch(getImagesThunk());
-  }, []);
+  }, [dispatch]);
 
   const postUser = (user) => {
     let obj = {};
@@ -37,6 +42,16 @@ function Feed() {
     });
     return obj;
   };
+
+  const refresh = () => {
+    dispatch(getImagesThunk());
+  };
+
+    const handleDelete = (id) => {
+      dispatch(delComment(id));
+      // dispatch(getAllComments(postId));
+      refresh();
+    };
 
   const list = postUser(users);
 
@@ -52,7 +67,7 @@ function Feed() {
 
   const avt = postAvatar(users);
 
-  
+
   return (
     <div>
       <div className="feed-page">
@@ -103,8 +118,21 @@ function Feed() {
                               {list[comment.user_id]}
                             </p>
                             <p className="caption-post">{comment.comment}</p>
+                            {loggedIn?.id === comment?.user_id && (
+                              <div className="comment-button-div">
+                              <SingleCommentBtn comment={comment} />
+                              <button
+                              className="delete-btn edit-btn"
+                              id="edit-btn"
+                              onClick={() => handleDelete(comment.id)}
+                              >
+                              Delete
+                              </button>
+                              </div>
+                            )}
                           </div>
                         )}
+                        {/* <CommentList /> */}
                       </div>
                     ))}
                 </div>
