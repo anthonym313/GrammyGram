@@ -5,6 +5,7 @@ import { editComment } from '../../store/comment';
 const EditCommentForm = ({ comment }) => {
     const dispatch = useDispatch();
     const [editOneComment, setEditOneComment] = useState(comment.comment);
+
     const onSubmit = (e) => {
         e.preventDefault();
         dispatch(editComment(comment.id, editOneComment,

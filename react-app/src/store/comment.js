@@ -1,6 +1,7 @@
 const POST_COMMENT = "comment/POST_COMMENT";
 const GET_COMMENT = "comment/GET_COMMENT";
 const DEL_COMMENT = "comment/DEL_COMMENT";
+
 export const getComment = (comment) => ({
   type: GET_COMMENT,
   comment,
@@ -46,7 +47,7 @@ export const delComment = (id) => async (dispatch) => {
   }
 };
 export const editComment = (id, comment) => async (dispatch) => {
-  const res = await fetch(`/api/comments/${id}/edit/${comment}`, {
+  const res = await fetch(`/api/comments/${id}/${comment}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

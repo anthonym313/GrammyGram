@@ -5,7 +5,9 @@ import { singleUser } from "../../store/user";
 import { getAllComments, delComment } from "../../store/comment";
 import CommentForm from "../CommentForm";
 import EditCommentForm from "../EditCommentForm";
+import SingleCommentBtn from "./SingleCommentBtn";
 import "../Feed/feed.css";
+
 const CommentList = () => {
   const dispatch = useDispatch();
   const { postId } = useParams();
@@ -34,6 +36,7 @@ const CommentList = () => {
     dispatch(singleUser(userId));
     dispatch(getAllComments(postId));
   }, [dispatch, postId, userId]);
+
   const handleDelete = (id) => {
     dispatch(delComment(id));
     dispatch(getAllComments(postId));
@@ -73,14 +76,8 @@ const CommentList = () => {
                     {comment.comment}
                   </p>
                   {loggedIn?.id === comment?.user_id && (
-                    <div>
-                      <button
-                        className="edit-btn editing-post"
-                        id="edit-btn"
-                        onClick={showEdit === true ? closeEdit : openEdit}
-                      >
-                        Edit
-                      </button>
+                    <div className='comment-button-div'>
+                      <SingleCommentBtn comment={comment}/>
                       <button
                         className="delete-btn edit-btn"
                         id="edit-btn"
@@ -90,7 +87,6 @@ const CommentList = () => {
                       </button>
                     </div>
                   )}
-                  {showEdit && <EditCommentForm comment={comment} />}
                 </div>
               </div>
             </div>

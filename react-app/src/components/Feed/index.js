@@ -16,6 +16,7 @@ function Feed() {
   const pureIm = allPosts[0].posts;
   const pureCmt = allPosts[0].comments;
   const [users, setUsers] = useState([]);
+
   useEffect(() => {
     async function fetchData() {
       const response = await fetch("/api/users/");
@@ -24,9 +25,11 @@ function Feed() {
     }
     fetchData();
   }, []);
+
   useEffect(() => {
     dispatch(getImagesThunk());
   }, []);
+
   const postUser = (user) => {
     let obj = {};
     user.forEach((u) => {
@@ -34,15 +37,22 @@ function Feed() {
     });
     return obj;
   };
+
   const list = postUser(users);
+
   const postAvatar = (user) => {
     let obj = {};
     user.forEach((u) => {
       obj[u.id] = u.avatar;
     });
+
+
     return obj;
   };
+
   const avt = postAvatar(users);
+
+  
   return (
     <div>
       <div className="feed-page">
