@@ -127,10 +127,23 @@ body {
 
 .comment-post-form {
   display: flex;
-  position: absolute;
   align-items: stretch;
   justify-content: stretch;
   flex-grow: 1;
+}
+
+.comment-edit-form {
+  display: flex;
+  position: absolute;
+  margin-top: 30px;
+  flex-direction: column;
+  z-index: 5;
+  align-items: center;
+  background: rgba(233, 227, 227, 0.801);
+  /* box-shadow: 0 8px 32px 0 rgba(153, 145, 97, 0.37); */
+  backdrop-filter: blur(0.5px);
+  /* border-radius: 10px; */
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .stretch-btn {

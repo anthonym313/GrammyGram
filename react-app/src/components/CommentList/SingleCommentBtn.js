@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { useState } from "react";
-import CommentForm from "../CommentForm";
+import EditCommentForm from "../CommentForm/EditCommentForm";
 import "../Feed/feed.css";
 
 function SingleCommentBtn({ comment }) {
@@ -16,7 +16,7 @@ function SingleCommentBtn({ comment }) {
   };
 
   return (
-    <div>
+    <>
       <button
         className="edit-btn editing-post"
         id="edit-btn"
@@ -24,9 +24,9 @@ function SingleCommentBtn({ comment }) {
       >
         Edit
       </button>
-      {showEdit && <CommentForm comment={comment} />}
-    </div>
-  );
+        {showEdit && <EditCommentForm comment={comment} />}
+
+      </>);
 }
 
 export default SingleCommentBtn;
