@@ -40,6 +40,11 @@
   width: 615px;
 }
 
+.the-image:hover{
+  opacity: .7;
+
+}
+
 .top-bar {
   height: 70px;
   display: flex;
