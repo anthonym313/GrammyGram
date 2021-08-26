@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
+import {Link} from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { getSmallGroupOfUsers } from "../../store/user";
 import "./SmallSuggestions.css";
@@ -26,11 +27,11 @@ export default function SmallSuggestions() {
           {smallRandomUserList?.map((user) => {
             return (
               <div className="small-random-div">
-                <img
+                <Link to={`/users/${user.id}`}><img
                   src={user.avatar}
                   className="small-random-usr"
                   alt="random-user"
-                ></img>
+                ></img></Link>
                 <p className="small-random-username">{user.username}</p>
               </div>
             );
