@@ -25,7 +25,7 @@ export default function SmallSuggestions() {
           <p className="sug-for-you"> Suggestions for you</p>
           {smallRandomUserList?.map((user) => {
             return (
-              <div className="small-random-div">
+              <div className="small-random-div" key={ user.id}>
                 <img
                   src={user.avatar}
                   className="small-random-usr"

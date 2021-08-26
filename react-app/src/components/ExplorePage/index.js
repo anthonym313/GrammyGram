@@ -14,7 +14,7 @@ export default function ExplorePage() {
     <div id="explore">
       {imagesArr?.map((image) => {
         return (
-          <div className="explore-image">
+          <div className="explore-image" key={image.id}>
               <Link to={`/posts/${image.id}`}>
                 <img src={image.image_url} width="300" alt="explore-post"></img>
               </Link>
