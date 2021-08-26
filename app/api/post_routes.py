@@ -29,6 +29,8 @@ def get_all_posts():
     }
 
 
+
+
 @post_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
 def del_post(id):
@@ -47,11 +49,13 @@ def edit_post(id, description):
     return post.to_dict()
 
 
+
 @post_routes.route('/<int:image_id>/comments')
 def all_comments_image(image_id):
     allComments = Comment.query.filter(
         (Comment.image_id == image_id)).all()
     return jsonify([comment.to_dict() for comment in allComments])
+
 
 
 @post_routes.route('/<int:id>', methods=['GET'])

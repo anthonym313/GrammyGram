@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -16,9 +18,9 @@ const CommentList = () => {
   const allComments = useSelector((state) => state.comment);
   const onePost = useSelector((state) => Object.values(state.feedPosts));
   const image = onePost[0];
-  const userId = image.user_id;
+  const userId = image?.user_id;
   const newComments = Object.values(allComments);
-  const loggedIn = useSelector((state) => state.session).user;
+  const loggedIn = useSelector((state) => state?.session)?.user;
 
   const refresh = () => {
     dispatch(getAllComments(postId));
@@ -33,7 +35,7 @@ const CommentList = () => {
       setUsers(responseData.users);
     }
     fetchData();
-    dispatch(singleUser(userId));
+    // dispatch(singleUser(userId));
     dispatch(getAllComments(postId));
   }, [dispatch, postId, userId]);
 
@@ -52,36 +54,39 @@ const CommentList = () => {
   // };
   const postUser = (user) => {
     let obj = {};
-    user.forEach((u) => {
+    user?.forEach((u) => {
       obj[u.id] = u.username;
     });
     return obj;
   };
+
   const list = postUser(users);
+
   return (
     <div>
       <div className="comments">
         {newComments &&
           newComments?.map((comment) => (
-            <div>
-              <div
-                className="comment-user-submission"
-                key={list[comment.user_id]}
-              >
-                <div className="post-description" id="post-desc-id">
+
+            <div key={comment?.id} className="errordiv">
+
+              <div className="comment-user-submission" key={comment.id}>
+                <div className="post-description" id="post-desc-id" key={comment.id}>
                   <p className="username-post" id="user-desc-id">
-                    {list[comment.user_id]}
+                    {list[comment?.user_id]}
                   </p>
                   <p className="caption-post" id="capt-desc-id">
                     {comment.comment}
                   </p>
                   {loggedIn?.id === comment?.user_id && (
+
                     <div className='comment-button-div'>
                       <SingleCommentBtn comment={comment}/>
+
                       <button
                         className="delete-btn edit-btn"
                         id="edit-btn"
-                        onClick={() => handleDelete(comment.id)}
+                        onClick={() => handleDelete(comment?.id)}
                       >
                         Delete
                       </button>

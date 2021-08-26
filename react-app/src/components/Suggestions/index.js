@@ -4,10 +4,8 @@ import { useDispatch } from "react-redux";
 import "./Suggestions.css";
 import { useSelector } from "react-redux";
 import { getFiveRandomUsers } from "../../store/user";
-import SmallSuggestions from "../SmallSuggestions";
 
 export default function Suggestions() {
-  const user = useSelector((state) => state.session.user);
   const suggestions = useSelector((state) => state.randomUsers);
   const dispatch = useDispatch();
 
@@ -21,7 +19,7 @@ export default function Suggestions() {
       <div className="random-holder">
         {suggestions?.map((randomUser) => {
           return (
-            <div className="random-div">
+            <div className="random-div" key={randomUser.id}>
               <img
                 src={randomUser.avatar}
                 className="random-usr"

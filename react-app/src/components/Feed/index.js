@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory, Link } from "react-router-dom";
-import { getImagesThunk, deleteImageThunk } from "../../store/post";
+import { Link } from "react-router-dom";
+import { getImagesThunk } from "../../store/post";
 import EditButton from "./EditButton";
 import CommentForm from "../CommentForm";
 import "./feed.css";
 import Suggestions from "../Suggestions";
 import SmallSuggestions from "../SmallSuggestions";
+
 import SingleCommentBtn from "../CommentList/SingleCommentBtn";
 import CommentList from "../CommentList";
 import { delComment } from "../../store/comment";
 import { getComments } from "../../store/comment";
 
 
+
 function Feed() {
   const dispatch = useDispatch();
-  const history = useHistory();
   const loggedIn = useSelector((state) => state.session).user;
   const allPosts = useSelector((state) => Object.values(state.feedPosts));
   const postComment = useSelector((state) => Object.values(state.comment));
@@ -23,7 +24,7 @@ function Feed() {
   const pureCmt = allPosts[0].comments;
   const [users, setUsers] = useState([]);
 
-  console.log('adasdadasdasdasdasasdsada', postComment)
+
   useEffect(() => {
     async function fetchData() {
       const response = await fetch("/api/users/");
@@ -31,11 +32,13 @@ function Feed() {
       setUsers(responseData.users);
     }
     fetchData();
+
   }, []);
 
   useEffect(() => {
     dispatch(getImagesThunk());
     dispatch(getComments());
+
   }, [dispatch]);
 
   const postUser = (user) => {
@@ -46,6 +49,7 @@ function Feed() {
     return obj;
   };
 
+
   const refresh = () => {
     dispatch(getImagesThunk());
     dispatch(getComments());
@@ -55,6 +59,7 @@ function Feed() {
       dispatch(delComment(id));
       refresh();
     };
+
 
   const list = postUser(users);
 
@@ -80,12 +85,12 @@ function Feed() {
           pureIm?.map((image) => (
             <div key={image.id} className="post-container">
               <div className="top-bar">
-                <img
+                <Link to={`/users/${image.user_id}`}><img
                   className="post-avatar"
                   src={avt[image.user_id]}
                   alt="avatar"
-                ></img>
-                <p className="username-post">{list[image.user_id]}</p>
+                ></img></Link>
+                <Link to={`/users/${image.user_id}`}><p className="username-post">{list[image.user_id]}</p></Link>
               </div>
               <div className="image-container">
                 <Link to={`/posts/${image?.id}`}>
@@ -112,10 +117,11 @@ function Feed() {
                   )}
                 </div>
                 <div className="comments">
+
                   {postComment &&
                     postComment?.map((comment) => (
                       <div>
-                        {comment.image_id === image.id && (
+                           {comment.image_id === image.id && (
                           <div className="post-description" id="post-desc-id">
                             <p className="username-post">
                               {list[comment.user_id]}
