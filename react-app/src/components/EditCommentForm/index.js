@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import '../Feed/feed.css'
 import { editComment } from '../../store/comment';
+
+
 const EditCommentForm = ({ comment }) => {
     const dispatch = useDispatch();
     const [editOneComment, setEditOneComment] = useState(comment.comment);

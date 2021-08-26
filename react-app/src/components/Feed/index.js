@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory, Link } from "react-router-dom";
-import { getImagesThunk, deleteImageThunk } from "../../store/post";
+import { Link } from "react-router-dom";
+import { getImagesThunk } from "../../store/post";
 import EditButton from "./EditButton";
 import CommentForm from "../CommentForm";
 import "./feed.css";
 import Suggestions from "../Suggestions";
 import SmallSuggestions from "../SmallSuggestions";
-import { getAllComments } from "../../store/comment";
+
 function Feed() {
   const dispatch = useDispatch();
-  const history = useHistory();
   const loggedIn = useSelector((state) => state.session).user;
   const allPosts = useSelector((state) => Object.values(state.feedPosts));
   const pureIm = allPosts[0].posts;
   const pureCmt = allPosts[0].comments;
   const [users, setUsers] = useState([]);
+
   useEffect(() => {
     async function fetchData() {
       const response = await fetch("/api/users/");
@@ -23,10 +23,12 @@ function Feed() {
       setUsers(responseData.users);
     }
     fetchData();
-  }, []);
+  }, [dispatch]);
+
   useEffect(() => {
     dispatch(getImagesThunk());
-  }, []);
+  }, [dispatch]);
+
   const postUser = (user) => {
     let obj = {};
     user.forEach((u) => {
@@ -34,7 +36,9 @@ function Feed() {
     });
     return obj;
   };
+
   const list = postUser(users);
+
   const postAvatar = (user) => {
     let obj = {};
     user.forEach((u) => {
@@ -42,6 +46,7 @@ function Feed() {
     });
     return obj;
   };
+
   const avt = postAvatar(users);
   return (
     <div>
@@ -86,7 +91,7 @@ function Feed() {
                 <div className="comments">
                   {pureCmt &&
                     pureCmt?.map((comment) => (
-                      <div>
+                      <div key={comment.id} >
                         {comment.image_id === image.id && (
                           <div className="post-description" id="post-desc-id">
                             <p className="username-post">

@@ -1,14 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getSingleImageThunk } from '../../store/post';
+
 import { useParams, Link } from 'react-router-dom';
+
 import CommentList from '../CommentList';
-import { singleUser } from '../../store/user';
+// import { singleUser } from '../../store/user';
 
 import '../Feed/feed.css';
 
 function SinglePost() {
 	const dispatch = useDispatch();
+
 	const user = useSelector((state) => Object.values(state.singleUser))[0] ||null;
 	const image = useSelector((state) => Object.values(state.feedPosts))[0];
 	const { postId } = useParams();
@@ -40,7 +43,7 @@ function SinglePost() {
 			</div>
 			<div className='post-description'>
 				<div className='info-container'>
-					<p className='username-post'>{user.username}</p>
+					<p className='username-post'>{list[image.user_id]}</p>
 					<p className='caption-post'>{image?.description}</p>
 				</div>
 			</div>
