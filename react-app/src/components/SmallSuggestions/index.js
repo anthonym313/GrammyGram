@@ -17,8 +17,8 @@ export default function SmallSuggestions() {
   return (
     <div className="small-container">
       <div className="panel-user-info">
-        <img src={user.avatar} alt="small avi" className="user-avi"></img>
-        <p className="profile-user">{user.username}</p>
+        <Link to={`/users/${user.id}`}><img src={user.avatar} alt="small avi" className="user-avi"></img></Link>
+        <Link to={`/users/${user.id}`}><p className="profile-user">{user.username}</p></Link>
         <div className="small-holder"></div>
       </div>
       <div className="user-profile-holder">
