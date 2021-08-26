@@ -9,17 +9,20 @@ function UserProfile() {
 	const user = useSelector((state)=> state.singleUser.user) || null
 	const { userId } = useParams();
 	const dispatch = useDispatch();
-
-	const [postCount, setPostCount] = useState(0)
+	
+	// const [postCount, setPostCount] = useState(0)
 	const [followerCount, setFollowerCount] = useState(0)
 	const [followingCount, setFollowingCount] = useState(0)
-	
+	function handleCount(array){
+		 
+		return array.length
+	}
 	
 	useEffect(() => {
 		dispatch(singleUser(userId))
 		
 	}, [dispatch,userId]);
-
+	
 
 	return user &&(
 		<div className='userProfile-container'>
@@ -36,7 +39,7 @@ function UserProfile() {
 				</div>
 				<div className='userProfile-stats'>
 					<ul>
-						<li><span>{postCount}</span> posts</li>
+						<li><span>{handleCount(user.posts)}</span> posts</li>
 						<li><span>{followerCount}</span> followers </li>
 						<li><span>{followingCount}</span> following</li>
 					</ul>
