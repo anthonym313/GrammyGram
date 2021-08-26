@@ -47,7 +47,7 @@ function UserProfile() {
 				<div className='posts-gallery'>
 					{user.posts.map(image=>(
 					<div className='posts-gallery-photo' >
-						<div className='gallery-image' style={{backgroundImage:`url(${image.image_url})`, overflow:'hidden'}}></div>
+						<a href={`/posts/${image.id}`}><div className='gallery-image' style={{backgroundImage:`url(${image.image_url})`, overflow:'hidden'}}></div></a>
 
 					</div>
 

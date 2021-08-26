@@ -9,10 +9,10 @@ import '../Feed/feed.css';
 
 function SinglePost() {
 	const dispatch = useDispatch();
-	const user = useSelector((state) => Object.values(state.singleUser))[0];
+	const user = useSelector((state) => Object.values(state.singleUser))[0] ||null;
 	const image = useSelector((state) => Object.values(state.feedPosts))[0];
 	const { postId } = useParams();
-	const userId = image.user_id;
+	const userId = image.user_id ||null;
 
 	useEffect(() => {
 		dispatch(getSingleImageThunk(Number(postId)));
@@ -20,7 +20,7 @@ function SinglePost() {
 		// history.push(`/posts/${postId}`);
 	}, [dispatch, postId, userId]);
 
-	return (
+	return user && (
 		<div className='post-container' id='post-container-id'>
 			<div className='top-bar'>
 				<p className='username-post'>{user.username}</p>
