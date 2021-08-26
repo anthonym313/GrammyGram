@@ -3,19 +3,27 @@ import { useDispatch } from 'react-redux';
 import '../Feed/feed.css'
 import { editComment } from '../../store/comment';
 
+import {getComments} from '../../store/comment';
+
 
 const EditCommentForm = ({ comment }) => {
     const dispatch = useDispatch();
     const [editOneComment, setEditOneComment] = useState(comment.comment);
+
     const onSubmit = (e) => {
         e.preventDefault();
-        dispatch(editComment(comment.id, editOneComment,
-                comment.image_id,
+        dispatch(editComment(
+            comment.id,
+            editOneComment,
             )
         );
+        // dispatch(getComments());
         setEditOneComment('');
     };
-    useEffect(() => {}, [dispatch, editOneComment]);
+
+    useEffect(() => {
+        dispatch(getComments());
+    }, [dispatch, editOneComment]);
     return (
         <form onSubmit={onSubmit}>
             <div>

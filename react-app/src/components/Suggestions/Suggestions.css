@@ -5,6 +5,7 @@
 }
 .UserSide-container {
   display: flex;
+  width: 65%;
 }
 
 .random-usr,
@@ -20,16 +21,15 @@
   border: 1px solid #c0bfbf;
   border-radius: 3px;
   margin-bottom: 2em;
-  width: 615px;
+  width: 100%;
   justify-content: center;
-  background-color: rgb(230, 230, 233);
 }
 
 .random-div {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 90px;
+  width: 15%;
   font-size: 13px;
   font-weight: 600;
   align-items: center;

@@ -7,13 +7,14 @@ import { singleUser } from "../../store/user";
 import { getAllComments, delComment } from "../../store/comment";
 import CommentForm from "../CommentForm";
 import EditCommentForm from "../EditCommentForm";
+import SingleCommentBtn from "./SingleCommentBtn";
 import "../Feed/feed.css";
 
 const CommentList = () => {
   const dispatch = useDispatch();
   const { postId } = useParams();
   const [users, setUsers] = useState([]);
-  const [showEdit, setShowEdit] = useState(false);
+  // const [showEdit, setShowEdit] = useState(false);
   const allComments = useSelector((state) => state.comment);
   const onePost = useSelector((state) => Object.values(state.feedPosts));
   const image = onePost[0];
@@ -43,14 +44,14 @@ const CommentList = () => {
     dispatch(getAllComments(postId));
     refresh();
   };
-  const openEdit = () => {
-    if (showEdit) return;
-    setShowEdit(true);
-  };
-  const closeEdit = () => {
-    if (!showEdit) return;
-    setShowEdit(false);
-  };
+  // const openEdit = () => {
+  //   if (showEdit) return;
+  //   setShowEdit(true);
+  // };
+  // const closeEdit = () => {
+  //   if (!showEdit) return;
+  //   setShowEdit(false);
+  // };
   const postUser = (user) => {
     let obj = {};
     user?.forEach((u) => {
@@ -78,14 +79,10 @@ const CommentList = () => {
                     {comment.comment}
                   </p>
                   {loggedIn?.id === comment?.user_id && (
-                    <div key={comment.id}>
-                      <button
-                        className="edit-btn editing-post"
-                        id="edit-btn"
-                        onClick={showEdit === true ? closeEdit : openEdit}
-                      >
-                        Edit
-                      </button>
+
+                    <div className='comment-button-div'>
+                      <SingleCommentBtn comment={comment}/>
+
                       <button
                         className="delete-btn edit-btn"
                         id="edit-btn"
@@ -95,7 +92,6 @@ const CommentList = () => {
                       </button>
                     </div>
                   )}
-                  {showEdit && <EditCommentForm comment={comment} />}
                 </div>
               </div>
             </div>

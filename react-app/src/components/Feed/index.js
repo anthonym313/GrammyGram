@@ -8,13 +8,22 @@ import "./feed.css";
 import Suggestions from "../Suggestions";
 import SmallSuggestions from "../SmallSuggestions";
 
+import SingleCommentBtn from "../CommentList/SingleCommentBtn";
+import CommentList from "../CommentList";
+import { delComment } from "../../store/comment";
+import { getComments } from "../../store/comment";
+
+
+
 function Feed() {
   const dispatch = useDispatch();
   const loggedIn = useSelector((state) => state.session).user;
   const allPosts = useSelector((state) => Object.values(state.feedPosts));
+  const postComment = useSelector((state) => Object.values(state.comment));
   const pureIm = allPosts[0].posts;
   const pureCmt = allPosts[0].comments;
   const [users, setUsers] = useState([]);
+
 
   useEffect(() => {
     async function fetchData() {
@@ -23,10 +32,13 @@ function Feed() {
       setUsers(responseData.users);
     }
     fetchData();
-  }, [dispatch]);
+
+  }, []);
 
   useEffect(() => {
     dispatch(getImagesThunk());
+    dispatch(getComments());
+
   }, [dispatch]);
 
   const postUser = (user) => {
@@ -37,6 +49,18 @@ function Feed() {
     return obj;
   };
 
+
+  const refresh = () => {
+    dispatch(getImagesThunk());
+    dispatch(getComments());
+  };
+
+    const handleDelete = (id) => {
+      dispatch(delComment(id));
+      refresh();
+    };
+
+
   const list = postUser(users);
 
   const postAvatar = (user) => {
@@ -44,10 +68,14 @@ function Feed() {
     user.forEach((u) => {
       obj[u.id] = u.avatar;
     });
+
+
     return obj;
   };
 
   const avt = postAvatar(users);
+
+
   return (
     <div>
       <div className="feed-page">
@@ -89,15 +117,28 @@ function Feed() {
                   )}
                 </div>
                 <div className="comments">
-                  {pureCmt &&
-                    pureCmt?.map((comment) => (
-                      <div key={comment.id} >
-                        {comment.image_id === image.id && (
+
+                  {postComment &&
+                    postComment?.map((comment) => (
+                      <div>
+                           {comment.image_id === image.id && (
                           <div className="post-description" id="post-desc-id">
                             <p className="username-post">
                               {list[comment.user_id]}
                             </p>
                             <p className="caption-post">{comment.comment}</p>
+                            {loggedIn?.id === comment?.user_id && (
+                              <div className="comment-button-div">
+                              <SingleCommentBtn comment={comment} />
+                              <button
+                              className="delete-btn edit-btn"
+                              id="edit-btn"
+                              onClick={() => handleDelete(comment.id)}
+                              >
+                              Delete
+                              </button>
+                              </div>
+                            )}
                           </div>
                         )}
                       </div>

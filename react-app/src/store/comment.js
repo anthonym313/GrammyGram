@@ -1,8 +1,14 @@
 const POST_COMMENT = "comment/POST_COMMENT";
 const GET_COMMENT = "comment/GET_COMMENT";
+const GET_COMMENTS = "comment/GET_COMMENTS";
 const DEL_COMMENT = "comment/DEL_COMMENT";
+
 export const getComment = (comment) => ({
   type: GET_COMMENT,
+  comment,
+});
+export const allComments = (comment) => ({
+  type: GET_COMMENTS,
   comment,
 });
 export const postComment = (comment) => ({
@@ -19,6 +25,14 @@ export const getAllComments = (imageId) => async (dispatch) => {
   if (res.ok) {
     const allComments = await res.json();
     dispatch(getComment(allComments));
+  }
+};
+export const getComments = () => async (dispatch) => {
+  console.log('comments are fetched')
+  const res = await fetch(`/api/comments/`);
+  if (res.ok) {
+    const comments = await res.json();
+    dispatch(allComments(comments));
   }
 };
 // POST
@@ -46,12 +60,12 @@ export const delComment = (id) => async (dispatch) => {
   }
 };
 export const editComment = (id, comment) => async (dispatch) => {
-  const res = await fetch(`/api/comments/${id}/edit/${comment}`, {
+  const res = await fetch(`/api/comments/${id}/${comment}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ id, comment }),
+    body: JSON.stringify( id, comment ),
   });
   if (res.ok) {
     const newComment = await res.json();
@@ -65,6 +79,11 @@ const commentReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_COMMENT:
       action.comment.forEach((comment) => {
+        newState[comment.id] = comment;
+      });
+      return { ...newState };
+    case GET_COMMENTS:
+      action.comment.comments.forEach((comment) => {
         newState[comment.id] = comment;
       });
       return { ...newState };

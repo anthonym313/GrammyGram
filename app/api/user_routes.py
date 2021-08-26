@@ -25,7 +25,6 @@ def user(id):
 @login_required
 def random_user():
     random_users = User.query.order_by(func.random()).limit(6).all()
-    print(random_users)
     return jsonify([user.to_dict() for user in random_users])
 
 

@@ -17,10 +17,10 @@ function SinglePost() {
 	const { postId } = useParams();
 	const userId = image.user_id ||null;
 
+
 	useEffect(() => {
 		dispatch(getSingleImageThunk(Number(postId)));
 		dispatch(singleUser(userId));
-		// history.push(`/posts/${postId}`);
 	}, [dispatch, postId, userId]);
 	
 

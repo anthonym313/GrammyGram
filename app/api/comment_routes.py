@@ -6,6 +6,14 @@ from flask_login import current_user, login_required
 comment_routes = Blueprint('comments', __name__)
 
 
+@comment_routes.route('/')
+def get_comments():
+    comments = Comment.query.all()
+    return {
+        'comments': [comment.to_dict() for comment in comments]
+        }
+
+
 @comment_routes.route('/create', methods=['POST'])
 @login_required
 def index():
@@ -30,10 +38,9 @@ def delete_comment(id):
     return {'message': 'Comment Deleted'}
 
 
-@comment_routes.route('/<int:id>/edit/<comment>', methods=['PUT'])
+@comment_routes.route('/<int:id>/<comment>', methods=['PUT'])
 @login_required
 def edit_comment(id, comment):
-
     post = Comment.query.get(id)
     post.comment = comment
 
