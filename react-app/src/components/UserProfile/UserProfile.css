@@ -9,7 +9,7 @@
 
 .profile-image{
     float:left;
-    width:calc(33%-1 rem);
+    width:calc(33% - 1rem);
     display:flex;
     justify-content:center;
     align-items:center;
@@ -18,6 +18,71 @@
 
 .profile-image img {
     border-radius: 50%;
-    width:150px;
-    height:150px;
+    width:200px;
+    height:200px;
+}
+.userProfile-settings{
+    margin-top: 1.1rem;
+}
+.userProfile-settings h1{
+    display:inline-block;
+    font-size: 3.2rem;
+    font-weight:300;
+}
+#edit-userProfile-button{
+    display: inline-block;
+    font:inherit;
+    font-size: 1.4rem;
+    line-height: 1.8;
+    border: 0.1rem solid #dbdbdb;
+    border-radius: 0.2rem;
+    padding: 0 2.4rem;
+    margin-left: 2rem;
+}
+#edit-userProfile-button:focus{
+    outline: 0.5rem auto  #4d90fe;
+}
+#userProfileCog{
+    font-size: 2rem;
+    margin-left: 1rem;
+}
+.userProfile-stats{
+    margin-top:1rem;
+}
+.userProfile-stats ul{
+    padding-left:0;
+}
+.userProfile-settings,
+.userProfile-stats{
+    float: left;
+    width:calc(67% - 2rem)
+}
+.userProfile-stats li{
+    display: inline-block;
+    font-size: 1.4rem;
+    line-height: 1.5;
+    margin-right: 4rem;
+    cursor: pointer;
+}
+.userProfile-stats li:last-of-type{
+    margin-right:0;
+}
+.posts-gallery{
+    display: flex;
+    flex-wrap: wrap;
+    margin: -1rem -1rem;
+    padding-bottom: 3rem;
+
+}
+.posts-gallery-photo{
+    position: relative;
+    flex: 1 0 22rem;
+    margin: 1rem;
+    color: #fff;
+    cursor: pointer;
+}
+.gallery-image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }

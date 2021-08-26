@@ -10,9 +10,9 @@ function UserProfile() {
 	const { userId } = useParams();
 	const dispatch = useDispatch();
 
-	const [postCount, setPostCount]=useState(0)
-	const [followerCount, setFollowerCount]=useState(0)
-	const [followingCount, setFollowingCount]=useState(0)
+	const [postCount, setPostCount] = useState(0)
+	const [followerCount, setFollowerCount] = useState(0)
+	const [followingCount, setFollowingCount] = useState(0)
 	
 	
 	useEffect(() => {
@@ -28,17 +28,30 @@ function UserProfile() {
 					<img src={user.avatar} alt='userProfile photo'></img>
 				</div>
 				<div className='userProfile-settings'>
-					<h1 className='userProfile-username'>{user.username}</h1>
-					<button id='edit-userProfile'>Edit Profile</button>
-					<span className="fas fa-cog"></span>
+					<h1>{user.username}
+						<span><button id='edit-userProfile-button'>Edit Profile</button></span>
+						<i id='userProfileCog' className="fas fa-cog"></i>
+					</h1>
+					
 				</div>
 				<div className='userProfile-stats'>
-					<span>{postCount} posts </span>
-					<span>{followerCount} followers </span>
-					<span>{followingCount} following </span>
-				</div>
+					<ul>
+						<li><span>{postCount}</span> posts</li>
+						<li><span>{followerCount}</span> followers </li>
+						<li><span>{followingCount}</span> following</li>
+					</ul>
 
+				</div>
 			</div>
+			<div className="userProfile-posts-container">
+				<div className='posts-gallery'>
+					<div className='posts-gallery-photo'>
+						<img src={+'?w=500&h=500&fit=crop'} className='gallery-image' alt='gallery photo'></img>
+
+					</div>
+				</div>
+			</div>
+
 		</div>
 	);
 }
