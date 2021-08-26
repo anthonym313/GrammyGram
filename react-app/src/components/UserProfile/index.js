@@ -45,10 +45,13 @@ function UserProfile() {
 			</div>
 			<div className="userProfile-posts-container">
 				<div className='posts-gallery'>
-					<div className='posts-gallery-photo'>
-						<img src={+'?w=500&h=500&fit=crop'} className='gallery-image' alt='gallery photo'></img>
+					{user.posts.map(image=>(
+					<div className='posts-gallery-photo' >
+						<div className='gallery-image' style={{backgroundImage:`url(${image.image_url})`, overflow:'hidden'}}></div>
 
 					</div>
+
+					))}
 				</div>
 			</div>
 
