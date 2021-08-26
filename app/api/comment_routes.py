@@ -6,6 +6,15 @@ from flask_login import current_user, login_required
 comment_routes = Blueprint('comments', __name__)
 
 
+@comment_routes.route('/')
+def get_comments():
+    comments = Comment.query.all()
+    print('@@@@@@@@@@@@@@@@@@@@@@@@', comments)
+    return {
+        'comments': [comment.to_dict() for comment in comments]
+        }
+
+
 @comment_routes.route('/create', methods=['POST'])
 @login_required
 def index():

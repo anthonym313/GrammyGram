@@ -10,7 +10,7 @@ import SmallSuggestions from "../SmallSuggestions";
 import SingleCommentBtn from "../CommentList/SingleCommentBtn";
 import CommentList from "../CommentList";
 import { delComment } from "../../store/comment";
-import { getAllComments } from "../../store/comment";
+import { getComments } from "../../store/comment";
 
 
 function Feed() {
@@ -18,10 +18,12 @@ function Feed() {
   const history = useHistory();
   const loggedIn = useSelector((state) => state.session).user;
   const allPosts = useSelector((state) => Object.values(state.feedPosts));
+  const postComment = useSelector((state) => Object.values(state.comment));
   const pureIm = allPosts[0].posts;
   const pureCmt = allPosts[0].comments;
   const [users, setUsers] = useState([]);
 
+  console.log('adasdadasdasdasdasasdsada', postComment)
   useEffect(() => {
     async function fetchData() {
       const response = await fetch("/api/users/");
@@ -33,7 +35,8 @@ function Feed() {
 
   useEffect(() => {
     dispatch(getImagesThunk());
-  }, []);
+    dispatch(getComments());
+  }, [dispatch]);
 
   const postUser = (user) => {
     let obj = {};
@@ -45,11 +48,11 @@ function Feed() {
 
   const refresh = () => {
     dispatch(getImagesThunk());
+    dispatch(getComments());
   };
 
     const handleDelete = (id) => {
       dispatch(delComment(id));
-      // dispatch(getAllComments(postId));
       refresh();
     };
 
@@ -109,8 +112,8 @@ function Feed() {
                   )}
                 </div>
                 <div className="comments">
-                  {pureCmt &&
-                    pureCmt?.map((comment) => (
+                  {postComment &&
+                    postComment?.map((comment) => (
                       <div>
                         {comment.image_id === image.id && (
                           <div className="post-description" id="post-desc-id">
@@ -132,7 +135,6 @@ function Feed() {
                             )}
                           </div>
                         )}
-                        {/* <CommentList /> */}
                       </div>
                     ))}
                 </div>
