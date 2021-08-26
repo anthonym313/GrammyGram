@@ -9,7 +9,6 @@ comment_routes = Blueprint('comments', __name__)
 @comment_routes.route('/')
 def get_comments():
     comments = Comment.query.all()
-    print('@@@@@@@@@@@@@@@@@@@@@@@@', comments)
     return {
         'comments': [comment.to_dict() for comment in comments]
         }
