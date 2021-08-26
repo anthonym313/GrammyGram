@@ -116,11 +116,11 @@ body {
 }
 
 #post-container-id {
-display: flex;
-flex-direction: column;
-position: relative;
-left: 25%;
-justify-content: center;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  left: 25%;
+  justify-content: center;
   width: 50%;
 }
 
