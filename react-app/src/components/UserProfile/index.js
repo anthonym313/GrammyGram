@@ -10,7 +10,6 @@ function UserProfile() {
 	const { userId } = useParams();
 	const dispatch = useDispatch();
 	
-	// const [postCount, setPostCount] = useState(0)
 	const [followerCount, setFollowerCount] = useState(0)
 	const [followingCount, setFollowingCount] = useState(0)
 	function handleCount(array){

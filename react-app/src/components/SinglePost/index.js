@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getSingleImageThunk } from '../../store/post';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import CommentList from '../CommentList';
 import { singleUser } from '../../store/user';
 
@@ -19,11 +19,17 @@ function SinglePost() {
 		dispatch(singleUser(userId));
 		// history.push(`/posts/${postId}`);
 	}, [dispatch, postId, userId]);
+	
 
 	return user && (
 		<div className='post-container' id='post-container-id'>
 			<div className='top-bar'>
-				<p className='username-post'>{user.username}</p>
+			<Link to={`/users/${user.id}`}><img
+                  className="post-avatar"
+                  src={user.avatar}
+                  alt="avatar"
+                ></img></Link>
+				<Link to={`/users/${user.id}`}><p className='username-post'>{user.username}</p></Link>
 			</div>
 			<div className='image-container'>
 				<img
