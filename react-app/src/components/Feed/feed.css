@@ -116,7 +116,12 @@ body {
 }
 
 #post-container-id {
-  margin-left: 30%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  left: 25%;
+  justify-content: center;
+  width: 50%;
 }
 
 .post-comment {
