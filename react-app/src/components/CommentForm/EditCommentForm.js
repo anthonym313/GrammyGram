@@ -8,14 +8,13 @@ const EditCommentForm = ({ comId }) => {
   const dispatch = useDispatch();
   const [comment, setComment] = useState("");
   const loggedInUser = useSelector((state) => state.session.user);
+  
   const onSubmit = (e) => {
     e.preventDefault();
 
     dispatch(
       editComment(
         comId,
-        // image_id: comId.image_id,
-        // user_id: loggedInUser,
         comment
       )
     );

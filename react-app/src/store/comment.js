@@ -47,7 +47,6 @@ export const delComment = (id) => async (dispatch) => {
   }
 };
 export const editComment = (id, comment) => async (dispatch) => {
-  console.log('ewfffffffffffffffffffffffffff', id, comment)
   const res = await fetch(`/api/comments/${id}/${comment}`, {
     method: "PUT",
     headers: {
