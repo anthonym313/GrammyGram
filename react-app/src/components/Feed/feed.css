@@ -1,5 +1,6 @@
 ::-webkit-scrollbar {
   width: 7px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-track {
@@ -20,7 +21,8 @@
 }
 
 .post-container {
-  width: 615px;
+  width: 65%;
+  /* margin-left: 10px; */
   flex: 1;
   border: 1px solid #c0bfbf;
   border-radius: 3px;
@@ -37,7 +39,7 @@
 }
 
 .the-image {
-  width: 615px;
+  width: 100%;
 }
 
 .the-image:hover{
