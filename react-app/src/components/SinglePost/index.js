@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getSingleImageThunk } from '../../store/post';
-import { useParams } from 'react-router-dom';
+
+import { useParams, Link } from 'react-router-dom';
+
 import CommentList from '../CommentList';
 // import { singleUser } from '../../store/user';
 
@@ -9,32 +11,28 @@ import '../Feed/feed.css';
 
 function SinglePost() {
 	const dispatch = useDispatch();
-	// const user = useSelector((state) => Object.values(state?.singleUser))[0];
-	const image = useSelector((state) => Object.values(state?.feedPosts))[0];
+
+	const user = useSelector((state) => Object.values(state.singleUser))[0] ||null;
+	const image = useSelector((state) => Object.values(state.feedPosts))[0];
 	const { postId } = useParams();
-	const [users, setUsers] = useState([]);
-	const userId = image?.user_id;
-	
+	const userId = image.user_id ||null;
 
 	useEffect(() => {
 		dispatch(getSingleImageThunk(Number(postId)));
-		// dispatch(singleUser(userId));
-	}, [dispatch, postId]);
+		dispatch(singleUser(userId));
+		// history.push(`/posts/${postId}`);
+	}, [dispatch, postId, userId]);
+	
 
-	const postUser = (user) => {
-    let obj = {};
-    user.forEach((u) => {
-      obj[u.id] = u.username;
-    });
-    return obj;
-  };
-
-  const list = postUser(users);
-
-	return (
+	return user && (
 		<div className='post-container' id='post-container-id'>
 			<div className='top-bar'>
-				<p className='username-post'>{list[image.user_id]} </p>
+			<Link to={`/users/${user.id}`}><img
+                  className="post-avatar"
+                  src={user.avatar}
+                  alt="avatar"
+                ></img></Link>
+				<Link to={`/users/${user.id}`}><p className='username-post'>{user.username}</p></Link>
 			</div>
 			<div className='image-container'>
 				<img

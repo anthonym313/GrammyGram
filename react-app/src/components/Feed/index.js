@@ -57,12 +57,12 @@ function Feed() {
           pureIm?.map((image) => (
             <div key={image.id} className="post-container">
               <div className="top-bar">
-                <img
+                <Link to={`/users/${image.user_id}`}><img
                   className="post-avatar"
                   src={avt[image.user_id]}
                   alt="avatar"
-                ></img>
-                <p className="username-post">{list[image.user_id]}</p>
+                ></img></Link>
+                <Link to={`/users/${image.user_id}`}><p className="username-post">{list[image.user_id]}</p></Link>
               </div>
               <div className="image-container">
                 <Link to={`/posts/${image?.id}`}>
