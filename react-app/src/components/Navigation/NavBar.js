@@ -12,7 +12,6 @@ const NavBar = () => {
   if (user) {
     sessionLinks = (
       <>
-        {/* <li className="navbar space"></li> */}
         <li className="nav1">
           <NavLink to="/posts" exact={true} activeClassName="active">
             <div className="navbar-home navo1"></div>
@@ -35,8 +34,8 @@ const NavBar = () => {
     );
   } else {
     sessionLinks = (
-      <>
-        <li className="navbar space">
+      <div className="navbar-unauth">
+
           <NavLink
             to="/login"
             exact={true}
@@ -45,16 +44,14 @@ const NavBar = () => {
           >
             <div className="navbar-login nav1 navo4"></div>
           </NavLink>
-        </li>
-        <li className="nav-signup nav1">
+
           <NavLink to="/sign-up" exact={true} activeClassName="active">
             <div className="navbar-signup navo5"></div>
           </NavLink>
-        </li>
-        <li>
+
           <DemoUser />
-        </li>
-      </>
+
+      </div>
     );
   }
   return (

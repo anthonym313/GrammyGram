@@ -17,17 +17,23 @@ li {
 
 .demo {
   position: relative;
+  cursor: pointer;
+  border: 0;
   transform: none;
   background-color: #fac745;
   font-family: "Kaushan Script", cursive;
 }
-
+/*
 .demo:hover {
   border-color: #191716;
-}
+} */
 
-.navbar-login {
-  margin-top: 9px;
+
+.navbar-unauth{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  align-items: center;
 }
 
 .left li {
