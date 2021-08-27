@@ -1,19 +1,29 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import { useDispatch } from 'react-redux';
 import { editProfile } from '../../store/session';
+import { Redirect,useLocation } from 'react-router-dom';
 import './UserProfileEdit.css'
 
-export default function UserProfileEdit(user, setShowEditor){
+export default function UserProfileEdit({user, editshow}){
     const dispatch = useDispatch();
+    const location = useLocation();
     const [avatar, updateAvatar]= useState(user.avatar);
     const [username, updateUsername] = useState(user.username);
 
     function handleUserEditSubmit(e){
         e.preventDefault();
+        window.confirm('Are you sure you want to update your profile?')
         dispatch(editProfile(avatar, username, user.id))
-        setShowEditor(true)
-
+        window.location.reload(true);
+        {editshow(false)}
+            
     }
+        
+    
+
+    useEffect(()=>{
+
+    },[avatar,username])
 
     return user && (
         <div>

@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify,request
 from sqlalchemy.sql.expression import func
 from random import randint
 from flask_login import login_required
@@ -28,7 +28,7 @@ def random_user():
     return jsonify([user.to_dict() for user in random_users])
 
 
-@user_routes.route('/edit/<int:id>')
+@user_routes.route('/edit/<int:id>', methods=['PUT'])
 @login_required
 def update_user(id):
     """

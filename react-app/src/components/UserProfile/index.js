@@ -16,6 +16,9 @@ function UserProfile() {
 	const [followerCount, setFollowerCount] = useState(0)
 	const [followingCount, setFollowingCount] = useState(0)
 	
+	const editshow=(val)=>{
+		setShowEditor(val)
+	}
 
 	function handleCount(array){
 		return array.length
@@ -34,7 +37,7 @@ function UserProfile() {
 		}else{
 			return(
 				<>
-					<span><button id='edit-userProfile-button'>Edit Profile</button></span>
+					<span><button id='edit-userProfile-button' onClick={(e)=>setShowEditor(true)}>Edit Profile</button></span>
 					<span><i id='userProfileCog' className="fas fa-cog"></i></span>
 				</>
 			)
@@ -87,7 +90,7 @@ function UserProfile() {
 	}else{
 		return user &&(
 			<>
-				<UserProfileEdit user={user} setShowEditor={setShowEditor}/>
+				<UserProfileEdit user={user} editshow={editshow}/>
 			</>
 		)
 	}
