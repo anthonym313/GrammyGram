@@ -11,7 +11,7 @@ function UserProfile() {
 	const { userId } = useParams();
 	const dispatch = useDispatch();
 	
-	
+	const [showEditor, setShowEditor]= useState(false)
 	const [followerCount, setFollowerCount] = useState(0)
 	const [followingCount, setFollowingCount] = useState(0)
 	
@@ -24,9 +24,9 @@ function UserProfile() {
 		if(currentUser.id !== person.id){
 			return(
 				<>
-					<span><button id='edit-userProfile-button'>Follow</button></span>
-					<span style={{color:`#ffb700`}}><i id='userProfileCog' className="fas fa-paper-plane"></i></span>
-					<span className='iconHint'>Message</span>
+					<span><button id='follow-userProfile-button'>Follow</button></span>
+					<span style={{color:`#ffb700`}}><i id='userProfileMes' className="fas fa-paper-plane"></i></span>
+			
 				</>
 			)
 					
@@ -45,43 +45,45 @@ function UserProfile() {
 		dispatch(singleUser(userId))
 	}, [dispatch,userId]);
 
+	if(!showEditor){
 
-	return user &&(
-		<div className='userProfile-container'>
-			<div className='userProfile'>
-				<div className='profile-image'>
-					<img src={user.avatar} alt='userProfile photo'></img>
-				</div>
-				<div className='userProfile-settings'>
-					<h1>{user.username}
-						{isMyself(user)}
-						{/* <span><button id='edit-userProfile-button'>Edit Profile</button></span>
-						<i id='userProfileCog' className="fas fa-cog"></i> */}
-					</h1>
-					
-				</div>
-				<div className='userProfile-stats'>
-					<ul>
-						<li><span>{handleCount(user.posts)}</span> posts</li>
-						<li><span>{followerCount}</span> followers </li>
-						<li><span>{followingCount}</span> following</li>
-					</ul>
-
-				</div>
-			</div>
-			<div className="userProfile-posts-container">
-				<div className='posts-gallery'>
-					{user.posts.map(image=>(
-					<div className='posts-gallery-photo' >
-						<a href={`/posts/${image.id}`}><div className='gallery-image' style={{backgroundImage:`url(${image.image_url})`, overflow:'hidden'}}></div></a>
-
+		return user &&(
+			<div className='userProfile-container'>
+				<div className='userProfile'>
+					<div className='profile-image'>
+						<img src={user.avatar} alt='userProfile photo'></img>
 					</div>
-
-					))}
+					<div className='userProfile-settings'>
+						<h1>{user.username}
+							{isMyself(user)}
+							{/* <span><button id='edit-userProfile-button'>Edit Profile</button></span>
+							<i id='userProfileCog' className="fas fa-cog"></i> */}
+						</h1>
+						
+					</div>
+					<div className='userProfile-stats'>
+						<ul>
+							<li><span>{handleCount(user.posts)}</span> posts</li>
+							<li><span>{followerCount}</span> followers </li>
+							<li><span>{followingCount}</span> following</li>
+						</ul>
+	
+					</div>
 				</div>
+				<div className="userProfile-posts-container">
+					<div className='posts-gallery'>
+						{user.posts.map(image=>(
+						<div className='posts-gallery-photo' >
+							<a href={`/posts/${image.id}`}><div className='gallery-image' style={{backgroundImage:`url(${image.image_url})`, overflow:'hidden'}}></div></a>
+	
+						</div>
+	
+						))}
+					</div>
+				</div>
+	
 			</div>
-
-		</div>
-	);
+		);
+	}
 }
 export default UserProfile;

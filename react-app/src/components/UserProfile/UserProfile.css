@@ -41,10 +41,27 @@
     padding: 0 2.4rem;
     margin-left: 2rem;
 }
+#follow-userProfile-button{
+    cursor:pointer;
+    display: inline-block;
+    font:inherit;
+    font-size: 1.4rem;
+    color:#fff;
+    background-color:#0095F6;
+    line-height: 1.8;
+    border: 0.1rem none;
+    border-radius: 0.2rem;
+    padding: 0 2.4rem;
+    margin-left: 2rem;
+}
 #edit-userProfile-button:focus{
     outline: 0.5rem auto  #4d90fe;
 }
 #userProfileCog{
+    font-size: 2rem;
+    margin-left: 1rem;
+}
+#userProfileMes{
     font-size: 2rem;
     margin-left: 1rem;
 }
@@ -89,12 +106,13 @@
     background-size:cover;
     background-position: center;
 }
-.userProfile-settings .iconHint{
-    font-size: 0.8rem;
-    visibility: hidden;
+
+.userProfile-settings:hover #userProfileCog{
+    cursor: pointer;
+    
 }
-.userProfile-settings:hover .iconHint{
-    visibility: visible;
+.userProfile-settings:hover #userProfileMes{
+    cursor: pointer;
     
 }
     
