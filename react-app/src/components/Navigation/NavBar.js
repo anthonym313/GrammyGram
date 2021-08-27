@@ -12,7 +12,7 @@ const NavBar = () => {
   if (user) {
     sessionLinks = (
       <>
-        <li className="navbar space"></li>
+        {/* <li className="navbar space"></li> */}
         <li className="nav1">
           <NavLink to="/posts" exact={true} activeClassName="active">
             <div className="navbar-home navo1"></div>
@@ -67,7 +67,7 @@ const NavBar = () => {
             </Link>
           </li>
         </div>
-        <div className="navbar right">{sessionLinks}</div>
+        <div className="right">{sessionLinks}</div>
       </ul>
     </nav>
   );

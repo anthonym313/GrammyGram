@@ -4,7 +4,7 @@ def seed_users():
     demo = User(
         avatar= 'https://i0.wp.com/i.pinimg.com/236x/a7/35/bc/a735bc244c696f41a450bc358a027f18--free-wooden-pallets--pallets.jpg',username='Demo', email='demo@aa.io', password='password')
     burnaboygram = User(
-        avatar='https://www.grammy.com/sites/com/files/styles/artist_circle/public/muzooka/Burna%2BBoy/Burna%2520Boy_1_1_1624318435Muzooka.jpg?itok=90VLIkpm',username='burnaboygram', email='burnaboygram@gg.io', password='burnaboygram')
+        avatar='https://static01.nyt.com/images/2020/08/09/arts/09burna-boy3/09burna-boy3-mediumSquareAt3X.jpg', username='burnaboygram', email='burnaboygram@gg.io', password='burnaboygram')
     badgalriri = User(
         avatar='https://ih1.redbubble.net/image.562691889.7772/flat,750x,075,f-pad,750x1000,f8f8f8.u6.jpg',username='badgalriri', email='badgalriri@gg.io', password='badgalriri')
     beyonce = User(
@@ -22,7 +22,7 @@ def seed_users():
     ladaygaga = User(
         avatar='https://www.grammy.com/sites/com/files/styles/artist_circle/public/muzooka/Lady%2BGaga/Lady%2520Gaga_1_1_1615980732Muzooka.jpg?itok=DR1K4UqD',username='ladaygaga', email='ladaygaga@gg.io', password='ladaygaga')
     dualipa = User(
-        avatar='https://www.grammy.com/sites/com/files/styles/artist_circle/public/muzooka/Dua%2BLipa/Dua%2520Lipa_1_1_1624454239Muzooka.jpg?itok=hPRLrdMQ',username='dualipa', email='dualipa@gg.io', password='dualipa')
+        avatar='https://cosasbucket.s3.amazonaws.com/wp-content/uploads/2021/02/25174351/dua-lipa-attends-varietys-2nd-annual-hitmakers-brunch-at-news-photo-1604677508.jpg', username='dualipa', email='dualipa@gg.io', password='dualipa')
     kaytranada = User(
         avatar='https://www.grammy.com/sites/com/files/styles/artist_circle/public/muzooka/Kaytranada/Kaytranada_1_1_1625749932Muzooka_0.jpg?itok=5jcF4pWo',username='kaytranada', email='kaytranada@gg.io', password='kaytranada')
     snarkpuppy = User(
