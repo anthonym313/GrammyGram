@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify
 from sqlalchemy.sql.expression import func
 from random import randint
 from flask_login import login_required
-from app.models import User, Image
+from app.models import db,User, Image
 
 user_routes = Blueprint('users', __name__)
 
@@ -28,6 +28,19 @@ def random_user():
     return jsonify([user.to_dict() for user in random_users])
 
 
+@user_routes.route('/edit/<int:id>')
+@login_required
+def update_user(id):
+    """
+    This route updates the logged in users profile info...(profile pic, username)
+    """
+    req= request.get_json()
+    user_to_update = User.query.get(id)
+    user_to_update.username = req['username'],
+    user_to_update.avatar = req['avatar']
+    
+    db.session.commit()
+    return user_to_update.to_dict()
 
 
 @user_routes.route('/smallgroup')

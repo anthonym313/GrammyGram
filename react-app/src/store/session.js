@@ -96,6 +96,20 @@ export const signUp = (username, email, password) => async (
   }
 };
 
+//Edit User
+export const editProfile = (avatar, username, id) =>async(dispatch)=>{
+  const res = await fetch(`/api/users/edit/${id}`, {
+    method:'PUT',
+    headers:{'Content-Type': 'application/json'},
+    body:JSON.stringify({avatar,username,id})
+  })
+  if(res.ok){
+    const updatedUser = await res.json();
+    dispatch(setUser(updatedUser))
+    return updatedUser;
+  }
+}
+
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_USER:

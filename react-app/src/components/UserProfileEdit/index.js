@@ -8,7 +8,7 @@ export default function UserProfileEdit(user, setShowEditor){
     const [avatar, updateAvatar]= useState(user.avatar);
     const [username, updateUsername] = useState(user.username);
 
-    handleUserEditSubmit(){
+    function handleUserEditSubmit(e){
         e.preventDefault();
         dispatch()
         setShowEditor(true)

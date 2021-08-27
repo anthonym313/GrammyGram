@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch,useSelector } from 'react-redux';
-import {singleUser} from '../../store/user'
+import {singleUser} from '../../store/user';
+import UserProfileEdit from '../UserProfileEdit';
 
 import './UserProfile.css'
 
@@ -56,8 +57,7 @@ function UserProfile() {
 					<div className='userProfile-settings'>
 						<h1>{user.username}
 							{isMyself(user)}
-							{/* <span><button id='edit-userProfile-button'>Edit Profile</button></span>
-							<i id='userProfileCog' className="fas fa-cog"></i> */}
+				
 						</h1>
 						
 					</div>
@@ -84,6 +84,12 @@ function UserProfile() {
 	
 			</div>
 		);
+	}else{
+		return user &&(
+			<>
+				<UserProfileEdit user={user} setShowEditor={setShowEditor}/>
+			</>
+		)
 	}
 }
 export default UserProfile;
