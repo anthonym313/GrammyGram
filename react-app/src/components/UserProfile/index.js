@@ -7,21 +7,44 @@ import './UserProfile.css'
 
 function UserProfile() {
 	const user = useSelector((state)=> state.singleUser.user) || null
+	const currentUser = useSelector((state)=> state.session.user) || null
 	const { userId } = useParams();
 	const dispatch = useDispatch();
 	
+	
 	const [followerCount, setFollowerCount] = useState(0)
 	const [followingCount, setFollowingCount] = useState(0)
+	
+
 	function handleCount(array){
-		 
 		return array.length
+	}
+	
+	function isMyself(person){
+		if(currentUser.id !== person.id){
+			return(
+				<>
+					<span><button id='edit-userProfile-button'>Follow</button></span>
+					<span style={{color:`#ffb700`}}><i id='userProfileCog' className="fas fa-paper-plane"></i></span>
+					<span className='iconHint'>Message</span>
+				</>
+			)
+					
+		}else{
+			return(
+				<>
+					<span><button id='edit-userProfile-button'>Edit Profile</button></span>
+					<span><i id='userProfileCog' className="fas fa-cog"></i></span>
+				</>
+			)
+		}
+
 	}
 	
 	useEffect(() => {
 		dispatch(singleUser(userId))
-		
 	}, [dispatch,userId]);
-	
+
 
 	return user &&(
 		<div className='userProfile-container'>
@@ -31,8 +54,9 @@ function UserProfile() {
 				</div>
 				<div className='userProfile-settings'>
 					<h1>{user.username}
-						<span><button id='edit-userProfile-button'>Edit Profile</button></span>
-						<i id='userProfileCog' className="fas fa-cog"></i>
+						{isMyself(user)}
+						{/* <span><button id='edit-userProfile-button'>Edit Profile</button></span>
+						<i id='userProfileCog' className="fas fa-cog"></i> */}
 					</h1>
 					
 				</div>

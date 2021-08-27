@@ -31,6 +31,7 @@
     font-weight:300;
 }
 #edit-userProfile-button{
+    cursor:pointer;
     display: inline-block;
     font:inherit;
     font-size: 1.4rem;
@@ -87,5 +88,13 @@
     height:300px;
     background-size:cover;
     background-position: center;
+}
+.userProfile-settings .iconHint{
+    font-size: 0.8rem;
+    visibility: hidden;
+}
+.userProfile-settings:hover .iconHint{
+    visibility: visible;
     
 }
+    
