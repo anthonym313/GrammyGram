@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import { useDispatch } from 'react-redux';
-
+import { editProfile } from '../../store/session';
 import './UserProfileEdit.css'
 
 export default function UserProfileEdit(user, setShowEditor){
@@ -10,7 +10,7 @@ export default function UserProfileEdit(user, setShowEditor){
 
     function handleUserEditSubmit(e){
         e.preventDefault();
-        dispatch()
+        dispatch(editProfile(avatar, username, user.id))
         setShowEditor(true)
 
     }
