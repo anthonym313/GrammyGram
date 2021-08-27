@@ -35,47 +35,38 @@ const LoginForm = () => {
 	return (
     <form onSubmit={onLogin} className="modal">
       <div>
-        {errors.map((error, ind) => (
-			<div key={ind}>{error}</div>
-			))}
+        {console.log(errors)}
       </div>
-      <div className="loginContainer">
-			<h2>Login!</h2>
-        <div className="input-values">
-          <div>
-
-
-          {/* {" "} */}
-          <span>
-            <i aria-hidden="true" className="fa fa-envelope loginpic" />{" "}
-          </span>
+      <p className="login-greet">Login!</p>
+        {errors.map((error, ind) => (
+          <div key={ind}>{error}</div>
+        ))}
+      <div className="input-values">
+        <div className="input-value-holder">
+          <i aria-hidden="true" className="fa fa-envelope loginpic" />{" "}
           <input
             name="email"
             type="text"
             placeholder="Email"
             value={email}
             onChange={updateEmail}
-            />
-            </div>
+          />
         </div>
-        <div>
+        <div className="input-value-holder">
+          <i aria-hidden="true" className="fa fa-lock loginpic"></i>{" "}
 
-          <span>
-            <i aria-hidden="true" className="fa fa-lock loginpic"></i>{" "}
-          </span>
           <input
             name="password"
             type="password"
             placeholder="Password"
             value={password}
             onChange={updatePassword}
-            />
-            </div>
-          <button type="submit" className="modal-button">
-            Login
-          </button>
+          />
+        </div>
+      <button type="submit" className="modal-button">
+        Login
+      </button>
       </div>
-      {/* <DemoUser/> */}
     </form>
   );
 };
