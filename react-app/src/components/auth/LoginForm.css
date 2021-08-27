@@ -30,7 +30,6 @@ body {
   flex-direction: column;
   width: 100%;
   position: relative;
-  /* bottom: 20px; */
   height: 100%;
   justify-content: space-between;
 }
@@ -106,4 +105,27 @@ body {
 
 .input-value-holder {
   display: flex;
+}
+
+#signup-form {
+  height: 400px;
+}
+
+#signup-greet {
+  height: 91px;
+}
+
+.input-value-holder-signup {
+  display: flex;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#signup-input-values{
+  width: 188px;
+  justify-content: space-evenly;
+  margin-top: 25px;
 }

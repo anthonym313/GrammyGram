@@ -34,16 +34,14 @@ const LoginForm = () => {
 
 	return (
     <form onSubmit={onLogin} className="modal">
-      <div>
-        {console.log(errors)}
-      </div>
+
       <p className="login-greet">Login!</p>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       <div className="input-values">
         <div className="input-value-holder">
-          <i aria-hidden="true" className="fa fa-envelope loginpic" />{" "}
+          <i aria-hidden="true" className="fa fa-envelope loginpic" />
           <input
             name="email"
             type="text"
@@ -53,7 +51,7 @@ const LoginForm = () => {
           />
         </div>
         <div className="input-value-holder">
-          <i aria-hidden="true" className="fa fa-lock loginpic"></i>{" "}
+          <i aria-hidden="true" className="fa fa-lock loginpic"></i>
 
           <input
             name="password"
