@@ -15,10 +15,13 @@ export default function UserProfileEdit({user, editshow}){
         window.confirm('Are you sure you want to update your profile?')
         dispatch(editProfile(avatar, username, user.id))
         window.location.reload(true);
-        {editshow(false)}
+        editshow(false)
             
     }
-        
+    function handleCancel(e){
+        e.preventDefault();
+        editshow(false)
+    }
     
 
     useEffect(()=>{
@@ -27,9 +30,13 @@ export default function UserProfileEdit({user, editshow}){
 
     return user && (
         <div>
-            <form>
-                <div>
-                    <label>Change Avatar</label>
+            <form className='modal3'>
+                <div className='title_container'>
+                    <h2>Edit User Profile</h2>
+                </div>
+                    <div className='input_field'>
+                    <span><i className='far fa-user-circle'></i></span>
+                    
                     <input
                     type='text'
                     name='avatar'
@@ -39,8 +46,8 @@ export default function UserProfileEdit({user, editshow}){
                     required={true}
                     ></input>
                 </div>
-                <div>
-                    <label>Update User Name</label>
+                <div className='input_field'>
+                    <span><i className='fas fa-user-edit'></i></span>
                     <input
                     type='text'
                     name='username'
@@ -51,7 +58,8 @@ export default function UserProfileEdit({user, editshow}){
                     ></input>
                 </div>
                 <div>
-                    <button type="submit" onClick={handleUserEditSubmit}>Submit</button>
+                    <button type="submit" onClick={handleUserEditSubmit} className='modal-button2'>Submit</button>
+                    <button onClick={handleCancel} className='cancelEdit'>Cancel</button>
                 </div>
 
             </form>

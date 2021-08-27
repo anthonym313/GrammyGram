@@ -38,6 +38,7 @@ justify-content: space-between;
   text-align: center;
   transition: all 0.2s;
   margin-top: 10px;
+  cursor: pointer;
 }
 
 .modal-button2:hover {
