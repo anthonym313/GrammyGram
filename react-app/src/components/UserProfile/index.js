@@ -6,16 +6,17 @@ import UserProfileEdit from '../UserProfileEdit';
 
 import './UserProfile.css'
 
+
 function UserProfile() {
 	const user = useSelector((state)=> state.singleUser.user) || null
 	const currentUser = useSelector((state)=> state.session.user) || null
 	const { userId } = useParams();
 	const dispatch = useDispatch();
-	
+
 	const [showEditor, setShowEditor]= useState(false)
 	const [followerCount, setFollowerCount] = useState(0)
 	const [followingCount, setFollowingCount] = useState(0)
-	
+
 	const editshow=(val)=>{
 		setShowEditor(val)
 	}
@@ -23,17 +24,17 @@ function UserProfile() {
 	function handleCount(array){
 		return array.length
 	}
-	
+
 	function isMyself(person){
 		if(currentUser.id !== person.id){
 			return(
 				<>
 					<span><button id='follow-userProfile-button'>Follow</button></span>
 					<span style={{color:`#ffb700`}}><i id='userProfileMes' className="fas fa-paper-plane"></i></span>
-			
+
 				</>
 			)
-					
+
 		}else{
 			return(
 				<>
@@ -44,7 +45,7 @@ function UserProfile() {
 		}
 
 	}
-	
+
 	useEffect(() => {
 		dispatch(singleUser(userId))
 	}, [dispatch,userId]);
@@ -60,9 +61,9 @@ function UserProfile() {
 					<div className='userProfile-settings'>
 						<h1>{user.username}
 							{isMyself(user)}
-				
+
 						</h1>
-						
+
 					</div>
 					<div className='userProfile-stats'>
 						<ul>
@@ -70,7 +71,7 @@ function UserProfile() {
 							<li><span>{followerCount}</span> followers </li>
 							<li><span>{followingCount}</span> following</li>
 						</ul>
-	
+
 					</div>
 				</div>
 				<div className="userProfile-posts-container">
@@ -78,13 +79,13 @@ function UserProfile() {
 						{user.posts.map(image=>(
 						<div className='posts-gallery-photo' >
 							<a href={`/posts/${image.id}`}><div className='gallery-image' style={{backgroundImage:`url(${image.image_url})`, overflow:'hidden'}}></div></a>
-	
+
 						</div>
-	
+
 						))}
 					</div>
 				</div>
-	
+
 			</div>
 		);
 	}else{
