@@ -6,7 +6,7 @@ import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/Navigation/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
-import User from "./components/UserProfile";
+import UserProfile from "./components/UserProfile";
 import PostForm from "./components/PostForm";
 import Feed from "./components/Feed";
 import SplashPage from "./components/Splashpage";
@@ -54,7 +54,7 @@ function App() {
           <PostForm />
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true}>
-          <User />
+          <UserProfile />
         </ProtectedRoute>
         <ProtectedRoute path="/explore" exact={true}>
           <ExplorePage />
