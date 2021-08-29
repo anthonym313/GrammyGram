@@ -44,6 +44,8 @@ const SignUpForm = () => {
   }
 
   return (
+    <div className='holder-container'>
+
     <form onSubmit={onSignUp} className="modal" id="signup-form">
       <p className="login-greet" id="signup-greet">
         Join Our Community!
@@ -98,6 +100,7 @@ const SignUpForm = () => {
         </button>
       </div>
     </form>
+    </div>
   );
 };
 

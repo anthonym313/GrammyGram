@@ -6,9 +6,10 @@ import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/Navigation/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
-import UserProfile from "./components/UserProfile";
+import User from "./components/UserProfile";
 import PostForm from "./components/PostForm";
 import Feed from "./components/Feed";
+import SplashPage from "./components/Splashpage";
 import NotFoundPage from "./components/NotFoundPage";
 import ExplorePage from "./components/ExplorePage";
 import SinglePost from "./components/SinglePost";
@@ -34,8 +35,8 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <Route exact path="/" component={UsersList}>
-          <Redirect from="/" to="/login" />
+        <Route exact path="/">
+          <SplashPage />
         </Route>
         <Route path="/login" exact={true}>
           <LoginForm />
@@ -53,7 +54,7 @@ function App() {
           <PostForm />
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true}>
-          <UserProfile />
+          <User />
         </ProtectedRoute>
         <ProtectedRoute path="/explore" exact={true}>
           <ExplorePage />

@@ -4,6 +4,39 @@ body {
   justify-content: center;
 }
 
+
+.holder-container {
+  background-image: url(../../images/Wavy_Tech-28_Single-10.jpg);
+  position: absolute;
+  margin-left: 30px;
+  background-repeat: no-repeat;
+  /* background-size: 70%; */
+  background-size: 55%;
+  background-position: center;
+  height: 90vh;
+  width: 88vw;
+  top: 60px;
+  left: 10%;
+  z-index: -500000;
+  max-width: 100%;
+}
+
+.holder-container2 {
+  background-image: url(../../images/uploadbackground.jpg);
+  position: absolute;
+  margin-left: 30px;
+  background-repeat: no-repeat;
+  /* background-size: 70%; */
+  background-size: 55%;
+  background-position: center;
+  height: 90vh;
+  width: 88vw;
+  top: 60px;
+  left: 10%;
+  z-index: -500000;
+  max-width: 100%;
+}
+
 .modal {
   display: flex;
   flex-direction: column;
@@ -14,7 +47,7 @@ body {
   width: 250px;
   height: 250px;
   top: 50%;
-  left: 30%;
+  left: 25%;
   transform: translate(-49%, -50%);
   background: white;
   box-shadow: 2px 3px 5px 1px rgba(0, 0, 0, 0.1);
@@ -73,6 +106,7 @@ body {
   transition: all 0.2s;
   cursor: pointer;
   position: relative;
+  font-size: 16px;
   top: 15px;
 }
 

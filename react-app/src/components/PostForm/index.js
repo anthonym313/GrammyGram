@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import "./postform.css";
+import "../auth/LoginForm.css";
 import { postImageThunk, getImagesThunk } from "../../store/post";
 import { useHistory } from "react-router-dom";
 
@@ -34,40 +34,39 @@ const PostForm = () => {
   };
 
   return (
-    <form onSubmit={onSubmit} className="modal3">
-      <div className="title_container">
-        <h2>Upload An Image!</h2>
-      </div>
-      <div className="input_field">
-        {" "}
-        <span>
-          <i aria-hidden="true" className="fa fa-image" />{" "}
-        </span>
-        <input
-          name="Image Url"
-          type="text"
-          placeholder="Image Url"
-          value={image_url}
-          onChange={updateImageUrl}
-        />
-      </div>
-      <div className="input_field">
-        {" "}
-        <span>
-          <i aria-hidden="true" className="fa fa-compass"></i>{" "}
-        </span>
-        <input
-          name="Description"
-          type="text"
-          placeholder="Description"
-          value={description}
-          onChange={updateDescription}
-        />
-      </div>
-        <button type="submit" className="modal-button2">
+    <div className='holder-container2'>
+    <form onSubmit={onSubmit} className="modal" id="uploadModal">
+
+        <p className="login-greet">Upload An Image!</p>
+      <div className="input-values">
+        <div className="input-value-holder">
+          <i aria-hidden="true" className="fa fa-image loginpic" />
+          <input
+            name="Image Url"
+            type="text"
+            placeholder="Image Url"
+            value={image_url}
+            onChange={updateImageUrl}
+            required={true}
+          />
+        </div>
+        <div className="input-value-holder">
+          <i aria-hidden="true" className="fa fa-compass loginpic"></i>
+          <input
+            name="Description"
+            type="text"
+            placeholder="Description"
+            value={description}
+            onChange={updateDescription}
+            required={true}
+          />
+        </div>
+        <button type="submit" className="modal-button">
           Upload
         </button>
+      </div>
     </form>
+    </div>
   );
 };
 
