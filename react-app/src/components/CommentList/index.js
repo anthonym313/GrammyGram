@@ -24,6 +24,9 @@ const CommentList = () => {
   const refresh = () => {
     dispatch(getAllComments(postId));
   };
+
+  console.log('NEWCOMMENTTSSSS', newComments);
+
   useEffect(() => {
     if (!postId) {
       return;
@@ -61,7 +64,7 @@ const CommentList = () => {
 
   const list = postUser(users);
 
-  return (
+  return newComments &&(
     <div>
       <div className="comments">
         {newComments &&
@@ -69,8 +72,8 @@ const CommentList = () => {
 
             <div key={comment?.id} className="errordiv">
 
-              <div className="comment-user-submission" key={comment.id}>
-                <div className="post-description" id="post-desc-id" key={comment.id}>
+              <div className="comment-user-submission">
+                <div className="post-description" id="post-desc-id" >
                   <p className="username-post" id="user-desc-id">
                     {list[comment?.user_id]}
                   </p>
@@ -78,7 +81,7 @@ const CommentList = () => {
                     {comment.comment}
                   </p>
                   {loggedIn?.id === comment?.user_id && (
-                    <div key={comment.id}>
+                    <div >
                       <button
                         className="edit-btn editing-post"
                         id="edit-btn"

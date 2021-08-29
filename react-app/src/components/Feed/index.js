@@ -5,7 +5,7 @@ import { getImagesThunk } from "../../store/post";
 import EditButton from "./EditButton";
 import CommentForm from "../CommentForm";
 import "./feed.css";
-import Suggestions from "../Suggestions";
+// import Suggestions from "../Suggestions";
 import SmallSuggestions from "../SmallSuggestions";
 
 function Feed() {
@@ -52,7 +52,7 @@ function Feed() {
     <div>
       <div className="feed-page">
         <SmallSuggestions />
-        <Suggestions />
+        {/* <Suggestions /> */}
         {pureIm &&
           pureIm?.map((image) => (
             <div key={image.id} className="post-container">

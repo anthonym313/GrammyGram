@@ -9,6 +9,7 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import PostForm from "./components/PostForm";
 import Feed from "./components/Feed";
+import SplashPage from "./components/Splashpage";
 import NotFoundPage from "./components/NotFoundPage";
 import ExplorePage from "./components/ExplorePage";
 import SinglePost from "./components/SinglePost";
@@ -34,8 +35,8 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <Route exact path="/" component={UsersList}>
-          <Redirect from="/" to="/login" />
+        <Route exact path="/">
+          <SplashPage />
         </Route>
         <Route path="/login" exact={true}>
           <LoginForm />

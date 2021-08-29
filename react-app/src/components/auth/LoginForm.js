@@ -32,7 +32,8 @@ const LoginForm = () => {
 		return <Redirect to='/posts' />;
 	}
 
-	return (
+  return (
+    <div className='holder-container'>
     <form onSubmit={onLogin} className="modal">
       <div>
         {errors.map((error, ind) => (
@@ -77,6 +78,7 @@ const LoginForm = () => {
       </div>
       {/* <DemoUser/> */}
     </form>
+    </div>
   );
 };
 
