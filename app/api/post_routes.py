@@ -30,7 +30,10 @@ def get_all_posts():
 
 
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 @post_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
 def del_post(id):
@@ -57,7 +60,11 @@ def all_comments_image(image_id):
     return jsonify([comment.to_dict() for comment in allComments])
 
 
+<<<<<<< Updated upstream
 
+=======
+    
+>>>>>>> Stashed changes
 @post_routes.route('/<int:id>', methods=['GET'])
 @login_required
 def get_one_post(id):
