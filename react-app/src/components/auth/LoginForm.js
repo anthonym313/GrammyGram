@@ -33,6 +33,8 @@ const LoginForm = () => {
 	}
 
 	return (
+    <div className='holder-container'>
+
     <form onSubmit={onLogin} className="modal">
 
       <p className="login-greet">Login!</p>
@@ -66,6 +68,7 @@ const LoginForm = () => {
       </button>
       </div>
     </form>
+    </div>
   );
 };
 

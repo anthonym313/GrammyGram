@@ -1,0 +1,74 @@
+.btn {
+  margin-bottom: 10px;
+}
+
+h3 {
+  margin: 15px;
+  margin-bottom: 20px;
+}
+
+.splash-div {
+  background-image: url(../../images/grmy_sp_hero_landscape.jpg);
+  position: absolute;
+  background-repeat: no-repeat;
+  /* background-size: 70%; */
+  background-size: 100% 100%;
+  background-position: center;
+  height: 99.3vh;
+  width: 100vw;
+  top: 7px;
+  z-index: -500000;
+  /* max-width: 100%; */
+}
+
+.intro-box {
+  margin: 70px;
+  position: absolute;
+  padding: 10px;
+  top: 200px;
+  font-size: 25px;
+  left: 5%;
+  /* background-color: rgba(129, 119, 119, 0.5); */
+  border: 3px solid black;
+  border-radius: 10px;
+  backdrop-filter: blur(3px);
+
+}
+
+.coloredWord {
+  color: #fac745;
+}
+
+.secondWord {
+  color: #191716;
+}
+
+.sign-up-modal-btn {
+  background-color: #fac745;
+  display: inline-block;
+  padding: 0.3em 1.2em;
+  margin: 0 0.1em 10px 0;
+  border: 0.16em solid rgba(255, 255, 255, 0);
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 300;
+  color: #ffffff;
+  text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+  text-align: center;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.signup-btn:hover {
+  border-color: rgba(255, 255, 255, 1);
+}
+
+
+@media all and (max-width: 30em) {
+  .signup-btn {
+    display: block;
+    margin: 0.2em auto;
+  }
+}

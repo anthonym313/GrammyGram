@@ -59,7 +59,7 @@ const NavBar = () => {
       <ul className="navbar navlinks">
         <div className="navbar left">
           <li className="navbar logo">
-            <Link to="/posts">
+            <Link to="/">
               <p className="logo">GrammyGram</p>
             </Link>
           </li>
