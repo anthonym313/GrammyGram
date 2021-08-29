@@ -31,9 +31,12 @@ export default function SmallSuggestions() {
                 <Link to={`/users/${user.id}`}><img
                   src={user.avatar}
                   className="small-random-usr"
-                  alt="random-user"
+                  alt="user-avt"
                 ></img></Link>
-                <p className="small-random-username">{user.username}</p>
+                  <Link to={`/users/${user.id}`}>
+                <p className="small-random-username">
+                  {user.username}</p>
+                  </Link>
               </div>
             );
           })}

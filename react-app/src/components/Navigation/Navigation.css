@@ -15,37 +15,42 @@ li {
   list-style-type: none;
 }
 
-.nav1 {
-  transition: transform 0.2s;
-}
-
-.nav1:hover {
-  transform: scale(1.1);
-}
-
 .demo {
   position: relative;
+  cursor: pointer;
+  border: 0;
   transform: none;
-  background-color: #ffb700;
+  background-color: #fac745;
   font-family: "Kaushan Script", cursive;
 }
-
+/*
 .demo:hover {
   border-color: #191716;
-}
+} */
 
-.navbar-login {
-  margin-top: 9px;
+
+.navbar-unauth{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  align-items: center;
 }
 
 .left li {
   float: left;
   margin-left: 1.5em;
 }
-
+.right {
+  display: flex;
+  width: 300px;
+  margin-right: 10%;
+  height: 50px;
+  align-items: center;
+  justify-content: space-between;
+}
 .right li {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   margin-right: 8px;
   margin-left: 5px;
   margin-top: 6px;
@@ -55,12 +60,9 @@ li {
   margin: 0 10px 0 10px;
   padding-left: 5px;
   padding-right: 5px;
-  border-left: 2px solid #ffb700;
-  border-right: 2px solid #ffb700;
 }
 .nav-upload {
-  border-left: 2px solid #ffb700;
-  border-right: 2px solid #ffb700;
+
   padding-left: 5px;
   padding-right: 5px;
   margin-left: -5px;
@@ -69,7 +71,6 @@ li {
 .nav-explore {
   margin: 0;
   padding-right: 10px;
-  border-right: 2px solid #ffb700;
   margin-left: -12px;
 }
 
@@ -85,8 +86,8 @@ li {
   font-family: "Kaushan Script", cursive;
   margin: 6px 0 5px 0;
   padding: 0 0 0 0;
-  color: #ffb700;
-  font-size: 20px;
+  color: #fac745;
+  font-size: 30px;
 }
 
 body {
@@ -96,54 +97,55 @@ body {
 .navo1 {
   background-image: url("../../images/home.svg");
   background-repeat: no-repeat;
-  background-size: 20px;
+  background-size: 25px;
   background-position: center;
-  height: 20px;
-  width: 20px;
+  height: 30px;
+  width: 30px;
 }
 
 .navo2 {
   background-image: url("../../images/cloud-computing\ \(2\).svg");
   background-repeat: no-repeat;
-  background-size: 20px;
+  background-size: 25px;
   background-position: center;
-  height: 20px;
-  width: 20px;
+  height: 30px;
+  width: 30px;
 }
 
 .navo3 {
   background-image: url("../../images/compass.svg");
   background-repeat: no-repeat;
-  background-size: 20px;
+  background-size: 25px;
   background-position: center;
-  height: 20px;
-  width: 20px;
+  height: 30px;
+  width: 30px;
 }
 
 .navo4 {
   background-image: url("../../images/log-in.svg");
   background-repeat: no-repeat;
-  background-size: 20px;
+  background-size: 25px;
   background-position: center;
-  height: 20px;
-  width: 20px;
+  height: 30px;
+  width: 30px;
 }
 
 .navo5 {
   background-image: url("../../images/sign-up.svg");
   background-repeat: no-repeat;
-  background-size: 20px;
+  background-size: 25px;
   background-position: center;
-  height: 20px;
-  width: 20px;
+  height: 30px;
+  width: 30px;
 }
 
 .navo6 {
   background-image: url("../../images/logout.svg");
   background-repeat: no-repeat;
-  background-size: 20px;
+  background-size: 25px;
   background-position: center;
-  height: 20px;
-  width: 20px;
+  height: 30px;
+  width: 30px;
   margin-left: -5px;
+  cursor: pointer;
 }

@@ -3,21 +3,21 @@ body {
   flex-direction: column;
   justify-content: center;
 }
+
 .modal {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-content: center;
   align-items: center;
   position: fixed;
   width: 250px;
   height: 250px;
   top: 50%;
-  left: 50%;
+  left: 30%;
   transform: translate(-49%, -50%);
   background: white;
-  box-shadow: 0 0 30px 8px rgba(0, 0, 0, 0.2);
-  opacity: 0.9;
+  box-shadow: 2px 3px 5px 1px rgba(0, 0, 0, 0.1);
 }
 
 .loginpic {
@@ -28,18 +28,28 @@ body {
   align-items: center;
   display: flex;
   flex-direction: column;
-  width: 200px;
+  width: 100%;
   position: relative;
-  bottom: 20px;
-  height: 200px;
+  height: 100%;
   justify-content: space-between;
 }
 
 .input-values {
   display: flex;
+  flex-direction: column;
   position: relative;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  height: 70%;
+}
+
+.input-value-holder:first-child {
+  margin-bottom: 10px;
+}
+
+.input-span {
+  display: flex;
+  align-items: center;
 }
 
 .modal-button {
@@ -47,7 +57,7 @@ body {
   color: black;
   font-weight: 300;
   font-family: "Kaushan Script", cursive;
-  background-color: #f1bb4e;
+  background-color: #fac745;
   display: inline-block;
   padding: 0.3em 1.2em;
   margin: 0 0.1em 0.1em 0;
@@ -61,11 +71,14 @@ body {
   text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
   text-align: center;
   transition: all 0.2s;
+  cursor: pointer;
+  position: relative;
+  top: 15px;
 }
 
-.modal-button:hover {
+/* .modal-button:hover {
   border-color: rgba(255, 255, 255, 1);
-}
+} */
 
 @media all and (max-width: 30em) {
   .modal-button {
@@ -74,6 +87,45 @@ body {
   }
 }
 
-/* input {
-  margin-left:10px;
-} */
+.login-greet {
+  margin-top: 0;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  top: 0;
+  font-size: 25px;
+  font-weight: 600;
+  height: 40%;
+  background-color: #fac745;
+  color: white;
+}
+
+.input-value-holder {
+  display: flex;
+}
+
+#signup-form {
+  height: 400px;
+}
+
+#signup-greet {
+  height: 91px;
+}
+
+.input-value-holder-signup {
+  display: flex;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#signup-input-values{
+  width: 188px;
+  justify-content: space-evenly;
+  margin-top: 25px;
+}
