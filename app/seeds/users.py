@@ -4,7 +4,7 @@ def seed_users():
     demo = User(
         avatar= 'https://i0.wp.com/i.pinimg.com/236x/a7/35/bc/a735bc244c696f41a450bc358a027f18--free-wooden-pallets--pallets.jpg',username='Demo', email='demo@aa.io', password='password')
     burnaboygram = User(
-        avatar='https://static01.nyt.com/images/2020/08/09/arts/09burna-boy3/09burna-boy3-mediumSquareAt3X.jpg', username='burnaboygram', email='burnaboygram@gg.io', password='burnaboygram')
+        avatar='https://media.gq.com/photos/5e5ebb6de196b50008c072e5/master/w_1600,c_limit/burna-boy-gq-style-spring-summer-2020-11.jpg', username='burnaboygram', email='burnaboygram@gg.io', password='burnaboygram')
     badgalriri = User(
         avatar='https://ih1.redbubble.net/image.562691889.7772/flat,750x,075,f-pad,750x1000,f8f8f8.u6.jpg',username='badgalriri', email='badgalriri@gg.io', password='badgalriri')
     beyonce = User(
