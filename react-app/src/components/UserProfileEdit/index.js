@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { editProfile } from "../../store/session";
-import { Redirect, useLocation } from "react-router-dom";
+
 import "../auth/LoginForm.css";
 
 export default function UserProfileEdit({ user, editshow }) {
   const dispatch = useDispatch();
-  const location = useLocation();
+  
   const [avatar, updateAvatar] = useState(user.avatar);
   const [username, updateUsername] = useState(user.username);
 

@@ -8,7 +8,6 @@ import "./feed.css";
 import Suggestions from "../Suggestions";
 import SmallSuggestions from "../SmallSuggestions";
 
-<<<<<<< Updated upstream
 import SingleCommentBtn from "../CommentList/SingleCommentBtn";
 import CommentList from "../CommentList";
 import { delComment } from "../../store/comment";
@@ -16,8 +15,6 @@ import { getComments } from "../../store/comment";
 
 
 
-=======
->>>>>>> Stashed changes
 function Feed() {
   const dispatch = useDispatch();
   const loggedIn = useSelector((state) => state.session).user;
@@ -27,10 +24,6 @@ function Feed() {
   const pureCmt = allPosts[0].comments;
   const [users, setUsers] = useState([]);
 
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
   useEffect(() => {
     async function fetchData() {
       const response = await fetch("/api/users/");
@@ -38,7 +31,6 @@ function Feed() {
       setUsers(responseData.users);
     }
     fetchData();
-<<<<<<< Updated upstream
 
   }, []);
 
@@ -46,12 +38,6 @@ function Feed() {
     dispatch(getImagesThunk());
     dispatch(getComments());
 
-=======
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(getImagesThunk());
->>>>>>> Stashed changes
   }, [dispatch]);
 
   const postUser = (user) => {
@@ -62,7 +48,6 @@ function Feed() {
     return obj;
   };
 
-<<<<<<< Updated upstream
 
   const refresh = () => {
     dispatch(getImagesThunk());
@@ -75,8 +60,6 @@ function Feed() {
     };
 
 
-=======
->>>>>>> Stashed changes
   const list = postUser(users);
 
   const postAvatar = (user) => {
@@ -133,18 +116,11 @@ function Feed() {
                   )}
                 </div>
                 <div className="comments">
-<<<<<<< Updated upstream
 
                   {postComment &&
                     postComment?.map((comment) => (
                       <div>
                            {comment.image_id === image.id && (
-=======
-                  {pureCmt &&
-                    pureCmt?.map((comment) => (
-                      <div key={comment.id} >
-                        {comment.image_id === image.id && (
->>>>>>> Stashed changes
                           <div className="post-description" id="post-desc-id">
                             <p className="username-post">
                               {list[comment.user_id]}
