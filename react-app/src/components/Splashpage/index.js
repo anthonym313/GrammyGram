@@ -1,14 +1,14 @@
 import './splashpage.css'
-import SignUpForm from "../auth/SignUpForm"
-import React, { useState } from "react";
+
+import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory, Redirect } from "react-router-dom";
 import { login } from "../../store/session";
-import DemoUser from '../DemoUser'
+
 
 
 function SplashPage() {
-  // const [showModal, setShowModal] = useState(false);
+ 
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state.session.user);

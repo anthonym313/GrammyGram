@@ -52,12 +52,8 @@ const LoginForm = () => {
             onChange={updateEmail}
           />
         </div>
-<<<<<<< Updated upstream
         <div className="input-value-holder">
           <i aria-hidden="true" className="fa fa-lock loginpic"></i>
-=======
-        <div>
->>>>>>> Stashed changes
 
           <input
             name="password"

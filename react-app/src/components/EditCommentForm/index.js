@@ -3,11 +3,8 @@ import { useDispatch } from 'react-redux';
 import '../Feed/feed.css'
 import { editComment } from '../../store/comment';
 
-<<<<<<< Updated upstream
 import {getComments} from '../../store/comment';
 
-=======
->>>>>>> Stashed changes
 
 const EditCommentForm = ({ comment }) => {
     const dispatch = useDispatch();
