@@ -26,9 +26,14 @@ export default function SmallSuggestions() {
           <p className="sug-for-you"> Suggestions for you</p>
           {smallRandomUserList?.map((user) => {
             return (
+<<<<<<< Updated upstream
 
               <div className="small-random-div" key={user.id}>
                 <Link to={`/users/${user.id}`}><img
+=======
+              <div className="small-random-div" key={ user.id}>
+                <img
+>>>>>>> Stashed changes
                   src={user.avatar}
                   className="small-random-usr"
                   alt="user-avt"

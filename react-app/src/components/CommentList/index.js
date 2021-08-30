@@ -79,10 +79,21 @@ const CommentList = () => {
                     {comment.comment}
                   </p>
                   {loggedIn?.id === comment?.user_id && (
+<<<<<<< Updated upstream
 
                     <div className='comment-button-div'>
                       <SingleCommentBtn comment={comment}/>
 
+=======
+                    <div key={comment.id}>
+                      <button
+                        className="edit-btn editing-post"
+                        id="edit-btn"
+                        onClick={showEdit === true ? closeEdit : openEdit}
+                      >
+                        Edit
+                      </button>
+>>>>>>> Stashed changes
                       <button
                         className="delete-btn edit-btn"
                         id="edit-btn"
