@@ -16,7 +16,7 @@ export default function ExplorePage() {
         return (
           <div className="explore-image" key={image.id}>
               <Link to={`/posts/${image.id}`}>
-                <img src={image.image_url} width="300" alt="explore-post"></img>
+                <div className='gallery-image' style={{backgroundImage:`url(${image.image_url})`, overflow:'hidden'}}></div>
               </Link>
           </div>
         );

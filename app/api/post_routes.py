@@ -59,5 +59,4 @@ def all_comments_image(image_id):
 @login_required
 def get_one_post(id):
     post = Image.query.get(id)
-    print('post', post.to_dict())
     return post.to_dict()
