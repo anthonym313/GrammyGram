@@ -30,5 +30,10 @@ Live site: https://instagrammygram.herokuapp.com/
 ## Photo Upload
 ![image]('../../react-app/public/grammygramUpload.png)
 
+## [Wiki Pages](https://github.com/anthonym313/GrammyGram/wiki)
+- [Feature List](https://github.com/anthonym313/GrammyGram/wiki/feature-list)
+- [User Stories](https://github.com/anthonym313/GrammyGram/wiki/User-Stories)
+- [Database Schema](https://github.com/anthonym313/GrammyGram/wiki/Database-Schema)
+- [Front-End Routes](https://github.com/anthonym313/GrammyGram/wiki/Frontend-Routes)
 
 
