@@ -57,6 +57,13 @@ function SplashPage() {
         </div>
         </div>
       </div>
+      <div className='dev-icons'>
+          Anthony M. <span><a href='https://github.com/anthonym313' target='_blank'><i className='fab fa-github-square'></i></a></span> <span><a href='https://www.linkedin.com/in/anthonyamartin/' target='_blank'><i className='fab fa-linkedin'></i></a></span>
+          David M. <span><a href='https://github.com/David7Mejia' target='_blank'><i className='fab fa-github-square'></i></a></span> <span><a href='https://www.linkedin.com/in/david-mejia-349ba4154/' target='_blank'><i className='fab fa-linkedin'></i></a></span>
+          Johnn V. <span><a href='https://github.com/johnnvas' target='_blank'><i className='fab fa-github-square'></i></a></span> <span><a href='https://www.linkedin.com/in/johnn-vasquez-0bb352182/' target='_blank'><i className='f=fab fa-linkedin'></i></a></span>
+          Joe Z. <span><a href='https://github.com/JoeZhang229' target='_blank'><i className='fab fa-github-square'></i></a></span> <span><a href='https://www.linkedin.com/in/joe-zhang-00229/' target='_blank'><i className='fab fa-linkedin'></i></a></span>
+          Project Repo <span><a href='https://github.com/anthonym313/GrammyGram' target='_blank'><i className='fab fa-github-square'></i></a></span>
+      </div>
     </>
   );
 }
