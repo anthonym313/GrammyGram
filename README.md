@@ -1,6 +1,7 @@
-# Live Website
 
-https://instagrammygram.herokuapp.com/posts
+![image]('../../react-app/public/grammygram-banner.png)
+
+Live site: https://instagrammygram.herokuapp.com/
 
 # Flask React Project
 
