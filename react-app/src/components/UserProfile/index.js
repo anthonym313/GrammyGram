@@ -29,8 +29,8 @@ function UserProfile() {
 		if(currentUser.id !== person.id){
 			return(
 				<>
-					<span><button id='follow-userProfile-button'>Follow</button></span>
-					<span style={{color:`#ffb700`}}><i id='userProfileMes' className="fas fa-paper-plane"></i></span>
+					{/* <span><button id='follow-userProfile-button'>Follow</button></span> */}
+					{/* <span style={{color:`#ffb700`}}><i id='userProfileMes' className="fas fa-paper-plane"></i></span> */}
 
 				</>
 			)
@@ -68,8 +68,8 @@ function UserProfile() {
 					<div className='userProfile-stats'>
 						<ul>
 							<li><span>{handleCount(user.posts)}</span> posts</li>
-							<li><span>{followerCount}</span> followers </li>
-							<li><span>{followingCount}</span> following</li>
+							{/* <li><span>{followerCount}</span> followers </li> */}
+							{/* <li><span>{followingCount}</span> following</li> */}
 						</ul>
 
 					</div>
