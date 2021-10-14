@@ -15,14 +15,11 @@ const LikesList = ({ imageId, likesArr }) => {
 	// const dislikes = useSelector((state) => state.dislikes);
 	const likesHook = useSelector((state) => Object.values(state.likes));
 	const allLikes = likesArr ? likesArr : likesHook;
-	// const newAllLikes = Object.values(likesArr);
-	// console.log('passed prop likes', newAllLikes);
 	// const allDislikes = Object.values(dislikes);
 	const image = onePost[0];
 	const loggedInUserId = useSelector((state) => state.session.user.id);
 	const userId = image.user_id;
 	const [likeStatus, setLikeStatus] = useState();
-	console.log('like status', likeStatus);
 
 	const checkLikeStatus = (likesArr) => {
 		if (likesArr.find((likeObj) => likeObj['user_id'] === loggedInUserId)) {
@@ -59,7 +56,6 @@ const LikesList = ({ imageId, likesArr }) => {
 			})
 		);
 		setLikeStatus(true);
-		console.log('like status post', likeStatus);
 		dispatch(getImgAllLikes(imageId));
 	};
 
@@ -67,7 +63,6 @@ const LikesList = ({ imageId, likesArr }) => {
 		e.preventDefault();
 		dispatch(delLike(checkLikeStatus(allLikes)));
 		setLikeStatus(false);
-		console.log('like status del', likeStatus);
 		dispatch(getImgAllLikes(imageId));
 	};
 
