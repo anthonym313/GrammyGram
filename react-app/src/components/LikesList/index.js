@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { singleUser } from '../../store/user';
+import './likesList.css';
 import {
 	getImgAllLikes,
 	newLike,
@@ -21,7 +22,6 @@ const LikesList = ({ imageId, likesArr }) => {
 	const loggedInUserId = useSelector((state) => state.session.user.id);
 	const userId = image.user_id;
 	const [likeStatus, setLikeStatus] = useState();
-	console.log('all Likes', allLikes);
 	console.log('like status', likeStatus);
 
 	const checkLikeStatus = (likesArr) => {
@@ -31,6 +31,7 @@ const LikesList = ({ imageId, likesArr }) => {
 				(likeObj) => likeObj['user_id'] === loggedInUserId
 			).id;
 		} else {
+			// return setLikeStatus(false);
 			return false;
 		}
 	};
@@ -50,7 +51,6 @@ const LikesList = ({ imageId, likesArr }) => {
 
 	const likePost = (e) => {
 		e.preventDefault();
-		console.log('image Id', imageId);
 		dispatch(
 			newLike({
 				image_id: imageId,
@@ -58,8 +58,8 @@ const LikesList = ({ imageId, likesArr }) => {
 				like: true,
 			})
 		);
-		console.log('new like');
 		setLikeStatus(true);
+		console.log('like status post', likeStatus);
 		dispatch(getImgAllLikes(imageId));
 	};
 
@@ -67,23 +67,27 @@ const LikesList = ({ imageId, likesArr }) => {
 		e.preventDefault();
 		dispatch(delLike(checkLikeStatus(allLikes)));
 		setLikeStatus(false);
+		console.log('like status del', likeStatus);
 		dispatch(getImgAllLikes(imageId));
 	};
 
 	return (
 		<div className='LikesList-container'>
 			{likeStatus ? (
-				<button
+				<span
+					className='likes-icon Liked'
 					onClick={(e) => {
 						handleDelete(e);
 					}}
 				>
-					You like this!
-				</button>
+					<div className='liked-icon'></div>
+				</span>
 			) : (
-				<button onClick={likePost}>Like This</button>
+				<span className='likes-icon notLiked' onClick={likePost}>
+					<div className='like-icon notLiked'></div>
+				</span>
 			)}
-			<div>{allLikes.length} Likes</div>
+			<div className='likes-counter'>{allLikes.length} likes</div>
 			{/* <div>{allDislikes.length} Dislikes</div> */}
 		</div>
 	);

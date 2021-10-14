@@ -1,0 +1,36 @@
+.LikesList-container {
+	margin: 10px;
+	/* padding: 5px; */
+}
+
+.likes-counter {
+	font-weight: bold;
+	/* margin: 0px 8px; */
+	padding: 10px 0px;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+		Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.likes-icon:hover {
+	cursor: pointer;
+}
+
+.notLiked:hover {
+	opacity: 0.5;
+}
+
+.liked-icon {
+	background-image: url('../../images/heart-solid.svg');
+}
+
+.like-icon {
+	background-image: url('../../images/heart-regular.svg');
+}
+
+.liked-icon,
+.like-icon {
+	background-size: 25px;
+	background-position: center;
+	height: 25px;
+	width: 25px;
+}
