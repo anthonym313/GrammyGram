@@ -9,15 +9,17 @@ import Suggestions from '../Suggestions';
 import SmallSuggestions from '../SmallSuggestions';
 
 import SingleCommentBtn from '../CommentList/SingleCommentBtn';
+import LikesList from '../LikesList';
 import CommentList from '../CommentList';
-import { delComment } from '../../store/comment';
-import { getComments } from '../../store/comment';
+import { delComment, getComments } from '../../store/comment';
+import { getAllLikes, getImgAllLikes } from '../../store/like';
 
 function Feed() {
 	const dispatch = useDispatch();
 	const loggedIn = useSelector((state) => state.session).user;
 	const allPosts = useSelector((state) => Object.values(state.feedPosts));
 	const postComment = useSelector((state) => Object.values(state.comment));
+	const allLikes = useSelector((state) => Object.values(state.likes));
 	const pureIm = allPosts[0].posts;
 	const pureCmt = allPosts[0].comments;
 	const [users, setUsers] = useState([]);
@@ -34,6 +36,7 @@ function Feed() {
 	useEffect(() => {
 		dispatch(getImagesThunk());
 		dispatch(getComments());
+		dispatch(getAllLikes());
 	}, [dispatch]);
 
 	const postUser = (user) => {
@@ -66,6 +69,16 @@ function Feed() {
 	};
 
 	const avt = postAvatar(users);
+
+	const handleLikesArr = (likeObj, imageId) => {
+		let likesArr = [];
+		likeObj.forEach((likeObj) => {
+			if (likeObj.image_id === imageId) {
+				likesArr.push(likeObj);
+			}
+		});
+		return likesArr;
+	};
 
 	return (
 		<div>
@@ -118,7 +131,15 @@ function Feed() {
 										</div>
 									)}
 								</div>
-								<div>Likes</div>
+								<div className='likes'>
+									<LikesList
+										imageId={image.id}
+										likesArr={handleLikesArr(
+											allLikes,
+											image.id
+										)}
+									/>
+								</div>
 								<div className='comments'>
 									{postComment &&
 										postComment?.map((comment) => (

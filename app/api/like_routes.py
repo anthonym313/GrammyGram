@@ -7,6 +7,13 @@ like_routes = Blueprint('likes', __name__)
 
 # GET LIKES
 
+@like_routes.route('/')
+def get_likes():
+    likes = Like.query.all()
+    return {
+        'likes': [like.to_dict() for like in likes]
+    }
+
 
 @like_routes.route('/<int:image_id>/likes')
 def all_likes_image(image_id):

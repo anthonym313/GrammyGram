@@ -1,5 +1,6 @@
 const GET_LIKES = 'like/GET_LIKES';
 const GET_DISLIKES = 'like/GET_DISLIKES';
+const GET_ALL_LIKES = 'like/GET_ALL_LIKES';
 const POST_LIKE = 'like/POST_LIKE';
 const DEL_LIKE = 'like/DEL_LIKE';
 
@@ -17,6 +18,13 @@ export const getDislikes = (dislikes) => {
 	};
 };
 
+export const allLikes = (likes) => {
+	return {
+		type: GET_ALL_LIKES,
+		likes,
+	};
+};
+
 export const postLike = (likes) => {
 	return {
 		type: POST_LIKE,
@@ -31,7 +39,15 @@ export const deleteLike = (id) => {
 	};
 };
 
-export const getAllLikes = (imageId) => async (dispatch) => {
+export const getAllLikes = () => async (dispatch) => {
+	const res = await fetch('/api/likes/');
+	if (res.ok) {
+		const likes = await res.json();
+		dispatch(allLikes(likes));
+	}
+};
+
+export const getImgAllLikes = (imageId) => async (dispatch) => {
 	const res = await fetch(`/api/likes/${imageId}/likes`);
 	if (res.ok) {
 		const allLikes = await res.json();
@@ -78,6 +94,11 @@ export const likesReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case GET_LIKES:
 			action.likes.forEach((like) => {
+				newState[like.id] = like;
+			});
+			return { ...newState };
+		case GET_ALL_LIKES:
+			action.likes.likes.forEach((like) => {
 				newState[like.id] = like;
 			});
 			return { ...newState };

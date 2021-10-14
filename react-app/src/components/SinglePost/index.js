@@ -7,7 +7,7 @@ import { useParams, Link } from 'react-router-dom';
 import CommentList from '../CommentList';
 import LikesList from '../LikesList';
 import { singleUser } from '../../store/user';
-import { getAllLikes, newLike } from '../../store/like';
+import { getImgAllLikes, newLike } from '../../store/like';
 
 import '../Feed/feed.css';
 
@@ -35,8 +35,8 @@ function SinglePost() {
 	useEffect(() => {
 		dispatch(getSingleImageThunk(Number(postId)));
 		dispatch(singleUser(userId));
-		// properly grabs Likes in this component vs LikesList
-		dispatch(getAllLikes(postId));
+		// properly grabs Likes to preload into LikesList
+		dispatch(getImgAllLikes(postId));
 	}, [dispatch, postId, userId]);
 
 	return (

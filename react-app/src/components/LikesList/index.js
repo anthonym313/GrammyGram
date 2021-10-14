@@ -1,29 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
 import { singleUser } from '../../store/user';
 import {
-	getAllLikes,
+	getImgAllLikes,
 	newLike,
 	delLike,
 	getAllDislikes,
 } from '../../store/like';
 
-const LikesList = ({ imageId }) => {
+const LikesList = ({ imageId, likesArr }) => {
 	const dispatch = useDispatch();
 	const onePost = useSelector((state) => Object.values(state.feedPosts));
 	// const dislikes = useSelector((state) => state.dislikes);
-	const allLikes = useSelector((state) => Object.values(state.likes));
+	const likesHook = useSelector((state) => Object.values(state.likes));
+	const allLikes = likesArr ? likesArr : likesHook;
+	// const newAllLikes = Object.values(likesArr);
+	// console.log('passed prop likes', newAllLikes);
 	// const allDislikes = Object.values(dislikes);
 	const image = onePost[0];
 	const loggedInUserId = useSelector((state) => state.session.user.id);
 	const userId = image.user_id;
-	const [likeStatus, setLikeStatus] = useState(false);
+	const [likeStatus, setLikeStatus] = useState();
 	console.log('all Likes', allLikes);
+	console.log('like status', likeStatus);
 
 	const checkLikeStatus = (likesArr) => {
 		if (likesArr.find((likeObj) => likeObj['user_id'] === loggedInUserId)) {
+			setLikeStatus(true);
 			return likesArr.find(
 				(likeObj) => likeObj['user_id'] === loggedInUserId
 			).id;
@@ -37,18 +40,13 @@ const LikesList = ({ imageId }) => {
 			return;
 		}
 
-		if (checkLikeStatus(allLikes)) {
-			setLikeStatus(true);
-		}
-
-		console.log('like status', likeStatus);
 		dispatch(singleUser(userId));
 		// something incorrectly wrong with redux store when dispatching here
-		// dispatch(getAllLikes(imageId));
-
+		// dispatch(getImgAllLikes(imageId));
+		checkLikeStatus(allLikes);
 		// This breaks the code, due to changes in frontend
 		// dispatch(getAllDislikes(imageId));
-	}, [dispatch, userId, imageId, likeStatus]);
+	}, [dispatch, userId, imageId]);
 
 	const likePost = (e) => {
 		e.preventDefault();
@@ -62,19 +60,14 @@ const LikesList = ({ imageId }) => {
 		);
 		console.log('new like');
 		setLikeStatus(true);
-		dispatch(getAllLikes(imageId));
-	};
-
-	const deleteLike = (id) => {
-		// setLikeStatus(false);
-		dispatch(delLike(id));
-		// dispatch(getAllLikes(imageId));
+		dispatch(getImgAllLikes(imageId));
 	};
 
 	const handleDelete = (e) => {
 		e.preventDefault();
+		dispatch(delLike(checkLikeStatus(allLikes)));
 		setLikeStatus(false);
-		deleteLike(checkLikeStatus(allLikes));
+		dispatch(getImgAllLikes(imageId));
 	};
 
 	return (
