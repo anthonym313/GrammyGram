@@ -11,7 +11,7 @@ def get_comments():
     comments = Comment.query.all()
     return {
         'comments': [comment.to_dict() for comment in comments]
-        }
+    }
 
 
 @comment_routes.route('/create', methods=['POST'])

@@ -7,6 +7,13 @@ like_routes = Blueprint('likes', __name__)
 
 # GET LIKES
 
+@like_routes.route('/')
+def get_likes():
+    likes = Like.query.all()
+    return {
+        'likes': [like.to_dict() for like in likes]
+    }
+
 
 @like_routes.route('/<int:image_id>/likes')
 def all_likes_image(image_id):
@@ -26,3 +33,28 @@ def all_dislikes_image(image_id):
                     if likeObj.like is False])
 
 # POST
+
+
+@like_routes.route('/create', methods=['POST'])
+@login_required
+def post_like():
+    req = request.get_json()
+    newLike = Like(
+        user_id=current_user.id,
+        image_id=req['image_id'],
+        like=req['like']
+    )
+    db.session.add(newLike)
+    db.session.commit()
+    return newLike.to_dict()
+
+
+@like_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def delete_like(id):
+    deleteLike = Like.query.get(id)
+    # print('deleted like ######', deleteLike.user_id)
+    if (deleteLike.user_id == current_user.id):
+        db.session.delete(deleteLike)
+        db.session.commit()
+    return {'message': 'Like Deleted'}

@@ -6,7 +6,6 @@ import { editComment, newComment } from '../../store/comment';
 
 const EditCommentForm = ({ commentObj }) => {
 	const dispatch = useDispatch();
-	console.log('commentObj', commentObj.id);
 	// placeholder is the current comment before edit
 	const [comment, setComment] = useState(commentObj.comment);
 	const loggedInUser = useSelector((state) => state.session.user);
